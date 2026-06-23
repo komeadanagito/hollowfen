@@ -12,6 +12,7 @@ func _run() -> void:
 	var ArrowScene: PackedScene = load("res://scenes/combat/arrow.tscn")
 	t.check(ArrowScene != null, "arrow.tscn loads")
 	var arrow: Arrow = ArrowScene.instantiate()
+	arrow.lifetime = 0.01
 	get_root().add_child(arrow)
 	await process_frame
 	arrow.launch(Vector2(1, 0))
@@ -26,6 +27,7 @@ func _run() -> void:
 	t.eq(got[0], arrow.damage, "arrow routes damage on hit")
 	t.check(arrow.is_queued_for_deletion(), "arrow frees after hitting target")
 	dummy.free()
+	await create_timer(0.02).timeout
 
 	# --- Archer ---
 	var floor_body := StaticBody2D.new()

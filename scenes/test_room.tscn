@@ -1,0 +1,100 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/test_room.gd" id="1_y7oot"]
+[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="2_sre8w"]
+[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="3_6l5vp"]
+[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="4_fv5lf"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="5_pfnst"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="6_nf0vd"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="7_g24fv"]
+[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="8_n7k1x"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="9_0mtf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(180, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goal"]
+size = Vector2(36, 80)
+
+[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("party_manager")]
+script = ExtResource("1_y7oot")
+party_manager = NodePath("PartyManager")
+
+[node name="Terrain" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="FloorShape" type="CollisionShape2D" parent="Terrain"]
+position = Vector2(600, 340)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ShootingPlatformShape" type="CollisionShape2D" parent="Terrain"]
+position = Vector2(560, 260)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="FloorVisual" type="ColorRect" parent="Terrain"]
+offset_top = 320.0
+offset_right = 1200.0
+offset_bottom = 360.0
+color = Color(0.13, 0.16, 0.15, 1)
+
+[node name="ShootingPlatformVisual" type="ColorRect" parent="Terrain"]
+offset_left = 470.0
+offset_top = 250.0
+offset_right = 650.0
+offset_bottom = 270.0
+color = Color(0.18, 0.22, 0.2, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(120, 300)
+
+[node name="PartyManager" type="Node2D" parent="."]
+script = ExtResource("2_sre8w")
+
+[node name="Knight" parent="PartyManager" instance=ExtResource("3_6l5vp")]
+position = Vector2(120, 300)
+
+[node name="Archer" parent="PartyManager" instance=ExtResource("4_fv5lf")]
+position = Vector2(120, 300)
+
+[node name="PatrolEnemy" parent="." instance=ExtResource("5_pfnst")]
+position = Vector2(410, 300)
+
+[node name="Switch" parent="." instance=ExtResource("6_nf0vd")]
+position = Vector2(760, 226)
+
+[node name="Door" parent="." instance=ExtResource("7_g24fv")]
+position = Vector2(920, 280)
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(1100, 280)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_goal")
+
+[node name="Sprite" type="ColorRect" parent="Goal"]
+offset_left = -18.0
+offset_top = -40.0
+offset_right = 18.0
+offset_bottom = 40.0
+color = Color(0.35, 0.9, 0.65, 0.45)
+
+[node name="Label" type="Label" parent="Goal"]
+offset_left = -18.0
+offset_top = -64.0
+offset_right = 40.0
+offset_bottom = -40.0
+text = "终点"
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("party_manager")]
+position = Vector2(120, 260)
+script = ExtResource("8_n7k1x")
+party_manager = NodePath("../PartyManager")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("party_manager") instance=ExtResource("9_0mtf1")]
+party_manager = NodePath("../PartyManager")

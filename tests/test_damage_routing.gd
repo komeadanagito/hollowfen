@@ -16,6 +16,21 @@ func _run() -> void:
 	hurt.receive_hit(15)
 	t.eq(h.current, 35, "hurtbox routes damage to health")
 
+	# 无敌帧门控：设置无敌后，紧接着的第二次命中应被忽略
+	var h2: Health = Health.new()
+	h2.max_health = 50
+	var hurt2: Hurtbox = Hurtbox.new()
+	hurt2.health = h2
+	hurt2.invincible_time = 0.6
+	get_root().add_child(h2)
+	get_root().add_child(hurt2)
+	await process_frame
+	hurt2.receive_hit(10)
+	t.eq(h2.current, 40, "first hit applies")
+	hurt2.receive_hit(10)
+	t.eq(h2.current, 40, "second hit blocked during i-frames")
+	h2.free(); hurt2.free()
+
 	# Hitbox 命中带 receive_hit 的对象
 	var hit: Hitbox = Hitbox.new()
 	hit.damage = 5

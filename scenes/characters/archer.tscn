@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bmp1u5kufk1e5"]
+
+[ext_resource type="Script" uid="uid://b2ltlv1i1qwdi" path="res://scripts/characters/archer.gd" id="1_5rr7p"]
+[ext_resource type="Script" uid="uid://d051y2yukc8yl" path="res://scripts/combat/health.gd" id="2_cvspa"]
+[ext_resource type="Script" uid="uid://cy21kgw7mw1b1" path="res://scripts/combat/hurtbox.gd" id="3_e1vds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mvd2"]
+size = Vector2(28, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o374b"]
+size = Vector2(28, 40)
+
+[node name="Archer" type="CharacterBody2D" unique_id=226732811]
+collision_layer = 2
+script = ExtResource("1_5rr7p")
+move_speed = 260.0
+
+[node name="Sprite" type="ColorRect" parent="." unique_id=1325363496]
+offset_left = -14.0
+offset_top = -20.0
+offset_right = 14.0
+offset_bottom = 20.0
+color = Color(0.4, 0.85, 0.45, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=412889213]
+shape = SubResource("RectangleShape2D_3mvd2")
+
+[node name="Health" type="Node" parent="." unique_id=594779249]
+script = ExtResource("2_cvspa")
+max_health = 25
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=899649877 node_paths=PackedStringArray("health")]
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_e1vds")
+health = NodePath("../Health")
+invincible_time = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=227902743]
+shape = SubResource("RectangleShape2D_o374b")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=208183934]
+position = Vector2(18, -4)

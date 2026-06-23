@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dj3n086s053xu"]
+
+[ext_resource type="Script" uid="uid://bmcped6lp10vr" path="res://scripts/puzzle/door.gd" id="1_pvyvj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pm37"]
+size = Vector2(24, 80)
+
+[node name="Door" type="StaticBody2D" unique_id=773460251]
+collision_mask = 0
+script = ExtResource("1_pvyvj")
+
+[node name="Sprite" type="ColorRect" parent="." unique_id=179600498]
+offset_left = -12.0
+offset_top = -40.0
+offset_right = 12.0
+offset_bottom = 40.0
+color = Color(0.4, 0.4, 0.45, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=947038259]
+shape = SubResource("RectangleShape2D_4pm37")

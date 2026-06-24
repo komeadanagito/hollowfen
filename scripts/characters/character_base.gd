@@ -41,6 +41,9 @@ func set_active(active: bool) -> void:
 	visible = active
 	set_physics_process(active)
 
+func is_active() -> bool:
+	return _active
+
 func get_health() -> Health:
 	return _health
 

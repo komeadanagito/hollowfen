@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/prompt_zone.gd" id="1_fowei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0up3n"]
+size = Vector2(200, 400)
+
+[node name="PromptZone" type="Area2D" unique_id=1252060721]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fowei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1403728064]
+shape = SubResource("RectangleShape2D_0up3n")

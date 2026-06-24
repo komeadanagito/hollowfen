@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="1_dm7v3"]
+[ext_resource type="Script" path="res://scripts/combat/health.gd" id="2_bnbhy"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3_g015p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sym4j"]
+size = Vector2(56, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk0ir"]
+size = Vector2(56, 100)
+
+[node name="RangedGoblin" type="CharacterBody2D" unique_id=722750402]
+collision_layer = 4
+script = ExtResource("1_dm7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2117715139]
+shape = SubResource("RectangleShape2D_sym4j")
+
+[node name="Sprite" type="ColorRect" parent="." unique_id=2087663251]
+editor_description = "[物料] 类别=敌人 | 占位=紫块80x110 PH_Enemy_RangedGoblin | 替换=持弓哥布林 | 备注=保持距离+射箭"
+offset_left = -40.0
+offset_top = -60.0
+offset_right = 40.0
+offset_bottom = 50.0
+color = Color(0.55, 0.3, 0.7, 1)
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1222355262]
+position = Vector2(0, -10)
+
+[node name="Health" type="Node" parent="." unique_id=554404829]
+script = ExtResource("2_bnbhy")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1325696124 node_paths=PackedStringArray("health")]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("3_g015p")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=878669990]
+shape = SubResource("RectangleShape2D_vk0ir")

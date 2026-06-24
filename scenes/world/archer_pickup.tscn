@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="1_2ythf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8c36"]
+size = Vector2(64, 128)
+
+[node name="ArcherPickup" type="Area2D" unique_id=311501307]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2ythf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306743336]
+shape = SubResource("RectangleShape2D_l8c36")
+
+[node name="Sprite" type="ColorRect" parent="." unique_id=89333427]
+editor_description = "[物料] 类别=解锁点 | 占位=绿块64x128 PH_Pickup_Archer | 替换=沉睡同伴/祭坛 | 备注=触碰解锁Archer"
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = 64.0
+color = Color(0.4, 1, 0.5, 1)

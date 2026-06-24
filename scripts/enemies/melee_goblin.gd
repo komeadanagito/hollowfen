@@ -49,9 +49,12 @@ func _physics_process(delta: float) -> void:
 				state = State.PATROL
 			else:
 				var dx: float = player.global_position.x - global_position.x
-				_facing = 1 if dx >= 0.0 else -1
-				if absf(dx) <= attack_range and _cooldown <= 0.0:
-					_enter_attack()
+				if absf(dx) > 12.0:                       # 死区，避免朝向抖动
+					_facing = 1 if dx >= 0.0 else -1
+				if absf(dx) <= attack_range:
+					velocity.x = move_toward(velocity.x, 0.0, chase_speed)  # 站定，不来回抽搐
+					if _cooldown <= 0.0:
+						_enter_attack()
 				else:
 					velocity.x = _facing * chase_speed
 		State.ATTACK:

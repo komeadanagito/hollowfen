@@ -30,14 +30,14 @@ func _sprite(root: Node, sheet: String) -> void:
 	spr.sprite_frames = _frames(sheet)
 	spr.animation = &"idle"
 	spr.autoplay = "idle"
-	spr.scale = Vector2(0.5, 0.5)
+	spr.scale = Vector2(0.55, 0.55)   # 与玩家角色同大
 	spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	root.add_child(spr); spr.owner = root
 
 func _body_health_hurt(root: Node, max_hp: int) -> void:
 	var body_col := CollisionShape2D.new()
 	body_col.name = "CollisionShape2D"
-	var bshape := RectangleShape2D.new(); bshape.size = Vector2(56, 100)
+	var bshape := RectangleShape2D.new(); bshape.size = Vector2(56, 120)
 	body_col.shape = bshape
 	root.add_child(body_col); body_col.owner = root
 
@@ -57,7 +57,7 @@ func _body_health_hurt(root: Node, max_hp: int) -> void:
 	hurt.set("invincible_time", 0.0)
 	var hurt_col := CollisionShape2D.new()
 	hurt_col.name = "CollisionShape2D"
-	var hshape := RectangleShape2D.new(); hshape.size = Vector2(56, 100)
+	var hshape := RectangleShape2D.new(); hshape.size = Vector2(56, 120)
 	hurt_col.shape = hshape
 	hurt.add_child(hurt_col); hurt_col.owner = root
 

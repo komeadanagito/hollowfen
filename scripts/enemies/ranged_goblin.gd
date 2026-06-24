@@ -32,7 +32,8 @@ func _physics_process(delta: float) -> void:
 	var player := _find_player()
 	if player and _in_range(player):
 		var dx: float = player.global_position.x - global_position.x
-		_facing = 1 if dx >= 0.0 else -1
+		if absf(dx) > 12.0:                       # 死区，避免朝向抖动
+			_facing = 1 if dx >= 0.0 else -1
 		if absf(dx) < min_distance:
 			velocity.x = -_facing * retreat_speed   # 玩家太近 → 后退保持距离
 		if _fire_cd <= 0.0:
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 func _update_anim() -> void:
 	if _sprite == null:
 		return
-	_sprite.flip_h = _facing > 0   # 贴图默认朝左
+	_sprite.flip_h = _facing < 0   # 贴图默认朝右
 	if _attack_anim > 0.0:
 		_sprite.play("attack")
 	elif absf(velocity.x) > 5.0:

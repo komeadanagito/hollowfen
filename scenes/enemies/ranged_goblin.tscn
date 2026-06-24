@@ -197,36 +197,36 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0iet"]
-size = Vector2(56, 100)
+size = Vector2(56, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek6dj"]
-size = Vector2(56, 100)
+size = Vector2(56, 120)
 
-[node name="RangedGoblin" type="CharacterBody2D" unique_id=200042731]
+[node name="RangedGoblin" type="CharacterBody2D" unique_id=503726099]
 collision_layer = 4
 script = ExtResource("1_bnbhy")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=70835230]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1669888298]
 texture_filter = 1
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_ba57y")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=170564955]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1373109703]
 shape = SubResource("RectangleShape2D_l0iet")
 
-[node name="Health" type="Node" parent="." unique_id=277820577]
+[node name="Health" type="Node" parent="." unique_id=1970673587]
 script = ExtResource("3_sym4j")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=701631840 node_paths=PackedStringArray("health")]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=578356262 node_paths=PackedStringArray("health")]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("4_vk0ir")
 health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1952848432]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1391470696]
 shape = SubResource("RectangleShape2D_ek6dj")
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=1354884211]
+[node name="Muzzle" type="Marker2D" parent="." unique_id=169642177]
 position = Vector2(0, -10)

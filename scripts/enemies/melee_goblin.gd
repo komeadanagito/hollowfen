@@ -69,14 +69,13 @@ func _physics_process(delta: float) -> void:
 func _update_anim() -> void:
 	if _sprite == null:
 		return
-	_sprite.flip_h = _facing > 0   # 贴图默认朝左
-	match state:
-		State.ATTACK:
-			_sprite.play("attack")
-		State.CHASE:
-			_sprite.play("walk")
-		_:
-			_sprite.play("walk" if absf(velocity.x) > 5.0 else "idle")
+	_sprite.flip_h = _facing < 0   # 贴图默认朝右
+	if state == State.ATTACK:
+		_sprite.play("attack")
+	elif absf(velocity.x) > 5.0:
+		_sprite.play("walk")
+	else:
+		_sprite.play("idle")
 
 func _do_patrol() -> void:
 	velocity.x = _dir * speed

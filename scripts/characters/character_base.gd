@@ -30,6 +30,7 @@ var _dead: bool = false
 @onready var _sprite: Node = get_node_or_null("Sprite")
 
 func _ready() -> void:
+	add_to_group("player")
 	if _hurtbox:
 		_hurtbox.hit_taken.connect(_on_hit_taken)
 	if _health:

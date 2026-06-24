@@ -45,7 +45,8 @@ func _physics_process(delta: float) -> void:
 			if player and _can_see(player):
 				state = State.CHASE
 		State.CHASE:
-			if player == null or not _can_see(player):
+			# 滞回：进入用 detect_range，离开用更大范围，避免边界处来回切状态抽搐
+			if player == null or not _can_see(player, 1.6, 2.0):
 				state = State.PATROL
 			else:
 				var dx: float = player.global_position.x - global_position.x
@@ -78,14 +79,15 @@ func _update_anim() -> void:
 		_sprite.play("idle")
 
 func _do_patrol() -> void:
+	# 撞墙或到巡逻边界 → 掉头（防止顶着平台/障碍来回抽搐）
+	if is_on_wall() or absf(global_position.x - _start_x) > patrol_distance:
+		_dir = -_dir
 	velocity.x = _dir * speed
 	_facing = _dir
-	if absf(global_position.x - _start_x) > patrol_distance:
-		_dir = -_dir
 
-func _can_see(player: Node2D) -> bool:
+func _can_see(player: Node2D, range_mult: float = 1.0, vtol_mult: float = 1.0) -> bool:
 	var d: Vector2 = player.global_position - global_position
-	return absf(d.x) <= detect_range and absf(d.y) <= vertical_tolerance
+	return absf(d.x) <= detect_range * range_mult and absf(d.y) <= vertical_tolerance * vtol_mult
 
 func _enter_attack() -> void:
 	state = State.ATTACK

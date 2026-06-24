@@ -34,10 +34,11 @@ func _physics_process(delta: float) -> void:
 			_play_animation(&"hurt")
 			_sprite.modulate = Color(1.0, 0.3, 0.3, 0.8) # 受伤闪红
 	else:
-		velocity.x = _dir * speed
-		if absf(global_position.x - _start_x) > patrol_distance:
+		# 撞墙或到边界 → 掉头（防止顶着障碍抽搐）
+		if is_on_wall() or absf(global_position.x - _start_x) > patrol_distance:
 			_dir = -_dir
-		
+		velocity.x = _dir * speed
+
 		if _sprite:
 			_play_animation(&"walk")
 			_sprite.flip_h = (_dir == 1)

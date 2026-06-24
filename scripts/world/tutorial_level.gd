@@ -36,8 +36,23 @@ func _wire_deaths() -> void:
 				h.died.connect(cb)
 
 func _on_died(character: CharacterBase) -> void:
+	if _spawn == null or not is_instance_valid(character):
+		return
+	await _wait_for_death_animation(character)
 	if _spawn and is_instance_valid(character):
 		character.respawn(_spawn.global_position)
+
+func _wait_for_death_animation(character: CharacterBase) -> void:
+	var sprite := character.get_node_or_null("Sprite") as AnimatedSprite2D
+	if sprite == null or sprite.sprite_frames == null or not sprite.sprite_frames.has_animation(&"death"):
+		await get_tree().create_timer(0.2).timeout
+		return
+	if sprite.animation != &"death":
+		sprite.play(&"death")
+	if sprite.sprite_frames.get_animation_loop(&"death"):
+		await get_tree().create_timer(0.6).timeout
+	elif sprite.is_playing():
+		await sprite.animation_finished
 
 func _wire_exit() -> void:
 	var ex := get_node_or_null("LevelExit") as LevelExit

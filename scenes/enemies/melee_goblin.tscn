@@ -206,40 +206,40 @@ size = Vector2(56, 120)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cqyb"]
 size = Vector2(70, 80)
 
-[node name="MeleeGoblin" type="CharacterBody2D" unique_id=716655514]
+[node name="MeleeGoblin" type="CharacterBody2D" unique_id=2103124923]
 collision_layer = 4
 script = ExtResource("1_djif8")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=669103018]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=245335427]
 texture_filter = 1
-scale = Vector2(0.55, 0.55)
+scale = Vector2(0.68, 0.68)
 sprite_frames = SubResource("SpriteFrames_kjwbp")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=187431978]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1257251771]
 shape = SubResource("RectangleShape2D_702qi")
 
-[node name="Health" type="Node" parent="." unique_id=1757233732]
+[node name="Health" type="Node" parent="." unique_id=403731042]
 script = ExtResource("3_o4nt0")
 max_health = 45
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=102841553 node_paths=PackedStringArray("health")]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=597925198 node_paths=PackedStringArray("health")]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("4_sgrgq")
 health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1987225594]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1507366460]
 shape = SubResource("RectangleShape2D_skekc")
 
-[node name="MeleeHitbox" type="Area2D" parent="." unique_id=474905476]
+[node name="MeleeHitbox" type="Area2D" parent="." unique_id=1261624861]
 collision_layer = 16
 collision_mask = 32
 monitorable = false
 script = ExtResource("5_wiou4")
 damage = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" unique_id=1425827886]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" unique_id=1150584240]
 position = Vector2(50, 0)
 shape = SubResource("RectangleShape2D_0cqyb")

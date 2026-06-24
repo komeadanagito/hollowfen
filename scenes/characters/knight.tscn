@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" path="res://assets/knight_spritesheet_clean.png" id="5_nxclh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vw8nl"]
-size = Vector2(28, 40)
+size = Vector2(56, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgwmv"]
-size = Vector2(28, 40)
+size = Vector2(56, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jg4sg"]
-size = Vector2(24, 36)
+size = Vector2(60, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knight_idle_0"]
 atlas = ExtResource("5_nxclh")
@@ -219,11 +219,11 @@ animations = [
 [node name="Knight" type="CharacterBody2D" unique_id=672221398]
 collision_layer = 2
 script = ExtResource("1_np6au")
-move_speed = 180.0
+move_speed = 450.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=293060618]
 texture_filter = 1
-scale = Vector2(0.22, 0.22)
+scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_knight")
 animation = &"idle"
 autoplay = "idle"
@@ -254,5 +254,5 @@ script = ExtResource("4_2bw66")
 damage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" unique_id=817745570]
-position = Vector2(22, 0)
+position = Vector2(54, 0)
 shape = SubResource("RectangleShape2D_jg4sg")

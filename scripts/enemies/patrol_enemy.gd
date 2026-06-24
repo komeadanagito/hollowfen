@@ -1,9 +1,9 @@
 class_name PatrolEnemy
 extends CharacterBody2D
 
-@export var speed: float = 70.0
-@export var patrol_distance: float = 120.0
-@export var gravity: float = 1200.0
+@export var speed: float = 175.0
+@export var patrol_distance: float = 300.0
+@export var gravity: float = 3000.0
 
 @onready var _health: Health = $Health
 @onready var _hurtbox: Hurtbox = $Hurtbox

@@ -1,7 +1,7 @@
 class_name Arrow
 extends Area2D
 
-@export var speed: float = 520.0
+@export var speed: float = 1300.0
 @export var damage: int = 10
 @export var lifetime: float = 2.0
 

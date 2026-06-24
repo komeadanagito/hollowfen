@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" path="res://assets/slime_spritesheet_clean.png" id="5_ywr50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at13k"]
-size = Vector2(28, 40)
+size = Vector2(56, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qih0g"]
-size = Vector2(28, 40)
+size = Vector2(56, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qkrm"]
-size = Vector2(28, 40)
+size = Vector2(56, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slime_idle_0"]
 atlas = ExtResource("5_ywr50")
@@ -320,7 +320,7 @@ script = ExtResource("1_p0kc6")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1838393960]
 texture_filter = 1
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.31, 0.31)
 sprite_frames = SubResource("SpriteFrames_slime")
 animation = &"idle"
 autoplay = "idle"

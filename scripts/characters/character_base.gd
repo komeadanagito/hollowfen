@@ -4,18 +4,18 @@ extends CharacterBody2D
 enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT }
 
 @export_group("Movement")
-@export var move_speed: float = 220.0
-@export var acceleration: float = 1800.0
-@export var friction: float = 2000.0
-@export var jump_velocity: float = -430.0
-@export var gravity: float = 1200.0
+@export var move_speed: float = 550.0
+@export var acceleration: float = 4500.0
+@export var friction: float = 5000.0
+@export var jump_velocity: float = -1075.0
+@export var gravity: float = 3000.0
 @export_group("Feel")
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
 @export_group("Combat")
 @export var attack_duration: float = 0.25
 @export var hurt_duration: float = 0.25
-@export var knockback_force: float = 250.0
+@export var knockback_force: float = 625.0
 
 var state: int = State.IDLE
 var _active: bool = false

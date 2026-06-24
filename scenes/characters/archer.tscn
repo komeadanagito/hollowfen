@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" path="res://assets/archer_spritesheet_clean.png" id="4_fqk6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mvd2"]
-size = Vector2(28, 40)
+size = Vector2(48, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o374b"]
-size = Vector2(28, 40)
+size = Vector2(48, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_archer_idle_0"]
 atlas = ExtResource("4_fqk6l")
@@ -215,11 +215,11 @@ animations = [
 [node name="Archer" type="CharacterBody2D" unique_id=226732811]
 collision_layer = 2
 script = ExtResource("1_5rr7p")
-move_speed = 260.0
+move_speed = 650.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1325363496]
 texture_filter = 1
-scale = Vector2(0.22, 0.22)
+scale = Vector2(0.58, 0.58)
 sprite_frames = SubResource("SpriteFrames_archer")
 animation = &"idle"
 autoplay = "idle"
@@ -243,4 +243,4 @@ invincible_time = 0.6
 shape = SubResource("RectangleShape2D_o374b")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=208183934]
-position = Vector2(18, -4)
+position = Vector2(45, -10)

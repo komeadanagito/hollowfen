@@ -17,6 +17,7 @@ enum State { PATROL, CHASE, ATTACK }
 @onready var _health: Health = $Health
 @onready var _hitbox: Hitbox = get_node_or_null("MeleeHitbox")
 @onready var _hitbox_shape: CollisionShape2D = get_node_or_null("MeleeHitbox/CollisionShape2D")
+@onready var _sprite: AnimatedSprite2D = get_node_or_null("Sprite")
 
 var state: int = State.PATROL
 var _start_x: float = 0.0
@@ -60,6 +61,19 @@ func _physics_process(delta: float) -> void:
 				state = State.CHASE
 
 	move_and_slide()
+	_update_anim()
+
+func _update_anim() -> void:
+	if _sprite == null:
+		return
+	_sprite.flip_h = _facing > 0   # 贴图默认朝左
+	match state:
+		State.ATTACK:
+			_sprite.play("attack")
+		State.CHASE:
+			_sprite.play("walk")
+		_:
+			_sprite.play("walk" if absf(velocity.x) > 5.0 else "idle")
 
 func _do_patrol() -> void:
 	velocity.x = _dir * speed

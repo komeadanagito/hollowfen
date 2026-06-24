@@ -12,8 +12,10 @@ const ENEMY_ARROW := preload("res://scenes/combat/enemy_arrow.tscn")
 @export var arrow_damage: int = 8
 
 @onready var _health: Health = $Health
+@onready var _sprite: AnimatedSprite2D = get_node_or_null("Sprite")
 
 var _fire_cd: float = 0.0
+var _attack_anim: float = 0.0
 var _facing: int = -1
 
 func _ready() -> void:
@@ -24,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	_fire_cd = maxf(_fire_cd - delta, 0.0)
+	_attack_anim = maxf(_attack_anim - delta, 0.0)
 	velocity.x = 0.0
 
 	var player := _find_player()
@@ -37,12 +40,25 @@ func _physics_process(delta: float) -> void:
 			_fire_cd = fire_interval
 
 	move_and_slide()
+	_update_anim()
+
+func _update_anim() -> void:
+	if _sprite == null:
+		return
+	_sprite.flip_h = _facing > 0   # 贴图默认朝左
+	if _attack_anim > 0.0:
+		_sprite.play("attack")
+	elif absf(velocity.x) > 5.0:
+		_sprite.play("walk")
+	else:
+		_sprite.play("idle")
 
 func _in_range(player: Node2D) -> bool:
 	var d: Vector2 = player.global_position - global_position
 	return absf(d.x) <= fire_range and absf(d.y) <= vertical_tolerance
 
 func _fire() -> void:
+	_attack_anim = 0.4
 	var arrow := ENEMY_ARROW.instantiate()
 	var parent := get_tree().current_scene
 	if parent == null:

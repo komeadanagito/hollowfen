@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hollowfen"
-run/main_scene="res://scenes/test_room.tscn"
+run/main_scene="res://scenes/tutorial_level.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

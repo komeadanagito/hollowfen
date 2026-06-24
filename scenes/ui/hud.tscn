@@ -1,20 +1,69 @@
-[gd_scene format=3 uid="uid://dekkovvqdlgdp"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://dkkio6duxjptl" path="res://scripts/ui/hud.gd" id="1_0mwgc"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hqnrr"]
+[ext_resource type="Texture2D" path="res://assets/knight_avatar_head.png" id="2_bo48s"]
 
-[node name="HUD" type="CanvasLayer" unique_id=2094816918]
-script = ExtResource("1_0mwgc")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qguk"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.05, 0.08, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
-[node name="Root" type="VBoxContainer" parent="." unique_id=724720826]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 16.0
-offset_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_136eg"]
+bg_color = Color(0.15, 0.05, 0.05, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
-[node name="ActiveLabel" type="Label" parent="Root" unique_id=995445869]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj5la"]
+bg_color = Color(0.85, 0.2, 0.25, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HUD" type="CanvasLayer" unique_id=173317282]
+script = ExtResource("1_hqnrr")
+
+[node name="Root" type="MarginContainer" parent="." unique_id=2028878579]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="Panel" type="PanelContainer" parent="Root" unique_id=915045733]
 layout_mode = 2
-text = "当前: -"
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qguk")
 
-[node name="HpLabel" type="Label" parent="Root" unique_id=740866921]
+[node name="HBox" type="HBoxContainer" parent="Root/Panel" unique_id=636878449]
 layout_mode = 2
-text = "HP: -/-"
+theme_override_constants/separation = 12
+
+[node name="Avatar" type="TextureRect" parent="Root/Panel/HBox" unique_id=773414573]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("2_bo48s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="Root/Panel/HBox" unique_id=538670872]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="Root/Panel/HBox/Info" unique_id=1296672204]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Knight"
+
+[node name="HealthBar" type="ProgressBar" parent="Root/Panel/HBox/Info" unique_id=254746719]
+custom_minimum_size = Vector2(320, 26)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_136eg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oj5la")
+max_value = 40.0
+value = 40.0
+show_percentage = false

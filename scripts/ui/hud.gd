@@ -3,8 +3,14 @@ extends CanvasLayer
 
 @export var party_manager: PartyManager
 
-@onready var _active_label: Label = $Root/ActiveLabel
-@onready var _hp_label: Label = $Root/HpLabel
+const AVATARS := {
+	"Knight": preload("res://assets/knight_avatar_head.png"),
+	"Archer": preload("res://assets/archer_avatar_head.png"),
+}
+
+@onready var _avatar: TextureRect = $Root/Panel/HBox/Avatar
+@onready var _name_label: Label = $Root/Panel/HBox/Info/NameLabel
+@onready var _health_bar: ProgressBar = $Root/Panel/HBox/Info/HealthBar
 
 func _ready() -> void:
 	if party_manager:
@@ -14,19 +20,23 @@ func _ready() -> void:
 func _on_switched(character: CharacterBase) -> void:
 	if character == null:
 		return
-	_active_label.text = "当前: " + character.name
-	_refresh_hp()
+	if _name_label:
+		_name_label.text = character.name
+	if _avatar and AVATARS.has(character.name):
+		_avatar.texture = AVATARS[character.name]
 	var h := character.get_health()
 	if h and not h.health_changed.is_connected(_on_hp_changed):
 		h.health_changed.connect(_on_hp_changed)
+	_refresh_bar()
 
 func _on_hp_changed(_c: int, _m: int) -> void:
-	_refresh_hp()
+	_refresh_bar()
 
-func _refresh_hp() -> void:
-	if party_manager == null:
+func _refresh_bar() -> void:
+	if party_manager == null or _health_bar == null:
 		return
-	var c := party_manager.get_active_character()
-	if c and c.get_health():
-		var h := c.get_health()
-		_hp_label.text = "HP: %d/%d" % [h.current, h.max_health]
+	var ch := party_manager.get_active_character()
+	if ch and ch.get_health():
+		var h := ch.get_health()
+		_health_bar.max_value = h.max_health
+		_health_bar.value = h.current

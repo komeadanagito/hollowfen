@@ -48,9 +48,23 @@ func _run() -> void:
 	archer.set_active(true)
 	await process_frame
 	t.eq(archer.get_health().max_health, 25, "archer max_health == 25")
+	var sprite := archer.get_node("Sprite")
+	t.check(sprite is AnimatedSprite2D, "archer uses animated spritesheet asset")
+	if sprite is AnimatedSprite2D:
+		var anim_sprite := sprite as AnimatedSprite2D
+		archer._set_state(CharacterBase.State.IDLE)
+		_check_animation_set(t, anim_sprite, "archer")
 	for i in 60:
 		await physics_frame
 	t.check(archer.is_on_floor(), "archer lands on floor under gravity")
+	if sprite is AnimatedSprite2D:
+		var anim_sprite := sprite as AnimatedSprite2D
+		archer._set_state(CharacterBase.State.RUN)
+		t.eq(anim_sprite.animation, &"walk", "archer run state plays walk")
+		archer._set_state(CharacterBase.State.ATTACK)
+		t.eq(anim_sprite.animation, &"attack", "archer attack state plays attack")
+		archer.get_health().take_damage(999)
+		t.eq(anim_sprite.animation, &"death", "archer death plays death")
 
 	floor_body.free()
 	archer.free()
@@ -60,3 +74,22 @@ class ArrowDummy extends Area2D:
 	var on_hit: Callable
 	func receive_hit(damage: int) -> void:
 		on_hit.call(damage)
+
+func _check_animation_set(t: TestHelper, sprite: AnimatedSprite2D, label: String) -> void:
+	for animation in [&"idle", &"walk", &"attack", &"death"]:
+		t.check(sprite.sprite_frames.has_animation(animation), "%s has %s animation" % [label, animation])
+		t.check(sprite.sprite_frames.get_frame_count(animation) > 1, "%s %s uses sequence frames" % [label, animation])
+		var first_texture := sprite.sprite_frames.get_frame_texture(animation, 0)
+		t.eq(_texture_path(first_texture), "res://assets/archer_spritesheet_clean.png", "%s %s texture path" % [label, animation])
+	t.check(sprite.sprite_frames.get_animation_loop(&"idle"), "%s idle loops" % label)
+	t.check(sprite.sprite_frames.get_animation_loop(&"walk"), "%s walk loops" % label)
+	t.eq(sprite.sprite_frames.get_animation_loop(&"attack"), false, "%s attack does not loop" % label)
+	t.eq(sprite.sprite_frames.get_animation_loop(&"death"), false, "%s death does not loop" % label)
+	t.eq(sprite.animation, &"idle", "%s plays idle animation" % label)
+	t.check(sprite.is_playing(), "%s animation is playing" % label)
+
+func _texture_path(texture: Texture2D) -> String:
+	if texture is AtlasTexture:
+		var atlas_texture := texture as AtlasTexture
+		return atlas_texture.atlas.resource_path
+	return texture.resource_path

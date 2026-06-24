@@ -30,9 +30,15 @@ func _run() -> void:
 
 	get_root().add_child(room)
 	await process_frame
+	character.set_physics_process(false)
 
 	var health := character.get_health()
+	var death_position := character.global_position
 	health.take_damage(999)
+	var sprite := character.get_node("Sprite") as AnimatedSprite2D
+	t.eq(sprite.animation, &"death", "dead character plays death before respawn")
+	t.eq(character.global_position, death_position, "dead character waits before respawn")
+	await create_timer(0.08).timeout
 	t.eq(character.global_position, spawn.global_position, "dead character respawns at spawn point")
 	t.eq(health.current, health.max_health, "dead character respawns with full health")
 	room.free()
@@ -68,4 +74,25 @@ func _make_char() -> CharacterBase:
 	hb.name = "Hurtbox"
 	hb.health = h
 	c.add_child(hb)
+	var sprite := AnimatedSprite2D.new()
+	sprite.name = "Sprite"
+	sprite.sprite_frames = _make_sprite_frames()
+	sprite.animation = &"idle"
+	sprite.autoplay = "idle"
+	c.add_child(sprite)
 	return c
+
+func _make_sprite_frames() -> SpriteFrames:
+	var image := Image.create(1, 1, false, Image.FORMAT_RGBA8)
+	image.fill(Color.WHITE)
+	var texture := ImageTexture.create_from_image(image)
+	var frames := SpriteFrames.new()
+	frames.add_animation(&"idle")
+	frames.set_animation_loop(&"idle", true)
+	frames.add_frame(&"idle", texture)
+	frames.add_animation(&"death")
+	frames.set_animation_loop(&"death", false)
+	frames.set_animation_speed(&"death", 60.0)
+	frames.add_frame(&"death", texture)
+	frames.add_frame(&"death", texture)
+	return frames

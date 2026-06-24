@@ -27,6 +27,10 @@ func _run() -> void:
 
 	var health: Health = enemy.get_node("Health")
 	t.eq(health.max_health, 30, "enemy max_health == 30")
+	var sprite := enemy.get_node("Sprite")
+	t.check(sprite is AnimatedSprite2D, "enemy uses animated spritesheet asset")
+	if sprite is AnimatedSprite2D:
+		_check_animation_set(t, sprite as AnimatedSprite2D, "enemy")
 	var contact: Hitbox = enemy.get_node("ContactHitbox")
 	t.check(contact.monitoring, "contact hitbox is active after _ready")
 
@@ -35,7 +39,30 @@ func _run() -> void:
 		await physics_frame
 	t.check(enemy.is_on_floor(), "enemy stands on floor")
 	t.check(absf(enemy.global_position.x - x0) > 5.0, "enemy patrols (moves horizontally)")
+	if sprite is AnimatedSprite2D:
+		var anim_sprite := sprite as AnimatedSprite2D
+		t.eq(anim_sprite.animation, &"walk", "enemy patrol plays walk")
+		health.take_damage(999)
+		t.eq(anim_sprite.animation, &"death", "enemy death plays death")
 
 	floor_body.free()
 	enemy.free()
 	quit(t.summary("enemy_scene"))
+
+func _check_animation_set(t: TestHelper, sprite: AnimatedSprite2D, label: String) -> void:
+	for animation in [&"idle", &"walk", &"attack", &"death"]:
+		t.check(sprite.sprite_frames.has_animation(animation), "%s has %s animation" % [label, animation])
+		t.check(sprite.sprite_frames.get_frame_count(animation) > 1, "%s %s uses sequence frames" % [label, animation])
+		var first_texture := sprite.sprite_frames.get_frame_texture(animation, 0)
+		t.eq(_texture_path(first_texture), "res://assets/slime_spritesheet_clean.png", "%s %s texture path" % [label, animation])
+	t.check(sprite.sprite_frames.get_animation_loop(&"idle"), "%s idle loops" % label)
+	t.check(sprite.sprite_frames.get_animation_loop(&"walk"), "%s walk loops" % label)
+	t.eq(sprite.sprite_frames.get_animation_loop(&"attack"), false, "%s attack does not loop" % label)
+	t.eq(sprite.sprite_frames.get_animation_loop(&"death"), false, "%s death does not loop" % label)
+	t.check(sprite.is_playing(), "%s animation is playing" % label)
+
+func _texture_path(texture: Texture2D) -> String:
+	if texture is AtlasTexture:
+		var atlas_texture := texture as AtlasTexture
+		return atlas_texture.atlas.resource_path
+	return texture.resource_path

@@ -24,13 +24,13 @@ func _frames(sheet_path: String) -> SpriteFrames:
 			sf.add_frame(anim, at)
 	return sf
 
-func _sprite(root: Node, sheet: String) -> void:
+func _sprite(root: Node, sheet: String, scale: float) -> void:
 	var spr := AnimatedSprite2D.new()
 	spr.name = "Sprite"
 	spr.sprite_frames = _frames(sheet)
 	spr.animation = &"idle"
 	spr.autoplay = "idle"
-	spr.scale = Vector2(0.55, 0.55)   # 与玩家角色同大
+	spr.scale = Vector2(scale, scale)   # 按各 sheet 内角色实际像素高度校准, 使屏上≈骑士124px
 	spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	root.add_child(spr); spr.owner = root
 
@@ -73,7 +73,7 @@ func _build_melee() -> void:
 	root.set_script(load("res://scripts/enemies/melee_goblin.gd"))
 	root.collision_layer = 4
 	root.collision_mask = 1
-	_sprite(root, "res://assets/goblin_spritesheet_clean.png")
+	_sprite(root, "res://assets/goblin_spritesheet_clean.png", 0.68)  # idle角色184px -> ~125px
 	_body_health_hurt(root, 45)
 
 	var hit := Area2D.new()
@@ -99,7 +99,7 @@ func _build_ranged() -> void:
 	root.set_script(load("res://scripts/enemies/ranged_goblin.gd"))
 	root.collision_layer = 4
 	root.collision_mask = 1
-	_sprite(root, "res://assets/goblin_archer_spritesheet_clean.png")
+	_sprite(root, "res://assets/goblin_archer_spritesheet_clean.png", 0.53)  # idle角色234px -> ~124px
 	_body_health_hurt(root, 30)
 
 	var muzzle := Marker2D.new()

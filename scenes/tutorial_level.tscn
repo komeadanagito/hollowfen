@@ -1,225 +1,363 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/world/tutorial_level.gd" id="1_qvjt5"]
-[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="2_srty0"]
-[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="3_888my"]
-[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="4_whusg"]
-[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="5_adwlu"]
-[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="6_r0rxt"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="7_r3rh7"]
-[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="8_j0wqo"]
-[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="9_tjoum"]
-[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="10_a6d6p"]
-[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="11_pm2mo"]
-[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="12_08yhi"]
-[ext_resource type="PackedScene" path="res://scenes/world/archer_pickup.tscn" id="13_b2nau"]
-[ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="14_r0y8g"]
-[ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="15_1npmj"]
-[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="16_e7h5a"]
-[ext_resource type="PackedScene" path="res://scenes/ui/tutorial_layer.tscn" id="17_0dl17"]
-[ext_resource type="Script" path="res://scripts/ui/tutorial_layer.gd" id="18_bqfht"]
-[ext_resource type="PackedScene" path="res://scenes/world/prompt_zone.tscn" id="19_bykcn"]
-[ext_resource type="Script" path="res://scripts/ui/prompt_zone.gd" id="20_78i5i"]
-[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="21_sfsd2"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="22_5vxda"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="23_qj2tc"]
+[ext_resource type="Script" path="res://scripts/world/tutorial_level.gd" id="1_adwlu"]
+[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="2_r0rxt"]
+[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="3_r3rh7"]
+[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="4_j0wqo"]
+[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="5_tjoum"]
+[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="6_a6d6p"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="7_pm2mo"]
+[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="8_08yhi"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/melee_goblin.tscn" id="9_b2nau"]
+[ext_resource type="Script" path="res://scripts/enemies/melee_goblin.gd" id="10_r0y8g"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/ranged_goblin.tscn" id="11_1npmj"]
+[ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="12_e7h5a"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="13_0dl17"]
+[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="14_bqfht"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="15_bykcn"]
+[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="16_78i5i"]
+[ext_resource type="PackedScene" path="res://scenes/world/archer_pickup.tscn" id="17_sfsd2"]
+[ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="18_5vxda"]
+[ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="19_qj2tc"]
+[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="20_54yye"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tutorial_layer.tscn" id="21_5hj4c"]
+[ext_resource type="Script" path="res://scripts/ui/tutorial_layer.gd" id="22_1da40"]
+[ext_resource type="PackedScene" path="res://scenes/world/prompt_zone.tscn" id="23_cyy35"]
+[ext_resource type="Script" path="res://scripts/ui/prompt_zone.gd" id="24_ccthf"]
+[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="25_2mayw"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="26_imrb0"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="27_xbmdq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54yye"]
-size = Vector2(6800, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc0hx"]
+size = Vector2(12600, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hj4c"]
-size = Vector2(120, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41vox"]
+size = Vector2(160, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1da40"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4no4"]
 size = Vector2(300, 150)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy35"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy485"]
 size = Vector2(300, 150)
 
-[node name="TutorialLevel" type="Node2D" unique_id=1974641668 node_paths=PackedStringArray("party_manager", "tutorial_layer")]
-script = ExtResource("1_qvjt5")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxil5"]
+size = Vector2(300, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gad0"]
+size = Vector2(70, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmp2i"]
+size = Vector2(250, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epjck"]
+size = Vector2(180, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eicy8"]
+size = Vector2(180, 160)
+
+[node name="TutorialLevel" type="Node2D" unique_id=1527850675 node_paths=PackedStringArray("party_manager", "tutorial_layer")]
+script = ExtResource("1_adwlu")
 party_manager = NodePath("PartyManager")
 tutorial_layer = NodePath("TutorialLayer")
 
-[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=295415786]
-editor_description = "[物料] 类别=地形 | 占位=深灰长条 | 替换=沼泽地面tileset | 备注=可站立, 顶面y=800"
-position = Vector2(3300, 832)
+[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=2047585661]
+editor_description = "[物料] 类别=地形 | 占位=深灰长条 | 替换=沼泽地面 | 备注=连续地面顶面y=800"
+position = Vector2(6100, 832)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=367377487]
-shape = SubResource("RectangleShape2D_54yye")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=1495052336]
+shape = SubResource("RectangleShape2D_rc0hx")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_Ground" unique_id=712140413]
-offset_left = -3400.0
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_Ground" unique_id=316709327]
+offset_left = -6300.0
 offset_top = -32.0
-offset_right = 3400.0
+offset_right = 6300.0
 offset_bottom = 32.0
 color = Color(0.13, 0.13, 0.16, 1)
 
-[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=45800870]
-editor_description = "[物料] 类别=地形 | 占位=矮块 | 替换=石墩 | 备注=跳跃教学"
-position = Vector2(1000, 760)
+[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1511200268]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=跳跃教学"
+position = Vector2(1000, 800)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=371841587]
-shape = SubResource("RectangleShape2D_5hj4c")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=406403409]
+shape = SubResource("RectangleShape2D_41vox")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_JumpBlock" unique_id=311986147]
-offset_left = -60.0
-offset_top = -40.0
-offset_right = 60.0
-offset_bottom = 40.0
-color = Color(0.2, 0.2, 0.24, 1)
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_JumpBlock" unique_id=1343619896]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0.18, 0.18, 0.22, 1)
 
-[node name="PH_Terrain_PlatformA" type="StaticBody2D" parent="." unique_id=1984520929]
-editor_description = "[物料] 类别=地形 | 占位=平台 | 替换=石台 | 备注=站此处与Switch_A同高, 射箭位"
+[node name="PH_Terrain_PlatformA" type="StaticBody2D" parent="." unique_id=378792868]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=谜题A射箭平台"
 position = Vector2(3300, 725)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_PlatformA" unique_id=1492139714]
-shape = SubResource("RectangleShape2D_1da40")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_PlatformA" unique_id=1417572735]
+shape = SubResource("RectangleShape2D_v4no4")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_PlatformA" unique_id=1602175141]
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_PlatformA" unique_id=1570968649]
 offset_left = -150.0
 offset_top = -75.0
 offset_right = 150.0
 offset_bottom = 75.0
 color = Color(0.18, 0.18, 0.22, 1)
 
-[node name="PH_Terrain_PlatformB" type="StaticBody2D" parent="." unique_id=1813104147]
-editor_description = "[物料] 类别=地形 | 占位=平台 | 替换=石台 | 备注=站此处与Switch_B同高"
+[node name="PH_Terrain_PlatformB" type="StaticBody2D" parent="." unique_id=939548545]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=谜题B射箭平台"
 position = Vector2(5050, 725)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_PlatformB" unique_id=517251186]
-shape = SubResource("RectangleShape2D_cyy35")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_PlatformB" unique_id=739240339]
+shape = SubResource("RectangleShape2D_jy485")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_PlatformB" unique_id=103031197]
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_PlatformB" unique_id=1688638548]
 offset_left = -150.0
 offset_top = -75.0
 offset_right = 150.0
 offset_bottom = 75.0
 color = Color(0.18, 0.18, 0.22, 1)
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=430114494]
+[node name="PH_Terrain_PlatformC" type="StaticBody2D" parent="." unique_id=989091197]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=谜题C射箭平台"
+position = Vector2(9100, 725)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_PlatformC" unique_id=1135354010]
+shape = SubResource("RectangleShape2D_qxil5")
+
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_PlatformC" unique_id=1297811664]
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="PH_Terrain_Cover1" type="StaticBody2D" parent="." unique_id=762535507]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=掩体: 躲弓手"
+position = Vector2(6200, 680)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Cover1" unique_id=1071029597]
+shape = SubResource("RectangleShape2D_5gad0")
+
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_Cover1" unique_id=176439707]
+offset_left = -35.0
+offset_top = -120.0
+offset_right = 35.0
+offset_bottom = 120.0
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="PH_Terrain_Platform6" type="StaticBody2D" parent="." unique_id=1767102994]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=混战垂直平台"
+position = Vector2(7650, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Platform6" unique_id=1901464446]
+shape = SubResource("RectangleShape2D_dmp2i")
+
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_Platform6" unique_id=1186897982]
+offset_left = -125.0
+offset_top = -100.0
+offset_right = 125.0
+offset_bottom = 100.0
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="PH_Terrain_Step8a" type="StaticBody2D" parent="." unique_id=1391897140]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=跳台a"
+position = Vector2(10000, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Step8a" unique_id=1586567161]
+shape = SubResource("RectangleShape2D_epjck")
+
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_Step8a" unique_id=1123344699]
+offset_left = -90.0
+offset_top = -80.0
+offset_right = 90.0
+offset_bottom = 80.0
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="PH_Terrain_Step8b" type="StaticBody2D" parent="." unique_id=522279676]
+editor_description = "[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=跳台b"
+position = Vector2(10450, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Step8b" unique_id=730312386]
+shape = SubResource("RectangleShape2D_eicy8")
+
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_Step8b" unique_id=1516202283]
+offset_left = -90.0
+offset_top = -80.0
+offset_right = 90.0
+offset_bottom = 80.0
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1309116166]
 position = Vector2(200, 740)
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=342255966]
-script = ExtResource("2_srty0")
+[node name="PartyManager" type="Node2D" parent="." unique_id=1676308889]
+script = ExtResource("2_r0rxt")
 
-[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("3_888my")]
+[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("3_r3rh7")]
 position = Vector2(200, 740)
 collision_layer = 2
-script = ExtResource("4_whusg")
+script = ExtResource("4_j0wqo")
 move_speed = 450.0
 
-[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("5_adwlu")]
+[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("5_tjoum")]
 position = Vector2(200, 740)
 collision_layer = 2
-script = ExtResource("6_r0rxt")
+script = ExtResource("6_a6d6p")
 move_speed = 650.0
 
-[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("7_r3rh7")]
-position = Vector2(2300, 740)
+[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("7_pm2mo")]
+position = Vector2(2300, 700)
 collision_layer = 4
-script = ExtResource("8_j0wqo")
+script = ExtResource("8_08yhi")
 
-[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=2025688090 instance=ExtResource("7_r3rh7")]
-position = Vector2(4400, 740)
+[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=572366135 instance=ExtResource("7_pm2mo")]
+position = Vector2(10250, 700)
 collision_layer = 4
-script = ExtResource("8_j0wqo")
+script = ExtResource("8_08yhi")
 
-[node name="Switch_A" type="Area2D" parent="." unique_id=444370463 instance=ExtResource("9_tjoum")]
+[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=1911887489 instance=ExtResource("9_b2nau")]
+position = Vector2(4500, 700)
+collision_layer = 4
+script = ExtResource("10_r0y8g")
+
+[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=1820360730 instance=ExtResource("9_b2nau")]
+position = Vector2(7400, 700)
+collision_layer = 4
+script = ExtResource("10_r0y8g")
+
+[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=526750462 instance=ExtResource("9_b2nau")]
+position = Vector2(8700, 700)
+collision_layer = 4
+script = ExtResource("10_r0y8g")
+
+[node name="Enemy6" type="CharacterBody2D" parent="." unique_id=2089420759 instance=ExtResource("9_b2nau")]
+position = Vector2(11000, 700)
+collision_layer = 4
+script = ExtResource("10_r0y8g")
+
+[node name="Enemy7" type="CharacterBody2D" parent="." unique_id=722750402 instance=ExtResource("11_1npmj")]
+position = Vector2(6700, 700)
+collision_layer = 4
+script = ExtResource("12_e7h5a")
+
+[node name="Enemy8" type="CharacterBody2D" parent="." unique_id=1010921206 instance=ExtResource("11_1npmj")]
+position = Vector2(7900, 700)
+collision_layer = 4
+script = ExtResource("12_e7h5a")
+
+[node name="Enemy9" type="CharacterBody2D" parent="." unique_id=750134207 instance=ExtResource("11_1npmj")]
+position = Vector2(11300, 700)
+collision_layer = 4
+script = ExtResource("12_e7h5a")
+
+[node name="Switch_A" type="Area2D" parent="." unique_id=444370463 instance=ExtResource("13_0dl17")]
 position = Vector2(3850, 580)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
-script = ExtResource("10_a6d6p")
+script = ExtResource("14_bqfht")
 
-[node name="Switch_B" type="Area2D" parent="." unique_id=338157058 instance=ExtResource("9_tjoum")]
-position = Vector2(5550, 580)
+[node name="Door_A" type="StaticBody2D" parent="." unique_id=773460251 instance=ExtResource("15_bykcn")]
+position = Vector2(3600, 700)
+scale = Vector2(2, 2.5)
+collision_mask = 0
+script = ExtResource("16_78i5i")
+
+[node name="Switch_B" type="Area2D" parent="." unique_id=157827804 instance=ExtResource("13_0dl17")]
+position = Vector2(5600, 580)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
-script = ExtResource("10_a6d6p")
+script = ExtResource("14_bqfht")
 
-[node name="Door_Main" type="StaticBody2D" parent="." unique_id=773460251 instance=ExtResource("11_pm2mo")]
-position = Vector2(3600, 700)
+[node name="Door_B" type="StaticBody2D" parent="." unique_id=304381048 instance=ExtResource("15_bykcn")]
+position = Vector2(5350, 700)
 scale = Vector2(2, 2.5)
 collision_mask = 0
-script = ExtResource("12_08yhi")
+script = ExtResource("16_78i5i")
 
-[node name="Door_B" type="StaticBody2D" parent="." unique_id=1531700223 instance=ExtResource("11_pm2mo")]
-position = Vector2(5700, 700)
+[node name="Switch_C" type="Area2D" parent="." unique_id=1568039489 instance=ExtResource("13_0dl17")]
+position = Vector2(9650, 580)
+scale = Vector2(2, 2)
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+script = ExtResource("14_bqfht")
+
+[node name="Door_C" type="StaticBody2D" parent="." unique_id=1687033516 instance=ExtResource("15_bykcn")]
+position = Vector2(9400, 700)
 scale = Vector2(2, 2.5)
 collision_mask = 0
-script = ExtResource("12_08yhi")
+script = ExtResource("16_78i5i")
 
-[node name="ArcherPickup" type="Area2D" parent="." unique_id=311501307 node_paths=PackedStringArray("party_manager", "target_character") instance=ExtResource("13_b2nau")]
+[node name="ArcherPickup" type="Area2D" parent="." unique_id=311501307 node_paths=PackedStringArray("party_manager", "target_character") instance=ExtResource("17_sfsd2")]
 position = Vector2(3450, 740)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("14_r0y8g")
+script = ExtResource("18_5vxda")
 party_manager = NodePath("../PartyManager")
 target_character = NodePath("../PartyManager/Archer")
 
-[node name="LevelExit" type="Area2D" parent="." unique_id=1974156888 instance=ExtResource("15_1npmj")]
-position = Vector2(6200, 704)
+[node name="LevelExit" type="Area2D" parent="." unique_id=1974156888 instance=ExtResource("19_qj2tc")]
+position = Vector2(11900, 704)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("16_e7h5a")
+script = ExtResource("20_54yye")
 
-[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=107944860 instance=ExtResource("17_0dl17")]
-script = ExtResource("18_bqfht")
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=107944860 instance=ExtResource("21_5hj4c")]
+script = ExtResource("22_1da40")
 
-[node name="PZ_Move" type="Area2D" parent="." unique_id=1252060721 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("19_bykcn")]
+[node name="PZ_Move" type="Area2D" parent="." unique_id=1252060721 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("23_cyy35")]
 position = Vector2(250, 700)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_78i5i")
+script = ExtResource("24_ccthf")
 prompt_id = "move"
 prompt_text = "← → 移动"
 tutorial_layer = NodePath("../TutorialLayer")
 
-[node name="PZ_Jump" type="Area2D" parent="." unique_id=1877934931 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("19_bykcn")]
-position = Vector2(1000, 650)
+[node name="PZ_Jump" type="Area2D" parent="." unique_id=186858769 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("23_cyy35")]
+position = Vector2(1000, 640)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_78i5i")
+script = ExtResource("24_ccthf")
 prompt_id = "jump"
 prompt_text = "Space 跳跃"
 tutorial_layer = NodePath("../TutorialLayer")
 
-[node name="PZ_Attack" type="Area2D" parent="." unique_id=135851469 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("19_bykcn")]
-position = Vector2(2300, 650)
+[node name="PZ_Attack" type="Area2D" parent="." unique_id=555397851 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("23_cyy35")]
+position = Vector2(2300, 640)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_78i5i")
+script = ExtResource("24_ccthf")
 prompt_id = "attack"
 prompt_text = "J 攻击"
 tutorial_layer = NodePath("../TutorialLayer")
 
-[node name="PZ_Switch" type="Area2D" parent="." unique_id=172468098 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("19_bykcn")]
-position = Vector2(3450, 650)
+[node name="PZ_Switch" type="Area2D" parent="." unique_id=1346129229 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("23_cyy35")]
+position = Vector2(3450, 640)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_78i5i")
+script = ExtResource("24_ccthf")
 prompt_id = "switch"
 prompt_text = "Shift / Tab 切换角色"
 tutorial_layer = NodePath("../TutorialLayer")
 
-[node name="PZ_Shoot" type="Area2D" parent="." unique_id=529049375 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("19_bykcn")]
+[node name="PZ_Shoot" type="Area2D" parent="." unique_id=435706590 node_paths=PackedStringArray("tutorial_layer") instance=ExtResource("23_cyy35")]
 position = Vector2(3300, 560)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_78i5i")
+script = ExtResource("24_ccthf")
 prompt_id = "shoot"
 prompt_text = "J 射箭（瞄准对面开关）"
 tutorial_layer = NodePath("../TutorialLayer")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=665934411 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=560235049 node_paths=PackedStringArray("party_manager")]
 position = Vector2(200, 740)
-script = ExtResource("21_sfsd2")
+script = ExtResource("25_2mayw")
 party_manager = NodePath("../PartyManager")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=2094816918 node_paths=PackedStringArray("party_manager") instance=ExtResource("22_5vxda")]
-script = ExtResource("23_qj2tc")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=173317282 node_paths=PackedStringArray("party_manager") instance=ExtResource("26_imrb0")]
+script = ExtResource("27_xbmdq")
 party_manager = NodePath("../PartyManager")

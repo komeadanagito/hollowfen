@@ -10,8 +10,8 @@ func _ready() -> void:
 	if party_manager == null:
 		party_manager = get_node_or_null("PartyManager") as PartyManager
 	_lock_archer()
-	_wire_switch_door("Switch_A", "Door_Main")
-	_wire_switch_door("Switch_B", "Door_B")
+	for suffix in ["A", "B", "C"]:
+		_wire_switch_door("Switch_" + suffix, "Door_" + suffix)
 	_wire_deaths()
 	_wire_exit()
 

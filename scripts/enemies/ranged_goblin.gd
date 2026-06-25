@@ -20,7 +20,21 @@ var _facing: int = -1
 
 func _ready() -> void:
 	if _health:
-		_health.died.connect(queue_free)
+		_health.died.connect(_on_died)
+
+func _on_died() -> void:
+	set_physics_process(false)
+	velocity = Vector2.ZERO
+	var cs := get_node_or_null("CollisionShape2D")
+	if cs:
+		cs.set_deferred("disabled", true)
+	var hcs := get_node_or_null("Hurtbox/CollisionShape2D")
+	if hcs:
+		hcs.set_deferred("disabled", true)
+	if _sprite and _sprite.sprite_frames and _sprite.sprite_frames.has_animation(&"death"):
+		_sprite.play(&"death")
+		await _sprite.animation_finished
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

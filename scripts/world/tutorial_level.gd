@@ -2,7 +2,6 @@ class_name TutorialLevel
 extends Node2D
 
 @export var party_manager: PartyManager
-@export var tutorial_layer: TutorialLayer
 
 @onready var _spawn: Marker2D = $SpawnPoint
 
@@ -61,22 +60,3 @@ func _wire_exit() -> void:
 
 func _on_exit_reached() -> void:
 	print("[TutorialLevel] 关卡完成！")
-
-func _process(_delta: float) -> void:
-	_check_prompt_progress()
-
-func _check_prompt_progress() -> void:
-	if tutorial_layer == null:
-		return
-	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
-		tutorial_layer.dismiss("move")
-	if Input.is_action_just_pressed("jump"):
-		tutorial_layer.dismiss("jump")
-	if Input.is_action_just_pressed("switch_character"):
-		tutorial_layer.dismiss("switch")
-	if Input.is_action_just_pressed("attack"):
-		var active := party_manager.get_active_character() if party_manager else null
-		if active and active.get_node_or_null("Muzzle") != null:
-			tutorial_layer.dismiss("shoot")   # Archer 在射箭
-		else:
-			tutorial_layer.dismiss("attack")  # Knight 在近战

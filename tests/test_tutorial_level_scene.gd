@@ -20,7 +20,7 @@ func _run() -> void:
 	t.check(root.get_node_or_null("Switch_A") != null, "Switch_A 存在")
 	t.check(root.get_node_or_null("ArcherPickup") != null, "ArcherPickup 存在")
 	t.check(root.get_node_or_null("LevelExit") != null, "LevelExit 存在")
-	t.check(root.get_node_or_null("TutorialLayer") != null, "TutorialLayer 存在")
+	t.check(root.get_node_or_null("L_Move") is Label, "地图指导文字存在(L_Move)")
 
 	# 开局 Archer 锁定：切换应保持当前角色
 	var first = pm.get_active_character()

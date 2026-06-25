@@ -9,38 +9,24 @@ const SWITCH := "res://scenes/puzzle/switch.tscn"
 const DOOR := "res://scenes/puzzle/door.tscn"
 const PICKUP := "res://scenes/world/archer_pickup.tscn"
 const EXIT := "res://scenes/world/level_exit.tscn"
-const PROMPT := "res://scenes/world/prompt_zone.tscn"
 const HUD := "res://scenes/ui/hud.tscn"
-const TLAYER := "res://scenes/ui/tutorial_layer.tscn"
 
 var _root: Node2D
+var _font: Font
 
 func _initialize() -> void:
 	_root = Node2D.new()
 	_root.name = "TutorialLevel"
 	_root.set_script(load("res://scripts/world/tutorial_level.gd"))
+	_font = _tutorial_font()
 
 	# ===== 地形 =====
-	_solid("PH_Terrain_Ground", 6100, 832, 12600, 64, Color(0.13, 0.13, 0.16),
-		"[物料] 类别=地形 | 占位=深灰长条 | 替换=沼泽地面 | 备注=连续地面顶面y=800")
-	# 段1 跳跃教学块
+	_solid("PH_Terrain_Ground", 3500, 832, 8000, 64, Color(0.13, 0.13, 0.16), "连续地面顶面y=800")
 	_plat("PH_Terrain_JumpBlock", 1000, 720, 160, 160, "跳跃教学")
-	# 三个谜题平台（站此与对应 Switch 同高 y=580，射箭位）
-	_plat("PH_Terrain_PlatformA", 3300, 650, 300, 150, "谜题A射箭平台")
-	_plat("PH_Terrain_PlatformB", 5050, 650, 300, 150, "谜题B射箭平台")
-	_plat("PH_Terrain_PlatformC", 9100, 650, 300, 150, "谜题C射箭平台")
-	# 段5 弓手掩体柱
-	_plat("PH_Terrain_Cover1", 6200, 560, 70, 240, "掩体: 躲弓手")
-	# 段6 垂直平台
-	_plat("PH_Terrain_Platform6", 7650, 600, 250, 200, "混战垂直平台")
-	# 段8 跳跃高低差（两块带间隙）
-	_plat("PH_Terrain_Step8a", 10000, 640, 180, 160, "跳台a")
-	_plat("PH_Terrain_Step8b", 10450, 640, 180, 160, "跳台b")
 
 	# ===== SpawnPoint =====
 	var spawn := Marker2D.new()
-	spawn.name = "SpawnPoint"
-	spawn.position = Vector2(200, 740)
+	spawn.name = "SpawnPoint"; spawn.position = Vector2(200, 740)
 	_add(spawn)
 
 	# ===== PartyManager + Knight + Archer =====
@@ -53,53 +39,48 @@ func _initialize() -> void:
 	var archer := _inst(ARCHER); archer.name = "Archer"; archer.position = Vector2(200, 740)
 	pm.add_child(archer); archer.owner = _root
 
-	# ===== 敌人（混编 史莱姆/剑哥布林/弓哥布林）=====
-	var enemies := [
-		[SLIME, 2300], [SLIME, 10250],
-		[MELEE, 4500], [MELEE, 7400], [MELEE, 8700], [MELEE, 11000],
-		[RANGED, 6700], [RANGED, 7900], [RANGED, 11300],
-	]
-	var ei := 0
-	for e in enemies:
-		ei += 1
-		var node := _inst(e[0])
-		node.name = "Enemy%d" % ei
-		node.position = Vector2(e[1], 700)
-		_add(node)
+	# ===== 敌人 =====
+	_enemy(SLIME, "Enemy1", 1900)
+	_enemy(RANGED, "Enemy2", 4900)
+	_enemy(MELEE, "Enemy3", 5500)
+	_enemy(SLIME, "Enemy4", 6000)
+	_enemy(MELEE, "Enemy5", 6400)
 
-	# ===== 三个开关-门谜题 =====
-	_switch("Switch_A", 3850); _door("Door_A", 3600)
-	_switch("Switch_B", 5600); _door("Door_B", 5350)
-	_switch("Switch_C", 9650); _door("Door_C", 9400)
-
-	# ===== 解锁点 =====
+	# ===== 伙伴立绘拾取 =====
 	var pickup := _inst(PICKUP)
-	pickup.name = "ArcherPickup"; pickup.position = Vector2(3450, 740)
+	pickup.name = "ArcherPickup"; pickup.position = Vector2(2700, 685)
 	pickup.party_manager = pm; pickup.target_character = archer
 	_add(pickup)
 
-	# ===== 出口 =====
-	var exit := _inst(EXIT); exit.name = "LevelExit"; exit.position = Vector2(11900, 704); _add(exit)
+	# ===== 两道开关墙（开关放高处，需瞄准射击）=====
+	_switch("Switch_A", 3500, 250)        # 高
+	_door("Door_A", 3560)
+	_switch("Switch_B", 4450, 160)        # 更高
+	_door("Door_B", 4500)
 
-	# ===== 教程提示层 + 提示区 =====
-	var tlayer := _inst(TLAYER); tlayer.name = "TutorialLayer"; _add(tlayer)
-	_prompt("PZ_Move", 250, 700, "move", "← → 移动", tlayer)
-	_prompt("PZ_Jump", 1000, 640, "jump", "Space 跳跃", tlayer)
-	_prompt("PZ_Attack", 2300, 640, "attack", "J 攻击", tlayer)
-	_prompt("PZ_Switch", 3450, 640, "switch", "Shift / Tab 切换角色", tlayer)
-	_prompt("PZ_Shoot", 3300, 560, "shoot", "J 射箭（瞄准对面开关）", tlayer)
+	# ===== 出口 =====
+	var exit := _inst(EXIT); exit.name = "LevelExit"; exit.position = Vector2(6800, 704); _add(exit)
 
 	# ===== 相机 + HUD =====
 	var cam := Camera2D.new()
 	cam.name = "Camera"
 	cam.set_script(load("res://scripts/world/camera_follow.gd"))
-	cam.position = Vector2(200, 740)
-	cam.party_manager = pm
+	cam.position = Vector2(200, 740); cam.party_manager = pm
 	_add(cam)
 	var hud := _inst(HUD); hud.name = "HUD"; hud.party_manager = pm; _add(hud)
 
+	# ===== 地图手绘指导文字（世界坐标，随相机滚动）=====
+	_label("L_Move", 240, 600, "A / D  左右移动")
+	_label("L_Jump", 900, 560, "Space  跳跃")
+	_label("L_Attack", 1660, 560, "遇到敌人 — 鼠标攻击")
+	_label("L_Ally", 2470, 410, "遇到伙伴\n触碰立绘获得 Archer")
+	_label("L_Switch", 3020, 520, "切换角色 Shift/Tab\n鼠标瞄准射箭")
+	_label("L_Shoot", 3120, 330, "墙挡路！射高处的开关\n墙会下降")
+	_label("L_Shoot2", 4120, 250, "又一道墙\n打更高处的开关")
+	_label("L_Goblin", 4780, 540, "小心：哥布林弓箭手")
+	_label("L_Exit", 6650, 560, "终点 →")
+
 	_root.party_manager = pm
-	_root.tutorial_layer = tlayer
 
 	var packed := PackedScene.new()
 	var perr := packed.pack(_root)
@@ -107,40 +88,56 @@ func _initialize() -> void:
 	print("[tutorial_level] pack=", perr, " save=", serr, " children=", _root.get_child_count())
 	quit()
 
+func _tutorial_font() -> Font:
+	# 用户把手绘字体丢到 assets/handdrawn.(ttf|otf|ttc) 即自动启用
+	for ext in ["ttf", "otf", "ttc"]:
+		var p := "res://assets/handdrawn." + str(ext)
+		if ResourceLoader.exists(p):
+			return load(p)
+	var sf := SystemFont.new()   # 暂用：拉丁手写体 + 中文回退
+	sf.font_names = PackedStringArray(["Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC"])
+	return sf
+
+func _label(nm: String, x: float, y: float, text: String) -> void:
+	var lbl := Label.new()
+	lbl.name = nm
+	lbl.text = text
+	lbl.position = Vector2(x, y)
+	lbl.z_index = 10
+	lbl.add_theme_font_override("font", _font)
+	lbl.add_theme_font_size_override("font_size", 42)
+	lbl.add_theme_color_override("font_color", Color(0.96, 0.93, 0.82))   # 米白"粉笔"色
+	lbl.add_theme_color_override("font_outline_color", Color(0.05, 0.05, 0.08))
+	lbl.add_theme_constant_override("outline_size", 10)
+	lbl.add_theme_constant_override("line_spacing", 4)
+	_add(lbl)
+
+func _enemy(scene: String, nm: String, x: float) -> void:
+	var e := _inst(scene); e.name = nm; e.position = Vector2(x, 700); _add(e)
+
 func _add(node: Node) -> void:
-	_root.add_child(node)
-	node.owner = _root
+	_root.add_child(node); node.owner = _root
 
 func _inst(path: String) -> Node:
 	return (load(path) as PackedScene).instantiate()
 
-func _switch(nm: String, x: float) -> void:
-	var s := _inst(SWITCH); s.name = nm; s.position = Vector2(x, 580); s.scale = Vector2(2, 2); _add(s)
+func _switch(nm: String, x: float, y: float) -> void:
+	var s := _inst(SWITCH); s.name = nm; s.position = Vector2(x, y); s.scale = Vector2(2, 2); _add(s)
 
 func _door(nm: String, x: float) -> void:
-	var d := _inst(DOOR); d.name = nm; d.position = Vector2(x, 700); d.scale = Vector2(2, 2.5); _add(d)
+	var d := _inst(DOOR); d.name = nm; d.position = Vector2(x, 700); d.scale = Vector2(2, 3); _add(d)
 
 func _plat(nm: String, cx: float, top: float, w: float, h: float, note: String) -> void:
-	_solid(nm, cx, top + h / 2.0, w, h, Color(0.18, 0.18, 0.22),
-		"[物料] 类别=地形 | 占位=平台块 | 替换=石台 | 备注=" + note)
+	_solid(nm, cx, top + h / 2.0, w, h, Color(0.18, 0.18, 0.22), note)
 
-func _solid(nm: String, cx: float, cy: float, w: float, h: float, col: Color, desc: String) -> void:
+func _solid(nm: String, cx: float, cy: float, w: float, h: float, col: Color, note: String) -> void:
 	var body := StaticBody2D.new()
-	body.name = nm
-	body.position = Vector2(cx, cy)
-	body.editor_description = desc
+	body.name = nm; body.position = Vector2(cx, cy)
+	body.editor_description = "[物料] 类别=地形 | 占位=色块 | 备注=" + note
 	_add(body)
-	var c := CollisionShape2D.new()
-	c.name = "CollisionShape2D"
-	var r := RectangleShape2D.new(); r.size = Vector2(w, h)
-	c.shape = r
+	var c := CollisionShape2D.new(); c.name = "CollisionShape2D"
+	var r := RectangleShape2D.new(); r.size = Vector2(w, h); c.shape = r
 	body.add_child(c); c.owner = _root
-	var s := ColorRect.new()
-	s.name = "Sprite"; s.color = col; s.size = Vector2(w, h); s.position = Vector2(-w / 2.0, -h / 2.0)
+	var s := ColorRect.new(); s.name = "Sprite"; s.color = col
+	s.size = Vector2(w, h); s.position = Vector2(-w / 2.0, -h / 2.0)
 	body.add_child(s); s.owner = _root
-
-func _prompt(nm: String, cx: float, cy: float, id: String, text: String, tlayer: Node) -> void:
-	var pz := _inst(PROMPT)
-	pz.name = nm; pz.position = Vector2(cx, cy)
-	pz.prompt_id = id; pz.prompt_text = text; pz.tutorial_layer = tlayer
-	_add(pz)

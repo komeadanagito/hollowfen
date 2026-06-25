@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="23_qj2tc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54yye"]
-size = Vector2(8000, 64)
+size = Vector2(8000, 400)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hj4c"]
 size = Vector2(160, 160)
@@ -33,42 +33,42 @@ size = Vector2(160, 160)
 [sub_resource type="SystemFont" id="SystemFont_1da40"]
 font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
 
-[node name="TutorialLevel" type="Node2D" unique_id=415226034 node_paths=PackedStringArray("party_manager")]
+[node name="TutorialLevel" type="Node2D" unique_id=1205956625 node_paths=PackedStringArray("party_manager")]
 script = ExtResource("1_qvjt5")
 party_manager = NodePath("PartyManager")
 
-[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1412453021]
-editor_description = "[物料] 类别=地形 | 占位=色块 | 备注=连续地面顶面y=800"
-position = Vector2(3500, 832)
+[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1096441855]
+editor_description = "[物料] 类别=地形 | 占位=色块 | 备注=连续地面顶面y=800，向下填充"
+position = Vector2(3500, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=1231708274]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=696809483]
 shape = SubResource("RectangleShape2D_54yye")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_Ground" unique_id=707327401]
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_Ground" unique_id=1280404326]
 offset_left = -4000.0
-offset_top = -32.0
+offset_top = -200.0
 offset_right = 4000.0
-offset_bottom = 32.0
+offset_bottom = 200.0
 color = Color(0.13, 0.13, 0.16, 1)
 
-[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1866013145]
+[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1025418488]
 editor_description = "[物料] 类别=地形 | 占位=色块 | 备注=跳跃教学"
 position = Vector2(1000, 800)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=2061866081]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=1099642345]
 shape = SubResource("RectangleShape2D_5hj4c")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_JumpBlock" unique_id=1154516648]
+[node name="Sprite" type="ColorRect" parent="PH_Terrain_JumpBlock" unique_id=123262401]
 offset_left = -80.0
 offset_top = -80.0
 offset_right = 80.0
 offset_bottom = 80.0
 color = Color(0.18, 0.18, 0.22, 1)
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=674818937]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=877498928]
 position = Vector2(200, 740)
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=800782946]
+[node name="PartyManager" type="Node2D" parent="." unique_id=1064834539]
 script = ExtResource("2_srty0")
 
 [node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("3_888my")]
@@ -98,12 +98,12 @@ position = Vector2(5500, 700)
 collision_layer = 4
 script = ExtResource("12_08yhi")
 
-[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=139460798 instance=ExtResource("7_r3rh7")]
+[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=530869538 instance=ExtResource("7_r3rh7")]
 position = Vector2(6000, 700)
 collision_layer = 4
 script = ExtResource("8_j0wqo")
 
-[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=879322219 instance=ExtResource("11_pm2mo")]
+[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=1681024797 instance=ExtResource("11_pm2mo")]
 position = Vector2(6400, 700)
 collision_layer = 4
 script = ExtResource("12_08yhi")
@@ -117,7 +117,7 @@ party_manager = NodePath("../PartyManager")
 target_character = NodePath("../PartyManager/Archer")
 
 [node name="Switch_A" type="Area2D" parent="." unique_id=444370463 instance=ExtResource("15_1npmj")]
-position = Vector2(3500, 250)
+position = Vector2(3500, 460)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
@@ -130,15 +130,15 @@ scale = Vector2(2, 3)
 collision_mask = 0
 script = ExtResource("18_bqfht")
 
-[node name="Switch_B" type="Area2D" parent="." unique_id=1841012853 instance=ExtResource("15_1npmj")]
-position = Vector2(4450, 160)
+[node name="Switch_B" type="Area2D" parent="." unique_id=573706278 instance=ExtResource("15_1npmj")]
+position = Vector2(4450, 420)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
 script = ExtResource("16_e7h5a")
 
-[node name="Door_B" type="StaticBody2D" parent="." unique_id=1209121797 instance=ExtResource("17_0dl17")]
+[node name="Door_B" type="StaticBody2D" parent="." unique_id=88368416 instance=ExtResource("17_0dl17")]
 position = Vector2(4500, 700)
 scale = Vector2(2, 3)
 collision_mask = 0
@@ -150,8 +150,13 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("20_78i5i")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=958320072 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=285904715 node_paths=PackedStringArray("party_manager")]
 position = Vector2(200, 740)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = 120
+limit_right = 7500
+limit_bottom = 1000
 script = ExtResource("21_sfsd2")
 party_manager = NodePath("../PartyManager")
 
@@ -159,7 +164,7 @@ party_manager = NodePath("../PartyManager")
 script = ExtResource("23_qj2tc")
 party_manager = NodePath("../PartyManager")
 
-[node name="L_Move" type="Label" parent="." unique_id=628106274]
+[node name="L_Move" type="Label" parent="." unique_id=146067617]
 z_index = 10
 offset_left = 240.0
 offset_top = 600.0
@@ -173,7 +178,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "A / D  左右移动"
 
-[node name="L_Jump" type="Label" parent="." unique_id=1555988765]
+[node name="L_Jump" type="Label" parent="." unique_id=461393721]
 z_index = 10
 offset_left = 900.0
 offset_top = 560.0
@@ -187,7 +192,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Space  跳跃"
 
-[node name="L_Attack" type="Label" parent="." unique_id=1218081764]
+[node name="L_Attack" type="Label" parent="." unique_id=813361112]
 z_index = 10
 offset_left = 1660.0
 offset_top = 560.0
@@ -201,7 +206,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "遇到敌人 — 鼠标攻击"
 
-[node name="L_Ally" type="Label" parent="." unique_id=924276262]
+[node name="L_Ally" type="Label" parent="." unique_id=161785470]
 z_index = 10
 offset_left = 2470.0
 offset_top = 430.0
@@ -215,7 +220,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "遇到伙伴，Tab 替换角色"
 
-[node name="L_Switch" type="Label" parent="." unique_id=1795523877]
+[node name="L_Switch" type="Label" parent="." unique_id=1780281289]
 z_index = 10
 offset_left = 3020.0
 offset_top = 520.0
@@ -229,12 +234,12 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "鼠标瞄准射箭"
 
-[node name="L_Shoot" type="Label" parent="." unique_id=1793198617]
+[node name="L_Shoot" type="Label" parent="." unique_id=1030633926]
 z_index = 10
 offset_left = 3120.0
-offset_top = 330.0
+offset_top = 380.0
 offset_right = 3120.0
-offset_bottom = 330.0
+offset_bottom = 380.0
 theme_override_constants/line_spacing = 4
 theme_override_fonts/font = SubResource("SystemFont_1da40")
 theme_override_font_sizes/font_size = 42
@@ -244,12 +249,12 @@ theme_override_constants/outline_size = 10
 text = "墙挡路！射高处的开关
 墙会下降"
 
-[node name="L_Shoot2" type="Label" parent="." unique_id=1042713278]
+[node name="L_Shoot2" type="Label" parent="." unique_id=492310568]
 z_index = 10
 offset_left = 4120.0
-offset_top = 250.0
+offset_top = 340.0
 offset_right = 4120.0
-offset_bottom = 250.0
+offset_bottom = 340.0
 theme_override_constants/line_spacing = 4
 theme_override_fonts/font = SubResource("SystemFont_1da40")
 theme_override_font_sizes/font_size = 42
@@ -259,7 +264,7 @@ theme_override_constants/outline_size = 10
 text = "又一道墙
 打更高处的开关"
 
-[node name="L_Goblin" type="Label" parent="." unique_id=92328880]
+[node name="L_Goblin" type="Label" parent="." unique_id=1179106258]
 z_index = 10
 offset_left = 4780.0
 offset_top = 540.0
@@ -273,7 +278,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "小心：哥布林弓箭手"
 
-[node name="L_Exit" type="Label" parent="." unique_id=187998958]
+[node name="L_Exit" type="Label" parent="." unique_id=1154153133]
 z_index = 10
 offset_left = 6650.0
 offset_top = 560.0

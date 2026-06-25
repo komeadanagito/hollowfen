@@ -1,22 +1,19 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="1_2nxg2"]
+[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="1_hioa0"]
+[ext_resource type="Texture2D" path="res://assets/level_exit.png" id="2_c1hgn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hioa0"]
-size = Vector2(96, 192)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qagu"]
+size = Vector2(150, 192)
 
-[node name="LevelExit" type="Area2D" unique_id=1974156888]
+[node name="LevelExit" type="Area2D" unique_id=33333112]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_2nxg2")
+script = ExtResource("1_hioa0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1162273041]
-shape = SubResource("RectangleShape2D_hioa0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=655348231]
+shape = SubResource("RectangleShape2D_6qagu")
 
-[node name="Sprite" type="ColorRect" parent="." unique_id=886909568]
-editor_description = "[物料] 类别=出口 | 占位=蓝块96x192 PH_Exit_Gate | 替换=关卡门/传送 | 备注=关卡终点"
-offset_left = -48.0
-offset_top = -96.0
-offset_right = 48.0
-offset_bottom = 96.0
-color = Color(0.4, 0.6, 1, 1)
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1842724642]
+texture_filter = 1
+texture = ExtResource("2_c1hgn")

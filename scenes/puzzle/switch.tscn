@@ -1,22 +1,20 @@
-[gd_scene format=3 uid="uid://br0qlvkobedhk"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://c46s3ny1pbgm0" path="res://scripts/puzzle/switch.gd" id="1_pwtdd"]
+[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="1_exosd"]
+[ext_resource type="Texture2D" path="res://assets/switch_lever.png" id="2_f2wtn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exosd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvfyu"]
 size = Vector2(24, 24)
 
-[node name="Switch" type="Area2D" unique_id=444370463]
+[node name="Switch" type="Area2D" unique_id=1059127097]
 collision_layer = 128
 collision_mask = 0
 monitoring = false
-script = ExtResource("1_pwtdd")
+script = ExtResource("1_exosd")
 
-[node name="Sprite" type="ColorRect" parent="." unique_id=711125614]
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-color = Color(1, 0.9, 0.2, 1)
+[node name="Sprite" type="Sprite2D" parent="." unique_id=961258187]
+texture_filter = 1
+texture = ExtResource("2_f2wtn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=780396376]
-shape = SubResource("RectangleShape2D_exosd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=876977474]
+shape = SubResource("RectangleShape2D_mvfyu")

@@ -1,247 +1,311 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/world/tutorial_level.gd" id="1_qvjt5"]
-[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="2_srty0"]
-[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="3_888my"]
-[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="4_whusg"]
-[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="5_adwlu"]
-[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="6_r0rxt"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="7_r3rh7"]
-[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="8_j0wqo"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/ranged_goblin.tscn" id="9_tjoum"]
-[ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="10_a6d6p"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/melee_goblin.tscn" id="11_pm2mo"]
-[ext_resource type="Script" path="res://scripts/enemies/melee_goblin.gd" id="12_08yhi"]
-[ext_resource type="PackedScene" path="res://scenes/world/archer_pickup.tscn" id="13_b2nau"]
-[ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="14_r0y8g"]
-[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="15_1npmj"]
-[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="16_e7h5a"]
-[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="17_0dl17"]
-[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="18_bqfht"]
-[ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="19_bykcn"]
-[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="20_78i5i"]
-[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="21_sfsd2"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="22_5vxda"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="23_qj2tc"]
+[ext_resource type="Script" path="res://scripts/world/tutorial_level.gd" id="1_r3rh7"]
+[ext_resource type="Texture2D" path="res://assets/background_far.png" id="2_j0wqo"]
+[ext_resource type="Texture2D" path="res://assets/ceiling_stone.png" id="3_tjoum"]
+[ext_resource type="Texture2D" path="res://assets/ceiling_decor.png" id="4_a6d6p"]
+[ext_resource type="Texture2D" path="res://assets/chandelier.png" id="5_pm2mo"]
+[ext_resource type="Texture2D" path="res://assets/floor_stone.png" id="6_08yhi"]
+[ext_resource type="Texture2D" path="res://assets/stone_block.png" id="7_b2nau"]
+[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="8_r0y8g"]
+[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="9_1npmj"]
+[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="10_e7h5a"]
+[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="11_0dl17"]
+[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="12_bqfht"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="13_bykcn"]
+[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="14_78i5i"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/ranged_goblin.tscn" id="15_sfsd2"]
+[ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="16_5vxda"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/melee_goblin.tscn" id="17_qj2tc"]
+[ext_resource type="Script" path="res://scripts/enemies/melee_goblin.gd" id="18_54yye"]
+[ext_resource type="PackedScene" path="res://scenes/world/archer_pickup.tscn" id="19_5hj4c"]
+[ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="20_1da40"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="21_cyy35"]
+[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="22_ccthf"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="23_2mayw"]
+[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="24_imrb0"]
+[ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="25_xbmdq"]
+[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="26_rc0hx"]
+[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="27_41vox"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="28_v4no4"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="29_jy485"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54yye"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxil5"]
 size = Vector2(8000, 400)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hj4c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gad0"]
 size = Vector2(160, 160)
 
-[sub_resource type="SystemFont" id="SystemFont_1da40"]
+[sub_resource type="SystemFont" id="SystemFont_dmp2i"]
 font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
 
-[node name="TutorialLevel" type="Node2D" unique_id=1205956625 node_paths=PackedStringArray("party_manager")]
-script = ExtResource("1_qvjt5")
+[node name="TutorialLevel" type="Node2D" unique_id=64312332 node_paths=PackedStringArray("party_manager")]
+script = ExtResource("1_r3rh7")
 party_manager = NodePath("PartyManager")
 
-[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1096441855]
-editor_description = "[物料] 类别=地形 | 占位=色块 | 备注=连续地面顶面y=800，向下填充"
+[node name="Background" type="Sprite2D" parent="." unique_id=882057671]
+z_index = -100
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-500, -120)
+texture = ExtResource("2_j0wqo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8000, 1120)
+
+[node name="Ceiling" type="Sprite2D" parent="." unique_id=1025744624]
+z_index = -40
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-500, 60)
+texture = ExtResource("3_tjoum")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8000, 230)
+
+[node name="CeilingTrim" type="Sprite2D" parent="." unique_id=1688110952]
+z_index = -39
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-500, 285)
+texture = ExtResource("4_a6d6p")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8000, 64)
+
+[node name="Chandelier_600" type="Sprite2D" parent="." unique_id=342623588]
+z_index = -38
+texture_filter = 1
+position = Vector2(600, 360)
+texture = ExtResource("5_pm2mo")
+
+[node name="Chandelier_2400" type="Sprite2D" parent="." unique_id=844717702]
+z_index = -38
+texture_filter = 1
+position = Vector2(2400, 360)
+texture = ExtResource("5_pm2mo")
+
+[node name="Chandelier_4200" type="Sprite2D" parent="." unique_id=193991992]
+z_index = -38
+texture_filter = 1
+position = Vector2(4200, 360)
+texture = ExtResource("5_pm2mo")
+
+[node name="Chandelier_6000" type="Sprite2D" parent="." unique_id=1554511538]
+z_index = -38
+texture_filter = 1
+position = Vector2(6000, 360)
+texture = ExtResource("5_pm2mo")
+
+[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=965029156]
+editor_description = "[物料] 类别=地形 | 贴图=res://assets/floor_stone.png | 备注=连续地面顶面y=800，向下填充"
 position = Vector2(3500, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=696809483]
-shape = SubResource("RectangleShape2D_54yye")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=316174944]
+shape = SubResource("RectangleShape2D_qxil5")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_Ground" unique_id=1280404326]
-offset_left = -4000.0
-offset_top = -200.0
-offset_right = 4000.0
-offset_bottom = 200.0
-color = Color(0.13, 0.13, 0.16, 1)
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_Ground" unique_id=1918938918]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-4000, -200)
+texture = ExtResource("6_08yhi")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8000, 400)
 
-[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1025418488]
-editor_description = "[物料] 类别=地形 | 占位=色块 | 备注=跳跃教学"
+[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=853712631]
+editor_description = "[物料] 类别=地形 | 贴图=res://assets/stone_block.png | 备注=跳跃教学"
 position = Vector2(1000, 800)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=1099642345]
-shape = SubResource("RectangleShape2D_5hj4c")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=1658880]
+shape = SubResource("RectangleShape2D_5gad0")
 
-[node name="Sprite" type="ColorRect" parent="PH_Terrain_JumpBlock" unique_id=123262401]
-offset_left = -80.0
-offset_top = -80.0
-offset_right = 80.0
-offset_bottom = 80.0
-color = Color(0.18, 0.18, 0.22, 1)
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_JumpBlock" unique_id=649278318]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-80, -80)
+texture = ExtResource("7_b2nau")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 160)
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=877498928]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=2003970175]
 position = Vector2(200, 740)
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=1064834539]
-script = ExtResource("2_srty0")
+[node name="PartyManager" type="Node2D" parent="." unique_id=1572430891]
+script = ExtResource("8_r0y8g")
 
-[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("3_888my")]
+[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("9_1npmj")]
 position = Vector2(200, 740)
 collision_layer = 2
-script = ExtResource("4_whusg")
+script = ExtResource("10_e7h5a")
 move_speed = 450.0
 
-[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("5_adwlu")]
+[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("11_0dl17")]
 position = Vector2(200, 740)
 collision_layer = 2
-script = ExtResource("6_r0rxt")
+script = ExtResource("12_bqfht")
 move_speed = 650.0
 
-[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("7_r3rh7")]
+[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("13_bykcn")]
 position = Vector2(1900, 700)
 collision_layer = 4
-script = ExtResource("8_j0wqo")
+script = ExtResource("14_78i5i")
 
-[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=1226711113 instance=ExtResource("9_tjoum")]
+[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=1226711113 instance=ExtResource("15_sfsd2")]
 position = Vector2(4900, 700)
 collision_layer = 4
-script = ExtResource("10_a6d6p")
+script = ExtResource("16_5vxda")
 
-[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=2103124923 instance=ExtResource("11_pm2mo")]
+[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=2103124923 instance=ExtResource("17_qj2tc")]
 position = Vector2(5500, 700)
 collision_layer = 4
-script = ExtResource("12_08yhi")
+script = ExtResource("18_54yye")
 
-[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=530869538 instance=ExtResource("7_r3rh7")]
+[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=863284885 instance=ExtResource("13_bykcn")]
 position = Vector2(6000, 700)
 collision_layer = 4
-script = ExtResource("8_j0wqo")
+script = ExtResource("14_78i5i")
 
-[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=1681024797 instance=ExtResource("11_pm2mo")]
+[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=750320439 instance=ExtResource("17_qj2tc")]
 position = Vector2(6400, 700)
 collision_layer = 4
-script = ExtResource("12_08yhi")
+script = ExtResource("18_54yye")
 
-[node name="ArcherPickup" type="Area2D" parent="." unique_id=424896208 node_paths=PackedStringArray("party_manager", "target_character") instance=ExtResource("13_b2nau")]
+[node name="ArcherPickup" type="Area2D" parent="." unique_id=424896208 node_paths=PackedStringArray("party_manager", "target_character") instance=ExtResource("19_5hj4c")]
 position = Vector2(2700, 723)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("14_r0y8g")
+script = ExtResource("20_1da40")
 party_manager = NodePath("../PartyManager")
 target_character = NodePath("../PartyManager/Archer")
 
-[node name="Switch_A" type="Area2D" parent="." unique_id=444370463 instance=ExtResource("15_1npmj")]
+[node name="Switch_A" type="Area2D" parent="." unique_id=1059127097 instance=ExtResource("21_cyy35")]
 position = Vector2(3500, 460)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
-script = ExtResource("16_e7h5a")
+script = ExtResource("22_ccthf")
 
-[node name="Door_A" type="StaticBody2D" parent="." unique_id=773460251 instance=ExtResource("17_0dl17")]
+[node name="Door_A" type="StaticBody2D" parent="." unique_id=185073187 instance=ExtResource("23_2mayw")]
 position = Vector2(3560, 700)
 scale = Vector2(2, 3)
 collision_mask = 0
-script = ExtResource("18_bqfht")
+script = ExtResource("24_imrb0")
 
-[node name="Switch_B" type="Area2D" parent="." unique_id=573706278 instance=ExtResource("15_1npmj")]
+[node name="Switch_B" type="Area2D" parent="." unique_id=1392616890 instance=ExtResource("21_cyy35")]
 position = Vector2(4450, 420)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
-script = ExtResource("16_e7h5a")
+script = ExtResource("22_ccthf")
 
-[node name="Door_B" type="StaticBody2D" parent="." unique_id=88368416 instance=ExtResource("17_0dl17")]
+[node name="Door_B" type="StaticBody2D" parent="." unique_id=2077749533 instance=ExtResource("23_2mayw")]
 position = Vector2(4500, 700)
 scale = Vector2(2, 3)
 collision_mask = 0
-script = ExtResource("18_bqfht")
+script = ExtResource("24_imrb0")
 
-[node name="LevelExit" type="Area2D" parent="." unique_id=1974156888 instance=ExtResource("19_bykcn")]
+[node name="LevelExit" type="Area2D" parent="." unique_id=33333112 instance=ExtResource("25_xbmdq")]
 position = Vector2(6800, 704)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_78i5i")
+script = ExtResource("26_rc0hx")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=285904715 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=410638966 node_paths=PackedStringArray("party_manager")]
 position = Vector2(200, 740)
 zoom = Vector2(1.5, 1.5)
 limit_left = -500
 limit_top = 120
 limit_right = 7500
 limit_bottom = 1000
-script = ExtResource("21_sfsd2")
+script = ExtResource("27_41vox")
 party_manager = NodePath("../PartyManager")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=173317282 node_paths=PackedStringArray("party_manager") instance=ExtResource("22_5vxda")]
-script = ExtResource("23_qj2tc")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=173317282 node_paths=PackedStringArray("party_manager") instance=ExtResource("28_v4no4")]
+script = ExtResource("29_jy485")
 party_manager = NodePath("../PartyManager")
 
-[node name="L_Move" type="Label" parent="." unique_id=146067617]
+[node name="L_Move" type="Label" parent="." unique_id=898524904]
 z_index = 10
 offset_left = 240.0
 offset_top = 600.0
 offset_right = 240.0
 offset_bottom = 600.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "A / D  左右移动"
 
-[node name="L_Jump" type="Label" parent="." unique_id=461393721]
+[node name="L_Jump" type="Label" parent="." unique_id=974131737]
 z_index = 10
 offset_left = 900.0
 offset_top = 560.0
 offset_right = 900.0
 offset_bottom = 560.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Space  跳跃"
 
-[node name="L_Attack" type="Label" parent="." unique_id=813361112]
+[node name="L_Attack" type="Label" parent="." unique_id=1139980756]
 z_index = 10
 offset_left = 1660.0
 offset_top = 560.0
 offset_right = 1660.0
 offset_bottom = 560.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "遇到敌人 — 鼠标攻击"
 
-[node name="L_Ally" type="Label" parent="." unique_id=161785470]
+[node name="L_Ally" type="Label" parent="." unique_id=339504975]
 z_index = 10
 offset_left = 2470.0
 offset_top = 430.0
 offset_right = 2470.0
 offset_bottom = 430.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "遇到伙伴，Tab 替换角色"
 
-[node name="L_Switch" type="Label" parent="." unique_id=1780281289]
+[node name="L_Switch" type="Label" parent="." unique_id=274321601]
 z_index = 10
 offset_left = 3020.0
 offset_top = 520.0
 offset_right = 3020.0
 offset_bottom = 520.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "鼠标瞄准射箭"
 
-[node name="L_Shoot" type="Label" parent="." unique_id=1030633926]
+[node name="L_Shoot" type="Label" parent="." unique_id=1489612414]
 z_index = 10
 offset_left = 3120.0
 offset_top = 380.0
 offset_right = 3120.0
 offset_bottom = 380.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
@@ -249,14 +313,14 @@ theme_override_constants/outline_size = 10
 text = "墙挡路！射高处的开关
 墙会下降"
 
-[node name="L_Shoot2" type="Label" parent="." unique_id=492310568]
+[node name="L_Shoot2" type="Label" parent="." unique_id=997643]
 z_index = 10
 offset_left = 4120.0
 offset_top = 340.0
 offset_right = 4120.0
 offset_bottom = 340.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
@@ -264,28 +328,28 @@ theme_override_constants/outline_size = 10
 text = "又一道墙
 打更高处的开关"
 
-[node name="L_Goblin" type="Label" parent="." unique_id=1179106258]
+[node name="L_Goblin" type="Label" parent="." unique_id=792779849]
 z_index = 10
 offset_left = 4780.0
 offset_top = 540.0
 offset_right = 4780.0
 offset_bottom = 540.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "小心：哥布林弓箭手"
 
-[node name="L_Exit" type="Label" parent="." unique_id=1154153133]
+[node name="L_Exit" type="Label" parent="." unique_id=710280040]
 z_index = 10
 offset_left = 6650.0
 offset_top = 560.0
 offset_right = 6650.0
 offset_bottom = 560.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_1da40")
+theme_override_fonts/font = SubResource("SystemFont_dmp2i")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)

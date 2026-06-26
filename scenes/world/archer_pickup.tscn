@@ -6,15 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqy6h"]
 size = Vector2(110, 160)
 
-[node name="ArcherPickup" type="Area2D" unique_id=424896208]
+[node name="ArcherPickup" type="Area2D" unique_id=1147304191]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_l8c36")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1452493826]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1492060312]
 shape = SubResource("RectangleShape2D_uqy6h")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2143604754]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=921298901]
 editor_description = "[物料] 类别=解锁点 | 占位/素材=Archer立绘 | 备注=触碰获得Archer"
 texture_filter = 1
 scale = Vector2(0.15, 0.15)

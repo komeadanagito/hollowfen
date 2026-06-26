@@ -202,31 +202,32 @@ size = Vector2(56, 120)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek6dj"]
 size = Vector2(56, 120)
 
-[node name="RangedGoblin" type="CharacterBody2D" unique_id=1226711113]
+[node name="RangedGoblin" type="CharacterBody2D" unique_id=751289559]
 collision_layer = 4
 script = ExtResource("1_bnbhy")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1122098750]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=566897072]
 texture_filter = 1
+position = Vector2(0, 1)
 scale = Vector2(0.53, 0.53)
 sprite_frames = SubResource("SpriteFrames_ba57y")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1813941426]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=712116188]
 shape = SubResource("RectangleShape2D_l0iet")
 
-[node name="Health" type="Node" parent="." unique_id=1629017447]
+[node name="Health" type="Node" parent="." unique_id=100783266]
 script = ExtResource("3_sym4j")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1711720342 node_paths=PackedStringArray("health")]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=868660533 node_paths=PackedStringArray("health")]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("4_vk0ir")
 health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=284602940]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1048909775]
 shape = SubResource("RectangleShape2D_ek6dj")
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=1810489490]
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1125624824]
 position = Vector2(0, -10)

@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="1_l8c36"]
-[ext_resource type="Texture2D" path="res://assets/archer_portrait.png" id="2_5s7lb"]
+[ext_resource type="Texture2D" path="res://assets/character/archer/archer_portrait.png" id="2_5s7lb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqy6h"]
 size = Vector2(110, 160)

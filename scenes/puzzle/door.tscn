@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="1_4pm37"]
-[ext_resource type="Texture2D" path="res://assets/dungeon_door.png" id="2_1i2je"]
+[ext_resource type="Texture2D" path="res://assets/prop/dungeon_door.png" id="2_1i2je"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk6ga"]
 size = Vector2(24, 80)

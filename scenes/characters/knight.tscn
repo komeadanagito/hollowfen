@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d051y2yukc8yl" path="res://scripts/combat/health.gd" id="2_2r4hc"]
 [ext_resource type="Script" uid="uid://cy21kgw7mw1b1" path="res://scripts/combat/hurtbox.gd" id="3_0y5ur"]
 [ext_resource type="Script" uid="uid://d4n2ns11dq05q" path="res://scripts/combat/hitbox.gd" id="4_2bw66"]
-[ext_resource type="Texture2D" path="res://assets/knight_spritesheet_clean.png" id="5_nxclh"]
+[ext_resource type="Texture2D" path="res://assets/character/knight/knight_spritesheet_clean.png" id="5_nxclh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vw8nl"]
 size = Vector2(56, 120)

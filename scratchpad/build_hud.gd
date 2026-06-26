@@ -28,7 +28,7 @@ func _initialize() -> void:
 
 	var avatar := TextureRect.new()
 	avatar.name = "Avatar"
-	avatar.texture = load("res://assets/knight_avatar_head.png")
+	avatar.texture = load("res://assets/character/knight/knight_avatar_head.png")
 	avatar.custom_minimum_size = Vector2(96, 96)
 	avatar.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	avatar.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED

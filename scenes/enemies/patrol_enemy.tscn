@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d051y2yukc8yl" path="res://scripts/combat/health.gd" id="2_phsxw"]
 [ext_resource type="Script" uid="uid://cy21kgw7mw1b1" path="res://scripts/combat/hurtbox.gd" id="3_2m8xl"]
 [ext_resource type="Script" uid="uid://d4n2ns11dq05q" path="res://scripts/combat/hitbox.gd" id="4_27vc1"]
-[ext_resource type="Texture2D" path="res://assets/slime_spritesheet_clean.png" id="5_ywr50"]
+[ext_resource type="Texture2D" path="res://assets/enemy/slime/slime_spritesheet_clean.png" id="5_ywr50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at13k"]
 size = Vector2(56, 64)

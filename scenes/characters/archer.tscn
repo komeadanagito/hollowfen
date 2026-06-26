@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b2ltlv1i1qwdi" path="res://scripts/characters/archer.gd" id="1_5rr7p"]
 [ext_resource type="Script" uid="uid://d051y2yukc8yl" path="res://scripts/combat/health.gd" id="2_cvspa"]
 [ext_resource type="Script" uid="uid://cy21kgw7mw1b1" path="res://scripts/combat/hurtbox.gd" id="3_e1vds"]
-[ext_resource type="Texture2D" path="res://assets/archer_spritesheet_clean.png" id="4_fqk6l"]
+[ext_resource type="Texture2D" path="res://assets/character/archer/archer_spritesheet_clean.png" id="4_fqk6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mvd2"]
 size = Vector2(48, 120)

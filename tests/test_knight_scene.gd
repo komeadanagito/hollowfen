@@ -60,7 +60,7 @@ func _check_animation_set(t: TestHelper, sprite: AnimatedSprite2D, label: String
 		t.check(sprite.sprite_frames.has_animation(animation), "%s has %s animation" % [label, animation])
 		t.check(sprite.sprite_frames.get_frame_count(animation) > 1, "%s %s uses sequence frames" % [label, animation])
 		var first_texture := sprite.sprite_frames.get_frame_texture(animation, 0)
-		t.eq(_texture_path(first_texture), "res://assets/knight_spritesheet_clean.png", "%s %s texture path" % [label, animation])
+		t.eq(_texture_path(first_texture), "res://assets/character/knight/knight_spritesheet_clean.png", "%s %s texture path" % [label, animation])
 	t.check(sprite.sprite_frames.get_animation_loop(&"idle"), "%s idle loops" % label)
 	t.check(sprite.sprite_frames.get_animation_loop(&"walk"), "%s walk loops" % label)
 	t.eq(sprite.sprite_frames.get_animation_loop(&"attack"), false, "%s attack does not loop" % label)

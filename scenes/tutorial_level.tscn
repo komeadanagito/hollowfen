@@ -1,11 +1,11 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/world/tutorial_level.gd" id="1_r0rxt"]
-[ext_resource type="Texture2D" path="res://assets/background_far.png" id="2_r3rh7"]
-[ext_resource type="Texture2D" path="res://assets/ceiling_stone.png" id="3_j0wqo"]
-[ext_resource type="Texture2D" path="res://assets/chandelier.png" id="4_tjoum"]
-[ext_resource type="Texture2D" path="res://assets/floor_stone.png" id="5_a6d6p"]
-[ext_resource type="Texture2D" path="res://assets/stone_block.png" id="6_pm2mo"]
+[ext_resource type="Texture2D" path="res://assets/scene/background_far.png" id="2_r3rh7"]
+[ext_resource type="Texture2D" path="res://assets/scene/ceiling_stone.png" id="3_j0wqo"]
+[ext_resource type="Texture2D" path="res://assets/scene/chandelier.png" id="4_tjoum"]
+[ext_resource type="Texture2D" path="res://assets/scene/floor_stone.png" id="5_a6d6p"]
+[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="6_pm2mo"]
 [ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="7_08yhi"]
 [ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="8_b2nau"]
 [ext_resource type="Script" path="res://scripts/characters/knight.gd" id="9_r0y8g"]
@@ -94,7 +94,7 @@ position = Vector2(6000, 360)
 texture = ExtResource("4_tjoum")
 
 [node name="PH_Terrain_GroundL" type="StaticBody2D" parent="." unique_id=1818970160]
-editor_description = "[物料] 类别=地形 | 贴图=res://assets/floor_stone.png | 备注=左侧地面 -500~2100"
+editor_description = "[物料] 类别=地形 | 贴图=res://assets/scene/floor_stone.png | 备注=左侧地面 -500~2100"
 position = Vector2(800, 1000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundL" unique_id=558719751]
@@ -111,7 +111,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1300, 200)
 
 [node name="PH_Terrain_GroundR" type="StaticBody2D" parent="." unique_id=1507353808]
-editor_description = "[物料] 类别=地形 | 贴图=res://assets/floor_stone.png | 备注=右侧地面 2580~7500"
+editor_description = "[物料] 类别=地形 | 贴图=res://assets/scene/floor_stone.png | 备注=右侧地面 2580~7500"
 position = Vector2(5040, 1000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundR" unique_id=1190525577]
@@ -128,7 +128,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 2460, 200)
 
 [node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1115636015]
-editor_description = "[物料] 类别=地形 | 贴图=res://assets/stone_block.png | 备注=跳跃教学"
+editor_description = "[物料] 类别=地形 | 贴图=res://assets/scene/stone_block.png | 备注=跳跃教学"
 position = Vector2(1000, 800)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=412339388]

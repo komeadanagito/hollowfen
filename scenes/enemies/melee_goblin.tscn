@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/enemies/melee_goblin.gd" id="1_djif8"]
-[ext_resource type="Texture2D" path="res://assets/goblin_spritesheet_clean.png" id="2_ai2sm"]
+[ext_resource type="Texture2D" path="res://assets/enemy/goblin/goblin_spritesheet_clean.png" id="2_ai2sm"]
 [ext_resource type="Script" path="res://scripts/combat/health.gd" id="3_o4nt0"]
 [ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="4_sgrgq"]
 [ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="5_wiou4"]

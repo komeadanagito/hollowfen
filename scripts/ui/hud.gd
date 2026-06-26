@@ -4,8 +4,8 @@ extends CanvasLayer
 @export var party_manager: PartyManager
 
 const AVATARS := {
-	"Knight": preload("res://assets/knight_avatar_head.png"),
-	"Archer": preload("res://assets/archer_avatar_head.png"),
+	"Knight": preload("res://assets/character/knight/knight_avatar_head.png"),
+	"Archer": preload("res://assets/character/archer/archer_avatar_head.png"),
 }
 
 @onready var _avatar: TextureRect = $Root/Panel/HBox/Avatar

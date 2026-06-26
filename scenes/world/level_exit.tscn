@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="1_hioa0"]
-[ext_resource type="Texture2D" path="res://assets/level_exit.png" id="2_c1hgn"]
+[ext_resource type="Texture2D" path="res://assets/prop/level_exit.png" id="2_c1hgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qagu"]
 size = Vector2(150, 192)

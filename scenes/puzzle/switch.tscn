@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="1_exosd"]
-[ext_resource type="Texture2D" path="res://assets/switch_lever.png" id="2_f2wtn"]
+[ext_resource type="Texture2D" path="res://assets/prop/switch_lever.png" id="2_f2wtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvfyu"]
 size = Vector2(24, 24)

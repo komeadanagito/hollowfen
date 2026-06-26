@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="1_bnbhy"]
-[ext_resource type="Texture2D" path="res://assets/goblin_archer_spritesheet_clean.png" id="2_g015p"]
+[ext_resource type="Texture2D" path="res://assets/enemy/goblin_archer/goblin_archer_spritesheet_clean.png" id="2_g015p"]
 [ext_resource type="Script" path="res://scripts/combat/health.gd" id="3_sym4j"]
 [ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="4_vk0ir"]
 

@@ -7,7 +7,7 @@ enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT }
 @export var move_speed: float = 550.0
 @export var acceleration: float = 4500.0
 @export var friction: float = 5000.0
-@export var jump_velocity: float = -540.0
+@export var jump_velocity: float = -1075.0
 @export var gravity: float = 3000.0
 @export var air_jumps: int = 0          # 额外空中跳跃次数（0=单跳，1=二段跳）
 @export_group("Feel")

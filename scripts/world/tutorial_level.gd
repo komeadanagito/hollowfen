@@ -13,6 +13,9 @@ func _ready() -> void:
 		_wire_switch_door("Switch_" + suffix, "Door_" + suffix)
 	_wire_deaths()
 	_wire_exit()
+	_wire_pit()
+	if party_manager and not party_manager.party_wiped.is_connected(_on_party_wiped):
+		party_manager.party_wiped.connect(_on_party_wiped)
 
 func _lock_archer() -> void:
 	if party_manager:
@@ -34,24 +37,32 @@ func _wire_deaths() -> void:
 			if h and not h.died.is_connected(cb):
 				h.died.connect(cb)
 
+# 角色死亡 → 直接切到另一个还活着的角色（不回起点）
 func _on_died(character: CharacterBase) -> void:
-	if _spawn == null or not is_instance_valid(character):
-		return
-	await _wait_for_death_animation(character)
-	if _spawn and is_instance_valid(character):
-		character.respawn(_spawn.global_position)
+	if party_manager:
+		party_manager.notify_death(character)
 
-func _wait_for_death_animation(character: CharacterBase) -> void:
-	var sprite := character.get_node_or_null("Sprite") as AnimatedSprite2D
-	if sprite == null or sprite.sprite_frames == null or not sprite.sprite_frames.has_animation(&"death"):
-		await get_tree().create_timer(0.2).timeout
+# 全员阵亡 → 全队复活回起点
+func _on_party_wiped() -> void:
+	if party_manager == null or _spawn == null:
 		return
-	if sprite.animation != &"death":
-		sprite.play(&"death")
-	if sprite.sprite_frames.get_animation_loop(&"death"):
-		await get_tree().create_timer(0.6).timeout
-	elif sprite.is_playing():
-		await sprite.animation_finished
+	party_manager.revive_all()
+	for child in party_manager.get_children():
+		if child is CharacterBase:
+			(child as CharacterBase).respawn(_spawn.global_position)
+	party_manager.reset_to_first()
+
+# 深坑：掉进去的激活角色直接死亡
+func _wire_pit() -> void:
+	var pit := get_node_or_null("DeathZone") as Area2D
+	if pit and not pit.body_entered.is_connected(_on_pit_entered):
+		pit.body_entered.connect(_on_pit_entered)
+
+func _on_pit_entered(body: Node) -> void:
+	if body is CharacterBase and (body as CharacterBase).is_active():
+		var h := (body as CharacterBase).get_health()
+		if h:
+			h.take_damage(99999)
 
 func _wire_exit() -> void:
 	var ex := get_node_or_null("LevelExit") as LevelExit

@@ -9,6 +9,7 @@ enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT }
 @export var friction: float = 5000.0
 @export var jump_velocity: float = -1075.0
 @export var gravity: float = 3000.0
+@export var air_jumps: int = 0          # 额外空中跳跃次数（0=单跳，1=二段跳）
 @export_group("Feel")
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
@@ -22,8 +23,10 @@ var _active: bool = false
 var _facing: int = 1                 # 1 右, -1 左
 var _coyote: float = 0.0
 var _jump_buffer: float = 0.0
+var _jumps_left: int = 0             # 剩余空中跳跃次数
 var _state_timer: float = 0.0
 var _dead: bool = false
+var _last_safe: Vector2 = Vector2.ZERO   # 最近一次站在地面的位置（死亡切换接管点）
 
 @onready var _health: Health = $Health
 @onready var _hurtbox: Hurtbox = $Hurtbox
@@ -31,6 +34,7 @@ var _dead: bool = false
 
 func _ready() -> void:
 	add_to_group("player")
+	_last_safe = global_position
 	if _hurtbox:
 		_hurtbox.hit_taken.connect(_on_hit_taken)
 	if _health:
@@ -44,6 +48,9 @@ func set_active(active: bool) -> void:
 
 func is_active() -> bool:
 	return _active
+
+func get_last_safe_position() -> Vector2:
+	return _last_safe
 
 func get_health() -> Health:
 	return _health
@@ -68,6 +75,8 @@ func _physics_process(delta: float) -> void:
 	_jump_buffer = maxf(_jump_buffer - delta, 0.0)
 	if is_on_floor():
 		_coyote = coyote_time
+		_jumps_left = air_jumps
+		_last_safe = global_position
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -98,10 +107,15 @@ func _process_locomotion(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 
-	if _jump_buffer > 0.0 and _coyote > 0.0:
-		velocity.y = jump_velocity
-		_jump_buffer = 0.0
-		_coyote = 0.0
+	if _jump_buffer > 0.0:
+		if _coyote > 0.0:                 # 地面跳
+			velocity.y = jump_velocity
+			_jump_buffer = 0.0
+			_coyote = 0.0
+		elif _jumps_left > 0:             # 空中跳（二段跳）
+			velocity.y = jump_velocity
+			_jump_buffer = 0.0
+			_jumps_left -= 1
 
 	# 状态判定
 	if not is_on_floor():

@@ -44,11 +44,11 @@ size = Vector2(480, 360)
 [sub_resource type="SystemFont" id="SystemFont_dmp2i"]
 font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
 
-[node name="TutorialLevel" type="Node2D" unique_id=420359085 node_paths=PackedStringArray("party_manager")]
+[node name="TutorialLevel" type="Node2D" unique_id=1917876792 node_paths=PackedStringArray("party_manager")]
 script = ExtResource("1_r0rxt")
 party_manager = NodePath("PartyManager")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1870211498]
+[node name="Background" type="Sprite2D" parent="." unique_id=1318885532]
 z_index = -100
 texture_filter = 1
 texture_repeat = 2
@@ -58,7 +58,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 8000, 1120)
 
-[node name="Ceiling" type="Sprite2D" parent="." unique_id=313345931]
+[node name="Ceiling" type="Sprite2D" parent="." unique_id=1820196632]
 z_index = -40
 texture_filter = 1
 texture_repeat = 2
@@ -69,38 +69,38 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4000, 115)
 
-[node name="Chandelier_600" type="Sprite2D" parent="." unique_id=2117792030]
+[node name="Chandelier_600" type="Sprite2D" parent="." unique_id=1512357119]
 z_index = -38
 texture_filter = 1
 position = Vector2(600, 360)
 texture = ExtResource("4_tjoum")
 
-[node name="Chandelier_2400" type="Sprite2D" parent="." unique_id=1479257343]
+[node name="Chandelier_2400" type="Sprite2D" parent="." unique_id=442522594]
 z_index = -38
 texture_filter = 1
 position = Vector2(2400, 360)
 texture = ExtResource("4_tjoum")
 
-[node name="Chandelier_4200" type="Sprite2D" parent="." unique_id=1760189780]
+[node name="Chandelier_4200" type="Sprite2D" parent="." unique_id=1137778604]
 z_index = -38
 texture_filter = 1
 position = Vector2(4200, 360)
 texture = ExtResource("4_tjoum")
 
-[node name="Chandelier_6000" type="Sprite2D" parent="." unique_id=1658935909]
+[node name="Chandelier_6000" type="Sprite2D" parent="." unique_id=392310878]
 z_index = -38
 texture_filter = 1
 position = Vector2(6000, 360)
 texture = ExtResource("4_tjoum")
 
-[node name="PH_Terrain_GroundL" type="StaticBody2D" parent="." unique_id=1538861820]
+[node name="PH_Terrain_GroundL" type="StaticBody2D" parent="." unique_id=1818970160]
 editor_description = "[物料] 类别=地形 | 贴图=res://assets/floor_stone.png | 备注=左侧地面 -500~2100"
 position = Vector2(800, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundL" unique_id=225420392]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundL" unique_id=558719751]
 shape = SubResource("RectangleShape2D_v4no4")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundL" unique_id=1752634147]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundL" unique_id=233506608]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-1300, -200)
@@ -110,14 +110,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1300, 200)
 
-[node name="PH_Terrain_GroundR" type="StaticBody2D" parent="." unique_id=797514858]
+[node name="PH_Terrain_GroundR" type="StaticBody2D" parent="." unique_id=1507353808]
 editor_description = "[物料] 类别=地形 | 贴图=res://assets/floor_stone.png | 备注=右侧地面 2580~7500"
 position = Vector2(5040, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundR" unique_id=578171115]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundR" unique_id=1190525577]
 shape = SubResource("RectangleShape2D_jy485")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundR" unique_id=41009344]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundR" unique_id=1121065561]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-2460, -200)
@@ -127,14 +127,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2460, 200)
 
-[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1397262137]
+[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1115636015]
 editor_description = "[物料] 类别=地形 | 贴图=res://assets/stone_block.png | 备注=跳跃教学"
 position = Vector2(1000, 800)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=2011919389]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=412339388]
 shape = SubResource("RectangleShape2D_qxil5")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_JumpBlock" unique_id=884625889]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_JumpBlock" unique_id=479430189]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-80, -80)
@@ -143,18 +143,18 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 160, 160)
 
-[node name="DeathZone" type="Area2D" parent="." unique_id=325390201]
+[node name="DeathZone" type="Area2D" parent="." unique_id=1326688316]
 position = Vector2(2340, 1080)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1824778510]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1073318457]
 shape = SubResource("RectangleShape2D_5gad0")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=2046788183]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1403144705]
 position = Vector2(200, 740)
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=1847612546]
+[node name="PartyManager" type="Node2D" parent="." unique_id=1160845249]
 script = ExtResource("7_08yhi")
 
 [node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("8_b2nau")]
@@ -186,12 +186,12 @@ position = Vector2(5500, 700)
 collision_layer = 4
 script = ExtResource("17_5vxda")
 
-[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=1355973221 instance=ExtResource("12_0dl17")]
+[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=2112022742 instance=ExtResource("12_0dl17")]
 position = Vector2(6000, 700)
 collision_layer = 4
 script = ExtResource("13_bqfht")
 
-[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=1113497382 instance=ExtResource("16_sfsd2")]
+[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=124228852 instance=ExtResource("16_sfsd2")]
 position = Vector2(6400, 700)
 collision_layer = 4
 script = ExtResource("17_5vxda")
@@ -213,12 +213,12 @@ monitoring = false
 script = ExtResource("21_1da40")
 
 [node name="Door_A" type="StaticBody2D" parent="." unique_id=185073187 instance=ExtResource("22_cyy35")]
-position = Vector2(3560, 700)
-scale = Vector2(2, 3)
+position = Vector2(3560, 580)
+scale = Vector2(2.5, 6)
 collision_mask = 0
 script = ExtResource("23_ccthf")
 
-[node name="Switch_B" type="Area2D" parent="." unique_id=135948766 instance=ExtResource("20_5hj4c")]
+[node name="Switch_B" type="Area2D" parent="." unique_id=1499403385 instance=ExtResource("20_5hj4c")]
 position = Vector2(4450, 420)
 scale = Vector2(2, 2)
 collision_layer = 128
@@ -226,9 +226,9 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("21_1da40")
 
-[node name="Door_B" type="StaticBody2D" parent="." unique_id=1210231563 instance=ExtResource("22_cyy35")]
-position = Vector2(4500, 700)
-scale = Vector2(2, 3)
+[node name="Door_B" type="StaticBody2D" parent="." unique_id=1966379494 instance=ExtResource("22_cyy35")]
+position = Vector2(4500, 580)
+scale = Vector2(2.5, 6)
 collision_mask = 0
 script = ExtResource("23_ccthf")
 
@@ -238,7 +238,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("25_imrb0")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=1597373213 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=808554079 node_paths=PackedStringArray("party_manager")]
 position = Vector2(200, 740)
 zoom = Vector2(1.5, 1.5)
 limit_left = -500
@@ -252,7 +252,7 @@ party_manager = NodePath("../PartyManager")
 script = ExtResource("28_41vox")
 party_manager = NodePath("../PartyManager")
 
-[node name="L_Move" type="Label" parent="." unique_id=925925796]
+[node name="L_Move" type="Label" parent="." unique_id=1596851407]
 z_index = 10
 offset_left = 240.0
 offset_top = 600.0
@@ -266,7 +266,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "A / D  左右移动"
 
-[node name="L_Jump" type="Label" parent="." unique_id=2107748286]
+[node name="L_Jump" type="Label" parent="." unique_id=136230070]
 z_index = 10
 offset_left = 900.0
 offset_top = 560.0
@@ -280,7 +280,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Space  跳跃"
 
-[node name="L_Attack" type="Label" parent="." unique_id=1641137520]
+[node name="L_Attack" type="Label" parent="." unique_id=1722538281]
 z_index = 10
 offset_left = 1300.0
 offset_top = 560.0
@@ -294,7 +294,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "遇到敌人 — 鼠标攻击"
 
-[node name="L_Pit" type="Label" parent="." unique_id=114369331]
+[node name="L_Pit" type="Label" parent="." unique_id=1014851171]
 z_index = 10
 offset_left = 2000.0
 offset_top = 540.0
@@ -308,7 +308,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "深坑！只有剑士二段跳能过"
 
-[node name="L_Ally" type="Label" parent="." unique_id=1190892701]
+[node name="L_Ally" type="Label" parent="." unique_id=1147900003]
 z_index = 10
 offset_left = 2470.0
 offset_top = 430.0
@@ -322,7 +322,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "遇到伙伴，Tab 替换角色"
 
-[node name="L_Switch" type="Label" parent="." unique_id=1265073069]
+[node name="L_Switch" type="Label" parent="." unique_id=630772114]
 z_index = 10
 offset_left = 3020.0
 offset_top = 520.0
@@ -336,7 +336,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "鼠标瞄准射箭"
 
-[node name="L_Shoot" type="Label" parent="." unique_id=327398679]
+[node name="L_Shoot" type="Label" parent="." unique_id=1933759562]
 z_index = 10
 offset_left = 3120.0
 offset_top = 380.0
@@ -351,7 +351,7 @@ theme_override_constants/outline_size = 10
 text = "墙挡路！射高处的开关
 墙会下降"
 
-[node name="L_Shoot2" type="Label" parent="." unique_id=1647405938]
+[node name="L_Shoot2" type="Label" parent="." unique_id=1760876232]
 z_index = 10
 offset_left = 4120.0
 offset_top = 340.0
@@ -366,7 +366,7 @@ theme_override_constants/outline_size = 10
 text = "又一道墙
 打更高处的开关"
 
-[node name="L_Goblin" type="Label" parent="." unique_id=98263566]
+[node name="L_Goblin" type="Label" parent="." unique_id=883811232]
 z_index = 10
 offset_left = 4780.0
 offset_top = 540.0
@@ -380,7 +380,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "小心：哥布林弓箭手"
 
-[node name="L_Exit" type="Label" parent="." unique_id=1096716676]
+[node name="L_Exit" type="Label" parent="." unique_id=40407495]
 z_index = 10
 offset_left = 6650.0
 offset_top = 560.0

@@ -216,7 +216,7 @@ animations = [
 collision_layer = 2
 script = ExtResource("1_5rr7p")
 move_speed = 650.0
-jump_velocity = -850.0
+jump_velocity = -425.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1325363496]
 texture_filter = 1

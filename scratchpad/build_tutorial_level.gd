@@ -9,6 +9,7 @@ const SWITCH := "res://scenes/puzzle/switch.tscn"
 const DOOR := "res://scenes/puzzle/door.tscn"
 const PICKUP := "res://scenes/world/archer_pickup.tscn"
 const EXIT := "res://scenes/world/level_exit.tscn"
+const PORTAL := "res://scenes/entities/props/room_portal.tscn"
 const HUD := "res://scenes/ui/hud.tscn"
 
 var _root: Node2D
@@ -16,8 +17,8 @@ var _font: Font
 
 func _initialize() -> void:
 	_root = Node2D.new()
-	_root.name = "TutorialLevel"
-	_root.set_script(load("res://scripts/world/tutorial_level.gd"))
+	_root.name = "RoomTutorial"
+	_root.set_script(load("res://scripts/systems/room_base.gd"))
 	_font = _tutorial_font()
 
 	# ===== 背景（平铺地牢大厅，最底层）=====
@@ -71,7 +72,10 @@ func _initialize() -> void:
 	_door("Door_B", 4500)
 
 	# ===== 出口 =====
-	var exit := _inst(EXIT); exit.name = "LevelExit"; exit.position = Vector2(6800, 704); _add(exit)
+	# 出口：传送门 → 第二关（携带队伍状态）
+	var exit := _inst(PORTAL); exit.name = "Portal_ToLevel2"; exit.position = Vector2(6800, 704)
+	exit.entry_id = "exit"; exit.target_room = "res://scenes/level_2.tscn"; exit.target_entry = ""
+	_add(exit)
 
 	# ===== 相机 + HUD =====
 	var cam := Camera2D.new()
@@ -99,10 +103,13 @@ func _initialize() -> void:
 	_label("L_Exit", 6650, 560, "终点 →")
 
 	_root.party_manager = pm
+	var locked: Array[String] = ["Archer"]   # 开局锁定射手，拾取后解锁（教学拾取点）
+	_root.set("locked_characters", locked)
+	_root.set("default_entry", "")            # 无入口时回退到 SpawnPoint
 
 	var packed := PackedScene.new()
 	var perr := packed.pack(_root)
-	var serr := ResourceSaver.save(packed, "res://scenes/tutorial_level.tscn")
+	var serr := ResourceSaver.save(packed, "res://scenes/rooms/room_tutorial.tscn")
 	print("[tutorial_level] pack=", perr, " save=", serr, " children=", _root.get_child_count())
 	quit()
 

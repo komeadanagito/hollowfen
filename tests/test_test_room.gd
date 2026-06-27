@@ -61,7 +61,7 @@ func _run() -> void:
 		scene.free()
 		await process_frame
 
-	t.eq(ProjectSettings.get_setting("application/run/main_scene", ""), "res://scenes/rooms/room_tutorial_a.tscn", "main scene points to first room")
+	t.eq(ProjectSettings.get_setting("application/run/main_scene", ""), "res://scenes/rooms/room_tutorial.tscn", "main scene points to tutorial room")
 	quit(t.summary("test_room"))
 
 func _make_char() -> CharacterBase:

@@ -94,10 +94,10 @@ func _initialize() -> void:
 	var hud := _inst(HUD); hud.name = "HUD"; hud.party_manager = pm; _add(hud)
 
 	# === Labels ===
-	_label("L_FromA",   -50,  540, "<- Room A")
-	_label("L_Goblins", 800,  540, "Goblins! Watch the arrows")
-	_label("L_Switch2", 2180, 520, "Another wall — shoot higher")
-	_label("L_Exit",    3600, 540, "Exit ->")
+	_label("L_FromA",   -50,  540, "← 返回上个区域")
+	_label("L_Goblins", 800,  540, "小心：哥布林弓箭手")
+	_label("L_Switch2", 2180, 520, "又一道墙，打更高的开关")
+	_label("L_Exit",    3600, 540, "前往第二关 →")
 
 	# === Root exports ===
 	_root.party_manager = pm

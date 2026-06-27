@@ -89,14 +89,14 @@ func _initialize() -> void:
 	var hud := _inst(HUD); hud.name = "HUD"; hud.party_manager = pm; _add(hud)
 
 	# === Labels ===
-	_label("L_Move",   240,  600, "A / D  move left/right")
-	_label("L_Jump",   900,  560, "Space  jump")
-	_label("L_Attack", 1300, 560, "Mouse to attack")
-	_label("L_Pit",    2000, 540, "Pit! Knight double-jump crosses")
-	_label("L_Ally",   2470, 430, "Ally! Tab to switch")
-	_label("L_Switch", 3020, 520, "Aim and shoot arrow")
-	_label("L_Wall",   3120, 380, "Wall blocks! Shoot the switch\nit will lower")
-	_label("L_ToB",    3550, 540, "Room B ->")
+	_label("L_Move",   240,  600, "A / D  左右移动")
+	_label("L_Jump",   900,  560, "Space  跳跃")
+	_label("L_Attack", 1300, 560, "遇到敌人 — 鼠标攻击")
+	_label("L_Pit",    2000, 540, "深坑！只有剑士二段跳能过")
+	_label("L_Ally",   2470, 430, "遇到伙伴，Tab 替换角色")
+	_label("L_Switch", 3020, 520, "鼠标瞄准射箭")
+	_label("L_Wall",   3120, 380, "墙挡路！射高处的开关\n墙会下降")
+	_label("L_ToB",    3550, 540, "前往下个区域 →")
 
 	# === Root exports ===
 	_root.party_manager = pm

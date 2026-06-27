@@ -1,253 +1,253 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/systems/room_base.gd" id="1_h63ma"]
-[ext_resource type="Texture2D" path="res://assets/scene/background_far.png" id="2_enk20"]
-[ext_resource type="Texture2D" path="res://assets/scene/ceiling_stone.png" id="3_0o8d0"]
-[ext_resource type="Texture2D" path="res://assets/scene/chandelier.png" id="4_85j5r"]
-[ext_resource type="Texture2D" path="res://assets/scene/floor_stone.png" id="5_i0g4r"]
-[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="6_pwxtl"]
-[ext_resource type="PackedScene" path="res://scenes/entities/props/room_portal.tscn" id="7_tk6ts"]
-[ext_resource type="Script" path="res://scripts/systems/room_portal.gd" id="8_gux31"]
-[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="9_3af11"]
-[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="10_3jxkt"]
-[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="11_4crsn"]
-[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="12_7dm0u"]
-[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="13_fp0ge"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/ranged_goblin.tscn" id="14_ho0wg"]
-[ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="15_djucc"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/melee_goblin.tscn" id="16_88isg"]
-[ext_resource type="Script" path="res://scripts/enemies/melee_goblin.gd" id="17_hsjsm"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="18_hdtbp"]
-[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="19_kt2na"]
-[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="20_0rm51"]
-[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="21_qs5hf"]
-[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="22_10xdj"]
-[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="23_qkajo"]
-[ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="24_7ru2l"]
-[ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="25_yqbbo"]
-[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="26_hgbor"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="27_fshpw"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="28_wukxg"]
+[ext_resource type="Script" path="res://scripts/systems/room_base.gd" id="1_05gyu"]
+[ext_resource type="Texture2D" path="res://assets/scene/background_far.png" id="2_anu0r"]
+[ext_resource type="Texture2D" path="res://assets/scene/ceiling_stone.png" id="3_h63ma"]
+[ext_resource type="Texture2D" path="res://assets/scene/chandelier.png" id="4_enk20"]
+[ext_resource type="Texture2D" path="res://assets/scene/floor_stone.png" id="5_0o8d0"]
+[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="6_85j5r"]
+[ext_resource type="PackedScene" path="res://scenes/entities/props/room_portal.tscn" id="7_i0g4r"]
+[ext_resource type="Script" path="res://scripts/systems/room_portal.gd" id="8_pwxtl"]
+[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="9_tk6ts"]
+[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="10_gux31"]
+[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="11_3af11"]
+[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="12_3jxkt"]
+[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="13_4crsn"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/ranged_goblin.tscn" id="14_7dm0u"]
+[ext_resource type="Script" path="res://scripts/enemies/ranged_goblin.gd" id="15_fp0ge"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/melee_goblin.tscn" id="16_ho0wg"]
+[ext_resource type="Script" path="res://scripts/enemies/melee_goblin.gd" id="17_djucc"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="18_88isg"]
+[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="19_hsjsm"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="20_hdtbp"]
+[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="21_kt2na"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="22_0rm51"]
+[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="23_qs5hf"]
+[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="24_10xdj"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="25_qkajo"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="26_7ru2l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwyu7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqbbo"]
 size = Vector2(4400, 400)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jamb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgbor"]
 size = Vector2(200, 80)
 
-[sub_resource type="SystemFont" id="SystemFont_npigr"]
+[sub_resource type="SystemFont" id="SystemFont_fshpw"]
 font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
 
-[node name="RoomTutorialB" type="Node2D" unique_id=887231704 node_paths=PackedStringArray("party_manager")]
-script = ExtResource("1_h63ma")
+[node name="RoomTutorialB" type="Node2D" unique_id=12560814 node_paths=PackedStringArray("party_manager")]
+script = ExtResource("1_05gyu")
 party_manager = NodePath("PartyManager")
 default_entry = "from_a"
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1268681110]
+[node name="Background" type="Sprite2D" parent="." unique_id=1828704174]
 z_index = -100
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-200, -120)
-texture = ExtResource("2_enk20")
+texture = ExtResource("2_anu0r")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4500, 1120)
 
-[node name="Ceiling" type="Sprite2D" parent="." unique_id=1914926437]
+[node name="Ceiling" type="Sprite2D" parent="." unique_id=1877365918]
 z_index = -40
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-200, 60)
 scale = Vector2(2, 2)
-texture = ExtResource("3_0o8d0")
+texture = ExtResource("3_h63ma")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2250, 115)
 
-[node name="Chandelier_800" type="Sprite2D" parent="." unique_id=733795526]
+[node name="Chandelier_800" type="Sprite2D" parent="." unique_id=815951856]
 z_index = -38
 texture_filter = 1
 position = Vector2(800, 360)
-texture = ExtResource("4_85j5r")
+texture = ExtResource("4_enk20")
 
-[node name="Chandelier_2600" type="Sprite2D" parent="." unique_id=89853041]
+[node name="Chandelier_2600" type="Sprite2D" parent="." unique_id=141534423]
 z_index = -38
 texture_filter = 1
 position = Vector2(2600, 360)
-texture = ExtResource("4_85j5r")
+texture = ExtResource("4_enk20")
 
-[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1768199366]
+[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1419229613]
 editor_description = "[Terrain] tex=res://assets/scene/floor_stone.png note=Room B ground"
 position = Vector2(2000, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=216861105]
-shape = SubResource("RectangleShape2D_vwyu7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=384461175]
+shape = SubResource("RectangleShape2D_yqbbo")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_Ground" unique_id=147003601]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_Ground" unique_id=650060208]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-2200, -200)
 scale = Vector2(2, 2)
-texture = ExtResource("5_i0g4r")
+texture = ExtResource("5_0o8d0")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2200, 200)
 
-[node name="PH_Platform_Switch" type="StaticBody2D" parent="." unique_id=922211876]
+[node name="PH_Platform_Switch" type="StaticBody2D" parent="." unique_id=2990186]
 editor_description = "[Terrain] tex=res://assets/scene/stone_block.png note=Switch platform"
 position = Vector2(2500, 720)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Platform_Switch" unique_id=1516136287]
-shape = SubResource("RectangleShape2D_4jamb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Platform_Switch" unique_id=18730013]
+shape = SubResource("RectangleShape2D_hgbor")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Platform_Switch" unique_id=1553398800]
+[node name="Sprite" type="Sprite2D" parent="PH_Platform_Switch" unique_id=1109276650]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-100, -40)
-texture = ExtResource("6_pwxtl")
+texture = ExtResource("6_85j5r")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 200, 80)
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1047968532]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1097620104]
 position = Vector2(200, 700)
 
-[node name="Portal_FromA" type="Area2D" parent="." unique_id=572762153 instance=ExtResource("7_tk6ts")]
+[node name="Portal_FromA" type="Area2D" parent="." unique_id=572762153 instance=ExtResource("7_i0g4r")]
 position = Vector2(100, 700)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("8_gux31")
+script = ExtResource("8_pwxtl")
 entry_id = "from_a"
 target_room = "res://scenes/rooms/room_tutorial_a.tscn"
 target_entry = "from_b"
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=1255972856]
-script = ExtResource("9_3af11")
+[node name="PartyManager" type="Node2D" parent="." unique_id=1953829339]
+script = ExtResource("9_tk6ts")
 
-[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("10_3jxkt")]
+[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("10_gux31")]
 position = Vector2(100, 700)
 collision_layer = 2
-script = ExtResource("11_4crsn")
+script = ExtResource("11_3af11")
 move_speed = 450.0
 air_jumps = 1
 dash_enabled = true
 
-[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("12_7dm0u")]
+[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("12_3jxkt")]
 position = Vector2(100, 700)
 collision_layer = 2
-script = ExtResource("13_fp0ge")
+script = ExtResource("13_4crsn")
 move_speed = 650.0
 jump_velocity = -700.0
 
-[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=751289559 instance=ExtResource("14_ho0wg")]
+[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=751289559 instance=ExtResource("14_7dm0u")]
 position = Vector2(900, 700)
 collision_layer = 4
-script = ExtResource("15_djucc")
+script = ExtResource("15_fp0ge")
 
-[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=476674640 instance=ExtResource("16_88isg")]
+[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=476674640 instance=ExtResource("16_ho0wg")]
 position = Vector2(1600, 700)
 collision_layer = 4
-script = ExtResource("17_hsjsm")
+script = ExtResource("17_djucc")
 
-[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("18_hdtbp")]
+[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("18_88isg")]
 position = Vector2(2200, 700)
 collision_layer = 4
-script = ExtResource("19_kt2na")
+script = ExtResource("19_hsjsm")
 
-[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=705351408 instance=ExtResource("14_ho0wg")]
+[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=1134761401 instance=ExtResource("14_7dm0u")]
 position = Vector2(3000, 700)
 collision_layer = 4
-script = ExtResource("15_djucc")
+script = ExtResource("15_fp0ge")
 
-[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=291294326 instance=ExtResource("16_88isg")]
+[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=1751904712 instance=ExtResource("16_ho0wg")]
 position = Vector2(3400, 700)
 collision_layer = 4
-script = ExtResource("17_hsjsm")
+script = ExtResource("17_djucc")
 
-[node name="Switch_B" type="Area2D" parent="." unique_id=1059127097 instance=ExtResource("20_0rm51")]
+[node name="Switch_B" type="Area2D" parent="." unique_id=1059127097 instance=ExtResource("20_hdtbp")]
 position = Vector2(2550, 420)
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
-script = ExtResource("21_qs5hf")
+script = ExtResource("21_kt2na")
 
-[node name="Door_B" type="StaticBody2D" parent="." unique_id=185073187 instance=ExtResource("22_10xdj")]
+[node name="Door_B" type="StaticBody2D" parent="." unique_id=185073187 instance=ExtResource("22_0rm51")]
 position = Vector2(2600, 580)
 scale = Vector2(2.5, 6)
 collision_mask = 0
-script = ExtResource("23_qkajo")
+script = ExtResource("23_qs5hf")
 
-[node name="LevelExit" type="Area2D" parent="." unique_id=33333112 instance=ExtResource("24_7ru2l")]
+[node name="Portal_ToLevel2" type="Area2D" parent="." unique_id=1793101542 instance=ExtResource("7_i0g4r")]
 position = Vector2(3800, 704)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("25_yqbbo")
+script = ExtResource("8_pwxtl")
+entry_id = "exit"
+target_room = "res://scenes/level_2.tscn"
 
-[node name="Camera" type="Camera2D" parent="." unique_id=960947242 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=768655674 node_paths=PackedStringArray("party_manager")]
 position = Vector2(100, 700)
 zoom = Vector2(1.5, 1.5)
 limit_left = -200
 limit_top = 120
 limit_right = 4200
 limit_bottom = 1000
-script = ExtResource("26_hgbor")
+script = ExtResource("24_10xdj")
 party_manager = NodePath("../PartyManager")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=173317282 node_paths=PackedStringArray("party_manager") instance=ExtResource("27_fshpw")]
-script = ExtResource("28_wukxg")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=173317282 node_paths=PackedStringArray("party_manager") instance=ExtResource("25_qkajo")]
+script = ExtResource("26_7ru2l")
 party_manager = NodePath("../PartyManager")
 
-[node name="L_FromA" type="Label" parent="." unique_id=468800777]
+[node name="L_FromA" type="Label" parent="." unique_id=733617933]
 z_index = 10
 offset_left = -50.0
 offset_top = 540.0
 offset_right = -50.0
 offset_bottom = 540.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_npigr")
+theme_override_fonts/font = SubResource("SystemFont_fshpw")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "<- Room A"
 
-[node name="L_Goblins" type="Label" parent="." unique_id=1647051100]
+[node name="L_Goblins" type="Label" parent="." unique_id=782386673]
 z_index = 10
 offset_left = 800.0
 offset_top = 540.0
 offset_right = 800.0
 offset_bottom = 540.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_npigr")
+theme_override_fonts/font = SubResource("SystemFont_fshpw")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Goblins! Watch the arrows"
 
-[node name="L_Switch2" type="Label" parent="." unique_id=1812150029]
+[node name="L_Switch2" type="Label" parent="." unique_id=474547102]
 z_index = 10
 offset_left = 2180.0
 offset_top = 520.0
 offset_right = 2180.0
 offset_bottom = 520.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_npigr")
+theme_override_fonts/font = SubResource("SystemFont_fshpw")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Another wall — shoot higher"
 
-[node name="L_Exit" type="Label" parent="." unique_id=1502654112]
+[node name="L_Exit" type="Label" parent="." unique_id=1049131785]
 z_index = 10
 offset_left = 3600.0
 offset_top = 540.0
 offset_right = 3600.0
 offset_bottom = 540.0
 theme_override_constants/line_spacing = 4
-theme_override_fonts/font = SubResource("SystemFont_npigr")
+theme_override_fonts/font = SubResource("SystemFont_fshpw")
 theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)

@@ -71,8 +71,14 @@ func _initialize() -> void:
 	_switch("Switch_B", 2550, 420)
 	_door("Door_B", 2600)
 
-	# === Level exit ===
-	var exit := _inst(EXIT); exit.name = "LevelExit"; exit.position = Vector2(3800, 704); _add(exit)
+	# === Exit portal → Level 2 (carries party state via Game) ===
+	var portal_l2 := _inst(PORTAL)
+	portal_l2.name = "Portal_ToLevel2"
+	portal_l2.position = Vector2(3800, 704)
+	portal_l2.entry_id = "exit"
+	portal_l2.target_room = "res://scenes/level_2.tscn"
+	portal_l2.target_entry = ""
+	_add(portal_l2)
 
 	# === Camera + HUD ===
 	var cam := Camera2D.new()

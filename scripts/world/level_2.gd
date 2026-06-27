@@ -9,6 +9,10 @@ func _ready() -> void:
 	if party_manager == null:
 		party_manager = get_node_or_null("PartyManager") as PartyManager
 	_lock_new_party_members()
+	# 从教学房间过来时，带回队伍状态（剑士/射手的血量/解锁/血瓶）；
+	# 新成员(少女/大锤)不在 Game 记录里，保持本关的初始锁定。
+	if has_node("/root/Game") and party_manager:
+		get_node("/root/Game").apply_party_state(party_manager)
 	for suffix in ["A", "B"]:
 		_wire_switch_door("Switch_" + suffix, "Door_" + suffix)
 	_wire_deaths()

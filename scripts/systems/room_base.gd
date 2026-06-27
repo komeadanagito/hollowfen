@@ -3,15 +3,30 @@ extends Node2D
 
 @export var party_manager: PartyManager
 @export var default_entry: String = ""
+## Characters listed here are locked at room entry on a fresh boot.
+## On a revisit, Game.apply_party_state() will override with the persisted
+## unlocked state, so this only affects the very first time the room loads.
+@export var locked_characters: Array[String] = []
 
 func _ready() -> void:
 	add_to_group("room")
 	if party_manager == null:
 		party_manager = get_node_or_null("PartyManager") as PartyManager
+	_apply_initial_locks()
 	if has_node("/root/Game") and party_manager:
 		get_node("/root/Game").apply_party_state(party_manager)
 	_place_party_at_entry()
 	_wire_room()
+
+## Lock characters listed in `locked_characters` before Game state is applied.
+## Order matters: this runs BEFORE apply_party_state so that a persisted
+## unlocked state (from a revisit) correctly overrides the initial lock.
+func _apply_initial_locks() -> void:
+	if party_manager == null or locked_characters.is_empty():
+		return
+	for c in party_manager.get_characters():
+		if c.name in locked_characters:
+			party_manager.set_unlocked(c, false)
 
 func depart(room_path: String, entry_id: String) -> void:
 	if has_node("/root/Game") and party_manager:
@@ -39,6 +54,7 @@ func _entry_position(entry_id: String) -> Vector2:
 	var spawn := get_node_or_null("SpawnPoint") as Marker2D
 	if spawn:
 		return spawn.global_position
+	push_warning("Room: no entry '%s' and no SpawnPoint; spawning at origin" % entry_id)
 	return global_position
 
 func _find_portals() -> Array:
@@ -49,6 +65,9 @@ func _find_portals() -> Array:
 	return out
 
 func _wire_room() -> void:
+	# Auto-wire switch/door pairs by naming convention:
+	# Switch_A / Door_A, Switch_B / Door_B, Switch_C / Door_C (max 3 pairs).
+	# Each Switch.activated signal is connected to the matching Door.open method.
 	for suffix in ["A", "B", "C"]:
 		var sw := get_node_or_null("Switch_" + suffix) as Switch
 		var dr := get_node_or_null("Door_" + suffix) as Door

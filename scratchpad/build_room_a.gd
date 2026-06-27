@@ -101,6 +101,8 @@ func _initialize() -> void:
 	# === Root exports ===
 	_root.party_manager = pm
 	_root.default_entry = ""   # falls back to SpawnPoint node
+	var lc: Array[String] = ["Archer"]   # Archer locked until ArcherPickup is collected
+	_root.set("locked_characters", lc)
 
 	var packed := PackedScene.new()
 	var perr := packed.pack(_root)

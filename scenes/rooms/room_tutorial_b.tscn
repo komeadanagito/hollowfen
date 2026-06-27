@@ -38,12 +38,12 @@ size = Vector2(200, 80)
 [sub_resource type="SystemFont" id="SystemFont_npigr"]
 font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
 
-[node name="RoomTutorialB" type="Node2D" unique_id=543756919 node_paths=PackedStringArray("party_manager")]
+[node name="RoomTutorialB" type="Node2D" unique_id=887231704 node_paths=PackedStringArray("party_manager")]
 script = ExtResource("1_h63ma")
 party_manager = NodePath("PartyManager")
 default_entry = "from_a"
 
-[node name="Background" type="Sprite2D" parent="." unique_id=924049752]
+[node name="Background" type="Sprite2D" parent="." unique_id=1268681110]
 z_index = -100
 texture_filter = 1
 texture_repeat = 2
@@ -53,7 +53,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4500, 1120)
 
-[node name="Ceiling" type="Sprite2D" parent="." unique_id=1432147475]
+[node name="Ceiling" type="Sprite2D" parent="." unique_id=1914926437]
 z_index = -40
 texture_filter = 1
 texture_repeat = 2
@@ -64,26 +64,26 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2250, 115)
 
-[node name="Chandelier_800" type="Sprite2D" parent="." unique_id=1408338459]
+[node name="Chandelier_800" type="Sprite2D" parent="." unique_id=733795526]
 z_index = -38
 texture_filter = 1
 position = Vector2(800, 360)
 texture = ExtResource("4_85j5r")
 
-[node name="Chandelier_2600" type="Sprite2D" parent="." unique_id=1423100019]
+[node name="Chandelier_2600" type="Sprite2D" parent="." unique_id=89853041]
 z_index = -38
 texture_filter = 1
 position = Vector2(2600, 360)
 texture = ExtResource("4_85j5r")
 
-[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1781145160]
+[node name="PH_Terrain_Ground" type="StaticBody2D" parent="." unique_id=1768199366]
 editor_description = "[Terrain] tex=res://assets/scene/floor_stone.png note=Room B ground"
 position = Vector2(2000, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=1013433463]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_Ground" unique_id=216861105]
 shape = SubResource("RectangleShape2D_vwyu7")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_Ground" unique_id=469826639]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_Ground" unique_id=147003601]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-2200, -200)
@@ -93,14 +93,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2200, 200)
 
-[node name="PH_Platform_Switch" type="StaticBody2D" parent="." unique_id=307735478]
+[node name="PH_Platform_Switch" type="StaticBody2D" parent="." unique_id=922211876]
 editor_description = "[Terrain] tex=res://assets/scene/stone_block.png note=Switch platform"
 position = Vector2(2500, 720)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Platform_Switch" unique_id=2142810266]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Platform_Switch" unique_id=1516136287]
 shape = SubResource("RectangleShape2D_4jamb")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Platform_Switch" unique_id=1941540579]
+[node name="Sprite" type="Sprite2D" parent="PH_Platform_Switch" unique_id=1553398800]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-100, -40)
@@ -108,6 +108,9 @@ texture = ExtResource("6_pwxtl")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 200, 80)
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1047968532]
+position = Vector2(200, 700)
 
 [node name="Portal_FromA" type="Area2D" parent="." unique_id=572762153 instance=ExtResource("7_tk6ts")]
 position = Vector2(100, 700)
@@ -118,7 +121,7 @@ entry_id = "from_a"
 target_room = "res://scenes/rooms/room_tutorial_a.tscn"
 target_entry = "from_b"
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=1836855110]
+[node name="PartyManager" type="Node2D" parent="." unique_id=1255972856]
 script = ExtResource("9_3af11")
 
 [node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("10_3jxkt")]
@@ -151,12 +154,12 @@ position = Vector2(2200, 700)
 collision_layer = 4
 script = ExtResource("19_kt2na")
 
-[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=622349641 instance=ExtResource("14_ho0wg")]
+[node name="Enemy4" type="CharacterBody2D" parent="." unique_id=705351408 instance=ExtResource("14_ho0wg")]
 position = Vector2(3000, 700)
 collision_layer = 4
 script = ExtResource("15_djucc")
 
-[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=385703175 instance=ExtResource("16_88isg")]
+[node name="Enemy5" type="CharacterBody2D" parent="." unique_id=291294326 instance=ExtResource("16_88isg")]
 position = Vector2(3400, 700)
 collision_layer = 4
 script = ExtResource("17_hsjsm")
@@ -181,7 +184,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("25_yqbbo")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=1090885448 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=960947242 node_paths=PackedStringArray("party_manager")]
 position = Vector2(100, 700)
 zoom = Vector2(1.5, 1.5)
 limit_left = -200
@@ -195,7 +198,7 @@ party_manager = NodePath("../PartyManager")
 script = ExtResource("28_wukxg")
 party_manager = NodePath("../PartyManager")
 
-[node name="L_FromA" type="Label" parent="." unique_id=504634948]
+[node name="L_FromA" type="Label" parent="." unique_id=468800777]
 z_index = 10
 offset_left = -50.0
 offset_top = 540.0
@@ -209,7 +212,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "<- Room A"
 
-[node name="L_Goblins" type="Label" parent="." unique_id=507491525]
+[node name="L_Goblins" type="Label" parent="." unique_id=1647051100]
 z_index = 10
 offset_left = 800.0
 offset_top = 540.0
@@ -223,7 +226,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Goblins! Watch the arrows"
 
-[node name="L_Switch2" type="Label" parent="." unique_id=710848998]
+[node name="L_Switch2" type="Label" parent="." unique_id=1812150029]
 z_index = 10
 offset_left = 2180.0
 offset_top = 520.0
@@ -237,7 +240,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Another wall — shoot higher"
 
-[node name="L_Exit" type="Label" parent="." unique_id=1786239240]
+[node name="L_Exit" type="Label" parent="." unique_id=1502654112]
 z_index = 10
 offset_left = 3600.0
 offset_top = 540.0

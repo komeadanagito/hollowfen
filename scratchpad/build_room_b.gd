@@ -36,6 +36,11 @@ func _initialize() -> void:
 	# Elevated platform for switch
 	_plat("PH_Platform_Switch", 2500, 680, 200, 80, "Switch platform")
 
+	# === SpawnPoint (safety net for direct scene opens / missing entry_id) ===
+	var spawn := Marker2D.new()
+	spawn.name = "SpawnPoint"; spawn.position = Vector2(200, 700)
+	_add(spawn)
+
 	# === Left entry portal (from_a) — where players arrive from Room A ===
 	var portal_left := _inst(PORTAL)
 	portal_left.name = "Portal_FromA"

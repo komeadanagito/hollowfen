@@ -40,11 +40,12 @@ size = Vector2(480, 360)
 [sub_resource type="SystemFont" id="SystemFont_1m6lk"]
 font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
 
-[node name="RoomTutorialA" type="Node2D" unique_id=683701571 node_paths=PackedStringArray("party_manager")]
+[node name="RoomTutorialA" type="Node2D" unique_id=738547780 node_paths=PackedStringArray("party_manager")]
 script = ExtResource("1_854s7")
 party_manager = NodePath("PartyManager")
+locked_characters = Array[String](["Archer"])
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1086638031]
+[node name="Background" type="Sprite2D" parent="." unique_id=2146458578]
 z_index = -100
 texture_filter = 1
 texture_repeat = 2
@@ -54,7 +55,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4000, 1120)
 
-[node name="Ceiling" type="Sprite2D" parent="." unique_id=387294755]
+[node name="Ceiling" type="Sprite2D" parent="." unique_id=545663379]
 z_index = -40
 texture_filter = 1
 texture_repeat = 2
@@ -65,26 +66,26 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 115)
 
-[node name="Chandelier_600" type="Sprite2D" parent="." unique_id=309491977]
+[node name="Chandelier_600" type="Sprite2D" parent="." unique_id=1892593939]
 z_index = -38
 texture_filter = 1
 position = Vector2(600, 360)
 texture = ExtResource("4_0plsu")
 
-[node name="Chandelier_2400" type="Sprite2D" parent="." unique_id=1564569700]
+[node name="Chandelier_2400" type="Sprite2D" parent="." unique_id=982503417]
 z_index = -38
 texture_filter = 1
 position = Vector2(2400, 360)
 texture = ExtResource("4_0plsu")
 
-[node name="PH_Terrain_GroundL" type="StaticBody2D" parent="." unique_id=669811370]
+[node name="PH_Terrain_GroundL" type="StaticBody2D" parent="." unique_id=1064189140]
 editor_description = "[Terrain] tex=res://assets/scene/floor_stone.png note=Left ground -500~2100"
 position = Vector2(800, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundL" unique_id=1051637840]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundL" unique_id=264006977]
 shape = SubResource("RectangleShape2D_y3m02")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundL" unique_id=281071045]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundL" unique_id=1412045505]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-1300, -200)
@@ -94,14 +95,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1300, 200)
 
-[node name="PH_Terrain_GroundR" type="StaticBody2D" parent="." unique_id=1053500369]
+[node name="PH_Terrain_GroundR" type="StaticBody2D" parent="." unique_id=921275769]
 editor_description = "[Terrain] tex=res://assets/scene/floor_stone.png note=Right ground 2580~3800"
 position = Vector2(3190, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundR" unique_id=348978326]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundR" unique_id=499487203]
 shape = SubResource("RectangleShape2D_3lo4m")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundR" unique_id=1388871916]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundR" unique_id=1855152968]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-610, -200)
@@ -111,14 +112,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 610, 200)
 
-[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1411468385]
+[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=405433592]
 editor_description = "[Terrain] tex=res://assets/scene/stone_block.png note=Jump tutorial block"
 position = Vector2(1000, 800)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=316221217]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=1657586407]
 shape = SubResource("RectangleShape2D_aqxer")
 
-[node name="Sprite" type="Sprite2D" parent="PH_Terrain_JumpBlock" unique_id=1473099230]
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_JumpBlock" unique_id=1886383584]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-80, -80)
@@ -127,18 +128,18 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 160, 160)
 
-[node name="DeathZone" type="Area2D" parent="." unique_id=647334532]
+[node name="DeathZone" type="Area2D" parent="." unique_id=118121671]
 position = Vector2(2340, 1080)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=983248956]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=181009500]
 shape = SubResource("RectangleShape2D_nlthn")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=606323691]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=498871296]
 position = Vector2(200, 740)
 
-[node name="PartyManager" type="Node2D" parent="." unique_id=1461588009]
+[node name="PartyManager" type="Node2D" parent="." unique_id=1688409590]
 script = ExtResource("7_uykxv")
 
 [node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("8_xx22i")]
@@ -192,7 +193,7 @@ entry_id = "from_b"
 target_room = "res://scenes/rooms/room_tutorial_b.tscn"
 target_entry = "from_a"
 
-[node name="Camera" type="Camera2D" parent="." unique_id=94920701 node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=884057817 node_paths=PackedStringArray("party_manager")]
 position = Vector2(200, 740)
 zoom = Vector2(1.5, 1.5)
 limit_left = -500
@@ -206,7 +207,7 @@ party_manager = NodePath("../PartyManager")
 script = ExtResource("24_1mtq4")
 party_manager = NodePath("../PartyManager")
 
-[node name="L_Move" type="Label" parent="." unique_id=1318429558]
+[node name="L_Move" type="Label" parent="." unique_id=1070842557]
 z_index = 10
 offset_left = 240.0
 offset_top = 600.0
@@ -220,7 +221,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "A / D  move left/right"
 
-[node name="L_Jump" type="Label" parent="." unique_id=305375993]
+[node name="L_Jump" type="Label" parent="." unique_id=191781803]
 z_index = 10
 offset_left = 900.0
 offset_top = 560.0
@@ -234,7 +235,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Space  jump"
 
-[node name="L_Attack" type="Label" parent="." unique_id=1381148545]
+[node name="L_Attack" type="Label" parent="." unique_id=1193401235]
 z_index = 10
 offset_left = 1300.0
 offset_top = 560.0
@@ -248,7 +249,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Mouse to attack"
 
-[node name="L_Pit" type="Label" parent="." unique_id=991795483]
+[node name="L_Pit" type="Label" parent="." unique_id=1949329413]
 z_index = 10
 offset_left = 2000.0
 offset_top = 540.0
@@ -262,7 +263,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Pit! Knight double-jump crosses"
 
-[node name="L_Ally" type="Label" parent="." unique_id=1800352144]
+[node name="L_Ally" type="Label" parent="." unique_id=939962829]
 z_index = 10
 offset_left = 2470.0
 offset_top = 430.0
@@ -276,7 +277,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Ally! Tab to switch"
 
-[node name="L_Switch" type="Label" parent="." unique_id=1876374453]
+[node name="L_Switch" type="Label" parent="." unique_id=1768536255]
 z_index = 10
 offset_left = 3020.0
 offset_top = 520.0
@@ -290,7 +291,7 @@ theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
 text = "Aim and shoot arrow"
 
-[node name="L_Wall" type="Label" parent="." unique_id=1068773278]
+[node name="L_Wall" type="Label" parent="." unique_id=1087193004]
 z_index = 10
 offset_left = 3120.0
 offset_top = 380.0
@@ -305,7 +306,7 @@ theme_override_constants/outline_size = 10
 text = "Wall blocks! Shoot the switch
 it will lower"
 
-[node name="L_ToB" type="Label" parent="." unique_id=1319626414]
+[node name="L_ToB" type="Label" parent="." unique_id=258566243]
 z_index = 10
 offset_left = 3550.0
 offset_top = 540.0

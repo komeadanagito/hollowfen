@@ -4,6 +4,8 @@ extends Area2D
 @export var entry_id: String = ""
 @export var target_room: String = ""
 @export var target_entry: String = ""
+## NOT ENFORCED YET — placeholder for a future ability gate (e.g. "double_jump").
+## Wire up enforcement in _on_body_entered when the ability system is ready.
 @export var required_ability: String = ""   # 能力门禁（本期不判定，仅占位）
 
 var _used: bool = false

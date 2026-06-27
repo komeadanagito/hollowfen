@@ -1,7 +1,7 @@
 class_name CharacterBase
 extends CharacterBody2D
 
-enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT }
+enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT, DASH }
 
 @export_group("Movement")
 @export var move_speed: float = 550.0
@@ -13,6 +13,11 @@ enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT }
 @export_group("Feel")
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
+@export_group("Dash")
+@export var dash_enabled: bool = false
+@export var dash_speed: float = 1100.0
+@export var dash_duration: float = 0.16
+@export var dash_cooldown: float = 0.45
 @export_group("Combat")
 @export var attack_duration: float = 0.25
 @export var hurt_duration: float = 0.25
@@ -25,6 +30,8 @@ var _coyote: float = 0.0
 var _jump_buffer: float = 0.0
 var _jumps_left: int = 0             # 剩余空中跳跃次数
 var _state_timer: float = 0.0
+var _dash_cooldown: float = 0.0
+var _dash_was_pressed: bool = false
 var _dead: bool = false
 var _last_safe: Vector2 = Vector2.ZERO   # 最近一次站在地面的位置（死亡切换接管点）
 
@@ -45,6 +52,7 @@ func set_active(active: bool) -> void:
 	_active = active
 	visible = active
 	set_physics_process(active)
+	_set_collision_active(active)
 
 func is_active() -> bool:
 	return _active
@@ -52,11 +60,45 @@ func is_active() -> bool:
 func get_last_safe_position() -> Vector2:
 	return _last_safe
 
+func get_feet_global_y() -> float:
+	return global_position.y + get_feet_offset_y()
+
+func get_feet_global_y_at(pos: Vector2) -> float:
+	return pos.y + get_feet_offset_y()
+
+func get_position_for_feet(pos: Vector2, feet_y: float) -> Vector2:
+	return Vector2(pos.x, feet_y - get_feet_offset_y())
+
+func get_feet_offset_y() -> float:
+	var body_shape := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if body_shape == null or body_shape.shape == null:
+		return 0.0
+	var shape := body_shape.shape
+	if shape is RectangleShape2D:
+		return body_shape.position.y + (shape as RectangleShape2D).size.y * 0.5
+	if shape is CapsuleShape2D:
+		return body_shape.position.y + (shape as CapsuleShape2D).height * 0.5
+	if shape is CircleShape2D:
+		return body_shape.position.y + (shape as CircleShape2D).radius
+	return body_shape.position.y
+
 func get_health() -> Health:
 	return _health
 
 func get_facing() -> int:
 	return _facing
+
+func _set_collision_active(active: bool) -> void:
+	# 用 set_deferred：死亡切换发生在物理 flush 中，直接改碰撞/监听状态会被 Godot 阻止，
+	# 导致新角色碰撞没启用而穿地板。
+	var body_shape := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if body_shape:
+		body_shape.set_deferred("disabled", not active)
+	if _hurtbox:
+		_hurtbox.set_deferred("monitorable", active)
+		for child in _hurtbox.get_children():
+			if child is CollisionShape2D:
+				(child as CollisionShape2D).set_deferred("disabled", not active)
 
 func respawn(pos: Vector2) -> void:
 	_dead = false
@@ -73,6 +115,7 @@ func _physics_process(delta: float) -> void:
 
 	_coyote = maxf(_coyote - delta, 0.0)
 	_jump_buffer = maxf(_jump_buffer - delta, 0.0)
+	_dash_cooldown = maxf(_dash_cooldown - delta, 0.0)
 	if is_on_floor():
 		_coyote = coyote_time
 		_jumps_left = air_jumps
@@ -88,6 +131,8 @@ func _physics_process(delta: float) -> void:
 			_process_attack(delta)
 		State.HURT:
 			_process_hurt(delta)
+		State.DASH:
+			_process_dash(delta)
 
 	_update_animation()
 	move_and_slide()
@@ -98,6 +143,9 @@ func _process_locomotion(delta: float) -> void:
 		dir = Input.get_axis("move_left", "move_right")
 		if Input.is_action_just_pressed("jump"):
 			_jump_buffer = jump_buffer_time
+		if _consume_dash_pressed() and _can_dash():
+			_enter_dash()
+			return
 		if Input.is_action_just_pressed("attack"):
 			_enter_attack()
 			return
@@ -131,8 +179,31 @@ func _enter_attack() -> void:
 	velocity.x = 0.0
 	_do_attack()
 
+func _can_dash() -> bool:
+	return dash_enabled and _dash_cooldown <= 0.0
+
+func _consume_dash_pressed() -> bool:
+	var pressed := Input.is_action_pressed("dash")
+	var just_pressed := pressed and not _dash_was_pressed
+	_dash_was_pressed = pressed
+	return just_pressed
+
+func _enter_dash() -> void:
+	_set_state(State.DASH)
+	_state_timer = dash_duration
+	_dash_cooldown = dash_cooldown
+	velocity.x = _facing * dash_speed
+	velocity.y = 0.0
+
 func _process_attack(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+	_state_timer -= delta
+	if _state_timer <= 0.0:
+		_set_state(State.IDLE)
+
+func _process_dash(delta: float) -> void:
+	velocity.x = _facing * dash_speed
+	velocity.y = 0.0
 	_state_timer -= delta
 	if _state_timer <= 0.0:
 		_set_state(State.IDLE)
@@ -186,6 +257,8 @@ func _update_animation() -> void:
 		State.IDLE:
 			_play_animation(&"idle")
 		State.RUN, State.JUMP, State.FALL:
+			_play_animation(&"walk")
+		State.DASH:
 			_play_animation(&"walk")
 		State.ATTACK:
 			_play_animation(&"attack")

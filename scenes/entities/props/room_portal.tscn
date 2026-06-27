@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/room_portal.gd" id="1_jju1w"]
+[ext_resource type="Texture2D" path="res://assets/prop/level_exit.png" id="2_bf83x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxnnf"]
+size = Vector2(96, 192)
+
+[node name="RoomPortal" type="Area2D" unique_id=572762153]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jju1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440284724]
+shape = SubResource("RectangleShape2D_jxnnf")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=326842560]
+texture_filter = 1
+texture = ExtResource("2_bf83x")

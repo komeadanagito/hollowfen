@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="19_hku2h"]
 [ext_resource type="PackedScene" path="res://scenes/entities/props/room_portal.tscn" id="20_5syyg"]
 [ext_resource type="Script" path="res://scripts/systems/room_portal.gd" id="21_gtt0f"]
-[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="22_stlmh"]
+[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="22_stlmh"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="23_xqilw"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="24_1mtq4"]
 

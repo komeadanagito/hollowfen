@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="5_pfnst"]
 [ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="6_nf0vd"]
 [ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="7_g24fv"]
-[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="8_n7k1x"]
+[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="8_n7k1x"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="9_0mtf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]

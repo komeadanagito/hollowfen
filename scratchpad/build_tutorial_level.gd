@@ -76,7 +76,7 @@ func _initialize() -> void:
 	# ===== 相机 + HUD =====
 	var cam := Camera2D.new()
 	cam.name = "Camera"
-	cam.set_script(load("res://scripts/world/camera_follow.gd"))
+	cam.set_script(load("res://scripts/systems/camera_follow.gd"))
 	cam.position = Vector2(200, 740); cam.party_manager = pm
 	cam.zoom = Vector2(1.5, 1.5)          # 拉近，玩家更大、空白更少
 	cam.limit_left = -500                 # 封死左右上下，看不到关卡外

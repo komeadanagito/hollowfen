@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="23_qkajo"]
 [ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="24_7ru2l"]
 [ext_resource type="Script" path="res://scripts/world/level_exit.gd" id="25_yqbbo"]
-[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="26_hgbor"]
+[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="26_hgbor"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="27_fshpw"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="28_wukxg"]
 

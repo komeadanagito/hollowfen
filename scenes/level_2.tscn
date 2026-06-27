@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="21_switch"]
 [ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="22_door"]
 [ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="23_exit"]
-[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="24_camera"]
+[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="24_camera"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="25_hud"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="26_slime"]
 

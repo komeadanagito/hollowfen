@@ -72,7 +72,7 @@ func _initialize() -> void:
 	# === Camera + HUD ===
 	var cam := Camera2D.new()
 	cam.name = "Camera"
-	cam.set_script(load("res://scripts/world/camera_follow.gd"))
+	cam.set_script(load("res://scripts/systems/camera_follow.gd"))
 	cam.position = Vector2(100, 700); cam.party_manager = pm
 	cam.zoom = Vector2(1.5, 1.5)
 	cam.limit_left = -200

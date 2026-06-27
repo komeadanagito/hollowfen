@@ -224,7 +224,7 @@ shape = SubResource("RectangleShape2D_pickup")
 
 [node name="Sprite" type="Sprite2D" parent="OcarinaPickup"]
 texture_filter = 1
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.18, 0.18)
 texture = ExtResource("11_ocarina_head")
 
 [node name="Enemy_Patrol_1" parent="." instance=ExtResource("15_patrol")]

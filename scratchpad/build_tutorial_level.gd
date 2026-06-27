@@ -95,7 +95,7 @@ func _initialize() -> void:
 	_label("L_Jump", 900, 560, "Space  跳跃")
 	_label("L_Attack", 1300, 560, "遇到敌人 — 鼠标攻击")
 	_label("L_Pit", 2000, 540, "深坑！只有剑士二段跳能过")
-	_label("L_Ally", 2470, 430, "遇到伙伴，Tab 替换角色")
+	_label("L_Ally", 2470, 430, "遇到伙伴，按 2 切换射手")
 	_label("L_Switch", 3020, 520, "鼠标瞄准射箭")
 	_label("L_Shoot", 3120, 380, "墙挡路！射高处的开关\n墙会下降")
 	_label("L_Shoot2", 4120, 340, "又一道墙\n打更高处的开关")

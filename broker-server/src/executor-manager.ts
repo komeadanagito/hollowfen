@@ -1,4 +1,4 @@
-import type { ExecutorInfo } from './types.js'
+import type { ExecutorInfo, ExecutorType } from './types.js'
 
 export class ExecutorManager {
 	private executors: Map<string, ExecutorInfo> = new Map()
@@ -23,7 +23,7 @@ export class ExecutorManager {
 		return this.executors.get(id)
 	}
 
-	findByProjectName(name: string, type?: 'editor' | 'game'): ExecutorInfo | undefined {
+	findByProjectName(name: string, type?: ExecutorType): ExecutorInfo | undefined {
 		const lower = name.toLowerCase()
 		for (const executor of this.executors.values()) {
 			if (executor.project_name.toLowerCase().includes(lower) && executor.status === 'connected') {
@@ -34,7 +34,7 @@ export class ExecutorManager {
 		return undefined
 	}
 
-	findByProjectPath(path: string, type?: 'editor' | 'game'): ExecutorInfo | undefined {
+	findByProjectPath(path: string, type?: ExecutorType): ExecutorInfo | undefined {
 		const lower = path.toLowerCase()
 		for (const executor of this.executors.values()) {
 			if (executor.project_path.toLowerCase().includes(lower) && executor.status === 'connected') {
@@ -43,5 +43,13 @@ export class ExecutorManager {
 			}
 		}
 		return undefined
+	}
+
+	findDefault(type?: ExecutorType): ExecutorInfo | undefined {
+		const matches = Array.from(this.executors.values()).filter((executor) => {
+			if (executor.status !== 'connected') return false
+			return type ? executor.type === type : true
+		})
+		return matches.length === 1 ? matches[0] : undefined
 	}
 }

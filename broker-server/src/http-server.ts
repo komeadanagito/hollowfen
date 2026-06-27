@@ -2,6 +2,8 @@ import express, { type Request, type Response, type NextFunction } from 'express
 import { ExecutorManager } from './executor-manager.js'
 import { TcpServer } from './tcp-server.js'
 import { createAuthMiddleware } from './auth.js'
+import { resolveExecutor } from './executor-selection.js'
+import { createGodotRouter } from './godot-api.js'
 import type { ApiResponse } from './types.js'
 
 export function createHttpApp(
@@ -14,7 +16,7 @@ export function createHttpApp(
 	const app = express()
 	const authMiddleware = createAuthMiddleware(authToken)
 
-	app.use(express.json())
+	app.use(express.json({ limit: '1mb' }))
 
 	app.get('/api/health', (_req: Request, res: Response) => {
 		res.json({
@@ -56,8 +58,10 @@ export function createHttpApp(
 		})
 	})
 
+	app.use('/api/godot', createGodotRouter(executorManager, tcpServer))
+
 	app.post('/api/execute', async (req: Request, res: Response) => {
-		const { code, executor_id, project_name, project_path, type } = req.body
+		const { code, timeout_ms } = req.body
 
 		if (!code) {
 			res.status(400).json({
@@ -68,39 +72,27 @@ export function createHttpApp(
 			return
 		}
 
-		if (!executor_id && !project_name && !project_path) {
+		if (typeof timeout_ms !== 'undefined' && (!Number.isInteger(timeout_ms) || timeout_ms <= 0 || timeout_ms > 300000)) {
 			res.status(400).json({
 				success: false,
-				error: 'No executor identifier provided',
-				hint: 'Provide one of: executor_id (exact match), project_name (fuzzy match), or project_path (fuzzy match) to target a specific executor. Optionally specify type: "editor" or "game".',
+				error: 'Field timeout_ms must be an integer between 1 and 300000',
 			})
 			return
 		}
 
-		const executorType = type as ('editor' | 'game') | undefined
-		let executor
-		if (executor_id) {
-			executor = executorManager.findById(executor_id)
-			if (executor && executorType && executor.type !== executorType) {
-				executor = undefined
-			}
-		} else if (project_name) {
-			executor = executorManager.findByProjectName(project_name, executorType)
-		} else if (project_path) {
-			executor = executorManager.findByProjectPath(project_path, executorType)
-		}
+		const selection = resolveExecutor(executorManager, req.body)
 
-		if (!executor) {
-			res.status(404).json({
+		if (!selection.executor) {
+			res.status(selection.status || 404).json({
 				success: false,
-				error: 'No connected Hastur Executor matched the query',
-				hint: 'Use GET /api/executors to list available executors. You can filter by type: "editor" or "game".',
+				error: selection.error,
+				hint: selection.hint,
 			})
 			return
 		}
 
 		try {
-			const result = await tcpServer.sendExecute(executor.id, code, 'gdscript')
+			const result = await tcpServer.sendExecute(selection.executor.id, code, 'gdscript', timeout_ms)
 			res.json({ success: true, data: result })
 		} catch (err: unknown) {
 			const error = err as Error
@@ -130,5 +122,4 @@ export function createHttpApp(
 
 	return app
 }
-
 

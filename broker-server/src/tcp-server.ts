@@ -61,7 +61,7 @@ export class TcpServer {
 		}
 	}
 
-	sendExecute(executorId: string, code: string, language: string): Promise<ExecuteResult> {
+	sendExecute(executorId: string, code: string, language: string, timeoutMs = 30000): Promise<ExecuteResult> {
 		for (const [, ctx] of this.connections) {
 			if (ctx.executorId === executorId) {
 				const requestId = crypto.randomUUID()
@@ -74,7 +74,7 @@ export class TcpServer {
 					const timer = setTimeout(() => {
 						ctx.pendingRequests.delete(requestId)
 						reject(new Error('TIMEOUT'))
-					}, 30000)
+					}, timeoutMs)
 
 					ctx.pendingRequests.set(requestId, { resolve, reject, timer })
 					ctx.socket.write(message)

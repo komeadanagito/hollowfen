@@ -37,3 +37,5 @@ export interface ApiResponse {
 	hint?: string
 	data?: unknown
 }
+
+export type ExecutorType = 'editor' | 'game'

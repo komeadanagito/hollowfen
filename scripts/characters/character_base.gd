@@ -60,6 +60,20 @@ func is_active() -> bool:
 func get_last_safe_position() -> Vector2:
 	return _last_safe
 
+# 中心正下方是否有地面（区分"稳稳站在地上"和"贴着悬边")
+func _is_solidly_grounded() -> bool:
+	var world := get_world_2d()
+	if world == null:
+		return true
+	var space := world.direct_space_state
+	if space == null:
+		return true
+	var from := global_position
+	var to := global_position + Vector2(0.0, get_feet_offset_y() + 12.0)
+	var query := PhysicsRayQueryParameters2D.create(from, to, 1)  # terrain 层
+	query.exclude = [self]
+	return not space.intersect_ray(query).is_empty()
+
 func get_feet_global_y() -> float:
 	return global_position.y + get_feet_offset_y()
 
@@ -119,7 +133,8 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		_coyote = coyote_time
 		_jumps_left = air_jumps
-		_last_safe = global_position
+		if _is_solidly_grounded():     # 仅在中心正下方有地面时记录，避免贴边导致接管角色滑进坑
+			_last_safe = global_position
 
 	if not is_on_floor():
 		velocity.y += gravity * delta

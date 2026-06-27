@@ -17,5 +17,6 @@ shape = SubResource("RectangleShape2D_uqy6h")
 [node name="Sprite" type="Sprite2D" parent="." unique_id=921298901]
 editor_description = "[物料] 类别=解锁点 | 占位/素材=Archer立绘 | 备注=触碰获得Archer"
 texture_filter = 1
+position = Vector2(0, 30)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_5s7lb")

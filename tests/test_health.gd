@@ -21,6 +21,11 @@ func _run() -> void:
 	h.take_damage(10)
 	t.eq(h.current, 20, "current after 10 dmg")
 	t.eq(changed[0], 20, "health_changed emitted current")
+	h.heal(6)
+	t.eq(h.current, 26, "heal restores current")
+	t.eq(changed[0], 26, "heal emits health_changed")
+	h.heal(100)
+	t.eq(h.current, 30, "heal clamps at max")
 
 	h.take_damage(100)
 	t.eq(h.current, 0, "current clamps at 0")

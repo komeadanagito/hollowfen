@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/slime.gd" id="1_7qgty"]
+[ext_resource type="Texture2D" path="res://assets/enemy/slime/slime_spritesheet_clean.png" id="2_3jmle"]
+[ext_resource type="Script" path="res://scripts/combat/health.gd" id="3_f50sg"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="4_qk7yp"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="5_nkojx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 32.0
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_7qgty")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3jmle")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_f50sg")
+max_health = 16
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_qk7yp")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_body")
+
+[node name="ContactHitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+monitorable = false
+script = ExtResource("5_nkojx")
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox"]
+shape = SubResource("CircleShape2D_body")

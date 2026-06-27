@@ -320,7 +320,7 @@ theme_override_font_sizes/font_size = 42
 theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
 theme_override_constants/outline_size = 10
-text = "遇到伙伴，Tab 替换角色"
+text = "遇到伙伴，按 2 切换射手"
 
 [node name="L_Switch" type="Label" parent="." unique_id=630772114]
 z_index = 10

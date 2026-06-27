@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/hammer_warrior.gd" id="1_fxdmy"]
+[ext_resource type="Script" path="res://scripts/combat/health.gd" id="2_om2do"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3_50ilm"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="4_p3gsl"]
+[ext_resource type="Texture2D" path="res://assets/character/hammer_warrior/hammer_warrior_spritesheet_regenerated_v2_chromakey.png" id="5_ifc2n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(62, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
+size = Vector2(96, 104)
+
+[node name="HammerWarrior" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_fxdmy")
+move_speed = 400.0
+jump_velocity = -760.0
+attack_duration = 0.38
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("5_ifc2n")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_om2do")
+max_health = 55
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_50ilm")
+health = NodePath("../Health")
+invincible_time = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="MeleeHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 192
+monitorable = false
+script = ExtResource("4_p3gsl")
+damage = 28
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox"]
+position = Vector2(72, -4)
+shape = SubResource("RectangleShape2D_hit")

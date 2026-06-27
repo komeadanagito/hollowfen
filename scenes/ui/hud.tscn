@@ -67,3 +67,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_oj5la")
 max_value = 40.0
 value = 40.0
 show_percentage = false
+
+[node name="VialsLabel" type="Label" parent="Root/Panel/HBox/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "血瓶 x2"

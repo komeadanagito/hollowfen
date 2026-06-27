@@ -5,6 +5,7 @@ const PickupScript = preload("res://scripts/world/archer_pickup.gd")
 const PartyManagerScript = preload("res://scripts/party/party_manager.gd")
 const KnightScene = preload("res://scenes/characters/knight.tscn")
 const ArcherScene = preload("res://scenes/characters/archer.tscn")
+const ArcherPickupScene = preload("res://scenes/world/archer_pickup.tscn")
 
 func _initialize() -> void:
 	_run()
@@ -35,5 +36,12 @@ func _run() -> void:
 	pm.switch_to_next()
 	t.check(pm.get_active_character() == archer, "触碰后 archer 解锁可切")
 	t.check(picked["hit"], "发出 picked_up 信号")
+
+	var pickup_scene := ArcherPickupScene.instantiate()
+	var sprite := pickup_scene.get_node_or_null("Sprite") as Sprite2D
+	t.check(sprite != null, "archer pickup has portrait sprite")
+	if sprite:
+		t.check(sprite.position.y >= 20.0, "archer pickup portrait is lowered to sit on the ground")
+	pickup_scene.free()
 
 	quit(t.summary("test_archer_pickup"))

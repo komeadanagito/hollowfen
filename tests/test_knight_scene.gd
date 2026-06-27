@@ -31,6 +31,8 @@ func _run() -> void:
 
 	t.check(knight.get_health() != null, "knight has Health wired")
 	t.eq(knight.get_health().max_health, 40, "knight max_health == 40")
+	t.check(InputMap.has_action("dash"), "dash input action exists")
+	t.eq(knight.get("dash_enabled"), true, "knight enables dash")
 	var sprite := knight.get_node("Sprite")
 	t.check(sprite is AnimatedSprite2D, "knight uses animated spritesheet asset")
 	if sprite is AnimatedSprite2D:
@@ -42,6 +44,11 @@ func _run() -> void:
 	for i in 60:
 		await physics_frame
 	t.check(knight.is_on_floor(), "knight lands on floor under gravity")
+	if InputMap.has_action("dash"):
+		Input.action_press("dash")
+		await physics_frame
+		Input.action_release("dash")
+		t.check(knight.velocity.x > knight.move_speed, "shift dash boosts knight velocity (vx=%s speed=%s state=%s)" % [str(knight.velocity.x), str(knight.move_speed), str(knight.state)])
 	if sprite is AnimatedSprite2D:
 		var anim_sprite := sprite as AnimatedSprite2D
 		knight._set_state(CharacterBase.State.RUN)

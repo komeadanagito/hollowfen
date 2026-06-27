@@ -1,0 +1,25 @@
+extends SceneTree
+const TestHelper = preload("res://tests/test_helper.gd")
+const PM = preload("res://scripts/party/party_manager.gd")
+const KnightScene = preload("res://scenes/characters/knight.tscn")
+const ArcherScene = preload("res://scenes/characters/archer.tscn")
+
+func _initialize() -> void: _run()
+func _run() -> void:
+	var t := TestHelper.new()
+	var pm := Node2D.new(); pm.set_script(PM)
+	var k := KnightScene.instantiate(); var a := ArcherScene.instantiate()
+	pm.add_child(k); pm.add_child(a)
+	get_root().add_child(pm)
+	await process_frame
+	t.eq(pm.get_characters().size(), 2, "get_characters 返回 2")
+	pm.set_unlocked(a, false)
+	t.check(not pm.is_unlocked(a), "set_unlocked false 生效")
+	pm.set_unlocked(a, true)
+	t.check(pm.is_unlocked(a), "set_unlocked true 生效")
+	var h = k.get_health()
+	h.set_current(7)
+	t.eq(h.current, 7, "set_current 设置血量")
+	h.set_current(9999)
+	t.eq(h.current, h.max_health, "set_current clamp 到 max")
+	quit(t.summary("test_party_accessors"))

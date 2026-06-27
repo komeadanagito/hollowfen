@@ -1,0 +1,320 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/room_base.gd" id="1_854s7"]
+[ext_resource type="Texture2D" path="res://assets/scene/background_far.png" id="2_m8mfd"]
+[ext_resource type="Texture2D" path="res://assets/scene/ceiling_stone.png" id="3_6r5ep"]
+[ext_resource type="Texture2D" path="res://assets/scene/chandelier.png" id="4_0plsu"]
+[ext_resource type="Texture2D" path="res://assets/scene/floor_stone.png" id="5_w4g84"]
+[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="6_kohvr"]
+[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="7_uykxv"]
+[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="8_xx22i"]
+[ext_resource type="Script" path="res://scripts/characters/knight.gd" id="9_3h7i0"]
+[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="10_lfec6"]
+[ext_resource type="Script" path="res://scripts/characters/archer.gd" id="11_ob8oe"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="12_ghvqg"]
+[ext_resource type="Script" path="res://scripts/enemies/patrol_enemy.gd" id="13_33jdl"]
+[ext_resource type="PackedScene" path="res://scenes/world/archer_pickup.tscn" id="14_mn6v7"]
+[ext_resource type="Script" path="res://scripts/world/archer_pickup.gd" id="15_n8jtc"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="16_af2do"]
+[ext_resource type="Script" path="res://scripts/puzzle/switch.gd" id="17_o3hud"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="18_0j7qs"]
+[ext_resource type="Script" path="res://scripts/puzzle/door.gd" id="19_hku2h"]
+[ext_resource type="PackedScene" path="res://scenes/entities/props/room_portal.tscn" id="20_5syyg"]
+[ext_resource type="Script" path="res://scripts/systems/room_portal.gd" id="21_gtt0f"]
+[ext_resource type="Script" path="res://scripts/world/camera_follow.gd" id="22_stlmh"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="23_xqilw"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="24_1mtq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3m02"]
+size = Vector2(2600, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lo4m"]
+size = Vector2(1220, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqxer"]
+size = Vector2(160, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlthn"]
+size = Vector2(480, 360)
+
+[sub_resource type="SystemFont" id="SystemFont_1m6lk"]
+font_names = PackedStringArray("Chalkduster", "Hiragino Sans GB", "PingFang SC", "Heiti SC")
+
+[node name="RoomTutorialA" type="Node2D" unique_id=683701571 node_paths=PackedStringArray("party_manager")]
+script = ExtResource("1_854s7")
+party_manager = NodePath("PartyManager")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1086638031]
+z_index = -100
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-500, -120)
+texture = ExtResource("2_m8mfd")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 1120)
+
+[node name="Ceiling" type="Sprite2D" parent="." unique_id=387294755]
+z_index = -40
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-500, 60)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6r5ep")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 115)
+
+[node name="Chandelier_600" type="Sprite2D" parent="." unique_id=309491977]
+z_index = -38
+texture_filter = 1
+position = Vector2(600, 360)
+texture = ExtResource("4_0plsu")
+
+[node name="Chandelier_2400" type="Sprite2D" parent="." unique_id=1564569700]
+z_index = -38
+texture_filter = 1
+position = Vector2(2400, 360)
+texture = ExtResource("4_0plsu")
+
+[node name="PH_Terrain_GroundL" type="StaticBody2D" parent="." unique_id=669811370]
+editor_description = "[Terrain] tex=res://assets/scene/floor_stone.png note=Left ground -500~2100"
+position = Vector2(800, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundL" unique_id=1051637840]
+shape = SubResource("RectangleShape2D_y3m02")
+
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundL" unique_id=281071045]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-1300, -200)
+scale = Vector2(2, 2)
+texture = ExtResource("5_w4g84")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1300, 200)
+
+[node name="PH_Terrain_GroundR" type="StaticBody2D" parent="." unique_id=1053500369]
+editor_description = "[Terrain] tex=res://assets/scene/floor_stone.png note=Right ground 2580~3800"
+position = Vector2(3190, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_GroundR" unique_id=348978326]
+shape = SubResource("RectangleShape2D_3lo4m")
+
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_GroundR" unique_id=1388871916]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-610, -200)
+scale = Vector2(2, 2)
+texture = ExtResource("5_w4g84")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 610, 200)
+
+[node name="PH_Terrain_JumpBlock" type="StaticBody2D" parent="." unique_id=1411468385]
+editor_description = "[Terrain] tex=res://assets/scene/stone_block.png note=Jump tutorial block"
+position = Vector2(1000, 800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PH_Terrain_JumpBlock" unique_id=316221217]
+shape = SubResource("RectangleShape2D_aqxer")
+
+[node name="Sprite" type="Sprite2D" parent="PH_Terrain_JumpBlock" unique_id=1473099230]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-80, -80)
+texture = ExtResource("6_kohvr")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 160)
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=647334532]
+position = Vector2(2340, 1080)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=983248956]
+shape = SubResource("RectangleShape2D_nlthn")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=606323691]
+position = Vector2(200, 740)
+
+[node name="PartyManager" type="Node2D" parent="." unique_id=1461588009]
+script = ExtResource("7_uykxv")
+
+[node name="Knight" type="CharacterBody2D" parent="PartyManager" unique_id=672221398 instance=ExtResource("8_xx22i")]
+position = Vector2(200, 740)
+collision_layer = 2
+script = ExtResource("9_3h7i0")
+move_speed = 450.0
+air_jumps = 1
+dash_enabled = true
+
+[node name="Archer" type="CharacterBody2D" parent="PartyManager" unique_id=226732811 instance=ExtResource("10_lfec6")]
+position = Vector2(200, 740)
+collision_layer = 2
+script = ExtResource("11_ob8oe")
+move_speed = 650.0
+jump_velocity = -700.0
+
+[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=1824015117 instance=ExtResource("12_ghvqg")]
+position = Vector2(1500, 700)
+collision_layer = 4
+script = ExtResource("13_33jdl")
+
+[node name="ArcherPickup" type="Area2D" parent="." unique_id=1147304191 node_paths=PackedStringArray("party_manager", "target_character") instance=ExtResource("14_mn6v7")]
+position = Vector2(2700, 723)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("15_n8jtc")
+party_manager = NodePath("../PartyManager")
+target_character = NodePath("../PartyManager/Archer")
+
+[node name="Switch_A" type="Area2D" parent="." unique_id=1059127097 instance=ExtResource("16_af2do")]
+position = Vector2(3500, 460)
+scale = Vector2(2, 2)
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+script = ExtResource("17_o3hud")
+
+[node name="Door_A" type="StaticBody2D" parent="." unique_id=185073187 instance=ExtResource("18_0j7qs")]
+position = Vector2(3560, 580)
+scale = Vector2(2.5, 6)
+collision_mask = 0
+script = ExtResource("19_hku2h")
+
+[node name="Portal_ToB" type="Area2D" parent="." unique_id=572762153 instance=ExtResource("20_5syyg")]
+position = Vector2(3700, 700)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("21_gtt0f")
+entry_id = "from_b"
+target_room = "res://scenes/rooms/room_tutorial_b.tscn"
+target_entry = "from_a"
+
+[node name="Camera" type="Camera2D" parent="." unique_id=94920701 node_paths=PackedStringArray("party_manager")]
+position = Vector2(200, 740)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = 120
+limit_right = 3800
+limit_bottom = 1000
+script = ExtResource("22_stlmh")
+party_manager = NodePath("../PartyManager")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=173317282 node_paths=PackedStringArray("party_manager") instance=ExtResource("23_xqilw")]
+script = ExtResource("24_1mtq4")
+party_manager = NodePath("../PartyManager")
+
+[node name="L_Move" type="Label" parent="." unique_id=1318429558]
+z_index = 10
+offset_left = 240.0
+offset_top = 600.0
+offset_right = 240.0
+offset_bottom = 600.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "A / D  move left/right"
+
+[node name="L_Jump" type="Label" parent="." unique_id=305375993]
+z_index = 10
+offset_left = 900.0
+offset_top = 560.0
+offset_right = 900.0
+offset_bottom = 560.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Space  jump"
+
+[node name="L_Attack" type="Label" parent="." unique_id=1381148545]
+z_index = 10
+offset_left = 1300.0
+offset_top = 560.0
+offset_right = 1300.0
+offset_bottom = 560.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Mouse to attack"
+
+[node name="L_Pit" type="Label" parent="." unique_id=991795483]
+z_index = 10
+offset_left = 2000.0
+offset_top = 540.0
+offset_right = 2000.0
+offset_bottom = 540.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Pit! Knight double-jump crosses"
+
+[node name="L_Ally" type="Label" parent="." unique_id=1800352144]
+z_index = 10
+offset_left = 2470.0
+offset_top = 430.0
+offset_right = 2470.0
+offset_bottom = 430.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Ally! Tab to switch"
+
+[node name="L_Switch" type="Label" parent="." unique_id=1876374453]
+z_index = 10
+offset_left = 3020.0
+offset_top = 520.0
+offset_right = 3020.0
+offset_bottom = 520.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Aim and shoot arrow"
+
+[node name="L_Wall" type="Label" parent="." unique_id=1068773278]
+z_index = 10
+offset_left = 3120.0
+offset_top = 380.0
+offset_right = 3120.0
+offset_bottom = 380.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Wall blocks! Shoot the switch
+it will lower"
+
+[node name="L_ToB" type="Label" parent="." unique_id=1319626414]
+z_index = 10
+offset_left = 3550.0
+offset_top = 540.0
+offset_right = 3550.0
+offset_bottom = 540.0
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_1m6lk")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.96, 0.93, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 10
+text = "Room B ->"

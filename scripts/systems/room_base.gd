@@ -7,6 +7,9 @@ extends Node2D
 ## On a revisit, Game.apply_party_state() will override with the persisted
 ## unlocked state, so this only affects the very first time the room loads.
 @export var locked_characters: Array[String] = []
+## Y below which the active character is killed (fallback for falling past
+## all ground / pits). Robust against Area2D tunneling on fast falls.
+@export var kill_plane_y: float = 1300.0
 
 func _ready() -> void:
 	add_to_group("room")
@@ -17,6 +20,17 @@ func _ready() -> void:
 		get_node("/root/Game").apply_party_state(party_manager)
 	_place_party_at_entry()
 	_wire_room()
+
+func _physics_process(_delta: float) -> void:
+	if party_manager == null:
+		return
+	var active := party_manager.get_active_character()
+	if active == null:
+		return
+	if active.global_position.y > kill_plane_y:
+		var h := active.get_health()
+		if h and not h.is_dead():
+			h.take_damage(99999)
 
 ## Lock characters listed in `locked_characters` before Game state is applied.
 ## Order matters: this runs BEFORE apply_party_state so that a persisted

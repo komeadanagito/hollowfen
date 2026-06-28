@@ -2,8 +2,20 @@ class_name Level2
 extends Node2D
 
 @export var party_manager: PartyManager
+## Y below which the active character is killed (robust pit fallback,
+## independent of the DeathZone Area2D which a fast faller can tunnel past).
+@export var kill_plane_y: float = 1300.0
 
 @onready var _spawn: Marker2D = $SpawnPoint
+
+func _physics_process(_delta: float) -> void:
+	if party_manager == null:
+		return
+	var active := party_manager.get_active_character()
+	if active and active.global_position.y > kill_plane_y:
+		var h := active.get_health()
+		if h and not h.is_dead():
+			h.take_damage(99999)
 
 func _ready() -> void:
 	if party_manager == null:

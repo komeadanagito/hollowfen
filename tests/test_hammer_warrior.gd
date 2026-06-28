@@ -17,6 +17,6 @@ func _run() -> void:
 	t.eq(hammer.jump_velocity, -760.0, "hammer jumps a bit farther than archer")
 	t.eq(hammer.get_health().max_health, 55, "hammer is sturdy")
 	var hitbox := hammer.get_node("MeleeHitbox") as Hitbox
-	t.eq(hitbox.damage, 28, "hammer has highest damage")
+	t.eq(hitbox.damage, 40, "hammer has highest damage")
 	hammer.free()
 	quit(t.summary("test_hammer_warrior"))

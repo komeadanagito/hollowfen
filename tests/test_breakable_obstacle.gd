@@ -17,6 +17,8 @@ func _run() -> void:
 	obstacle.receive_hit(10)
 	t.eq(obstacle.is_broken, false, "weak hit does not break obstacle")
 	obstacle.receive_hit(28)
+	t.eq(obstacle.is_broken, false, "knight-strength hit does not break obstacle")
+	obstacle.receive_hit(40)
 	t.eq(obstacle.is_broken, true, "hammer-strength hit breaks obstacle")
 	var shape := obstacle.get_node("CollisionShape2D") as CollisionShape2D
 	t.eq(shape.disabled, true, "broken obstacle disables collision")

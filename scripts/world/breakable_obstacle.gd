@@ -1,7 +1,7 @@
 class_name BreakableObstacle
 extends StaticBody2D
 
-@export var break_damage_threshold: int = 25
+@export var break_damage_threshold: int = 35
 
 var is_broken: bool = false
 

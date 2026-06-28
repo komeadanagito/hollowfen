@@ -244,7 +244,7 @@ collision_layer = 8
 collision_mask = 192
 monitorable = false
 script = ExtResource("5_vb23l")
-damage = 28
+damage = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" unique_id=860147153]
 position = Vector2(72, -4)

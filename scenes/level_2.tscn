@@ -276,7 +276,7 @@ texture = ExtResource("12_hammer_portrait")
 position = Vector2(4880, 820)
 
 [node name="BreakableObstacle" parent="." instance=ExtResource("19_breakable")]
-position = Vector2(5200, 780)
+position = Vector2(5200, 590)
 
 [node name="Bonfire_Final" parent="." node_paths=PackedStringArray("party_manager") instance=ExtResource("13_bonfire")]
 position = Vector2(5420, 760)

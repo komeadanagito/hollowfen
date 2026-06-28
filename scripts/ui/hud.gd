@@ -7,6 +7,7 @@ const AVATARS := {
 	"Knight": preload("res://assets/character/knight/knight_avatar_head.png"),
 	"Archer": preload("res://assets/character/archer/archer_avatar_head.png"),
 	"OcarinaGirl": preload("res://assets/character/ocarina_girl/ocarina_girl_avatar_head.png"),
+	"HammerWarrior": preload("res://assets/character/hammer_warrior/hammer_warrior_avatar_head.png"),
 }
 
 @onready var _avatar: TextureRect = $Root/Panel/HBox/Avatar

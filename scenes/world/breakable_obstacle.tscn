@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/world/breakable_hit_area.gd" id="3_hitarea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mijl"]
-size = Vector2(140, 440)
+size = Vector2(160, 480)
 
 [node name="BreakableObstacle" type="StaticBody2D"]
 collision_layer = 1
@@ -17,12 +17,9 @@ shape = SubResource("RectangleShape2D_8mijl")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
-scale = Vector2(2, 2)
 texture = ExtResource("2_hhcxm")
-centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 70, 220)
-offset = Vector2(-70, -220)
+region_rect = Rect2(0, 0, 160, 480)
 
 [node name="HitArea" type="Area2D" parent="."]
 collision_layer = 128

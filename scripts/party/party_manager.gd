@@ -39,6 +39,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		switch_to_index(2)
 	elif event.is_action_pressed("select_character_4"):
 		switch_to_index(3)
+	elif event.is_action_pressed("use_heal_item"):
+		use_vial()
 
 func get_active_character() -> CharacterBase:
 	if _characters.is_empty():

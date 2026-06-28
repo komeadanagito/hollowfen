@@ -7,7 +7,7 @@ extends Area2D
 @export var turn_rate: float = 8.0
 
 var _dir: Vector2 = Vector2.RIGHT
-var _target: Area2D
+var _target: Node2D
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
@@ -30,15 +30,15 @@ func _physics_process(delta: float) -> void:
 	global_position += _dir * speed * delta
 	rotation = _dir.angle()
 
-func _find_target() -> Area2D:
-	var best: Area2D = null
+func _find_target() -> Node2D:
+	var best: Node2D = null
 	var best_dist := INF
-	for node in get_tree().get_nodes_in_group("enemy_hurtbox"):
-		if node is Area2D:
-			var d := global_position.distance_squared_to((node as Area2D).global_position)
+	for node in get_tree().get_nodes_in_group("enemy"):
+		if node is Node2D and is_instance_valid(node):
+			var d := global_position.distance_squared_to((node as Node2D).global_position)
 			if d < best_dist:
 				best_dist = d
-				best = node as Area2D
+				best = node as Node2D
 	return best
 
 func _on_area_entered(area: Area2D) -> void:

@@ -29,5 +29,7 @@ func _run() -> void:
 	t.eq(pmB.get_characters()[0].get_health().current, 11, "HP carried to B")
 	t.check(pmB.is_unlocked(pmB.get_characters()[1]), "unlock carried to B")
 	var entry_pos = b._entry_position("from_a")
-	t.eq(pmB.get_active_character().global_position, entry_pos, "spawned at from_a entry")
+	var spawn_pos = pmB.get_active_character().global_position
+	# 角色出生后会因重力沉降 <1px，用容差比较而非精确相等
+	t.check(absf(spawn_pos.x - entry_pos.x) < 1.0 and absf(spawn_pos.y - entry_pos.y) < 2.0, "spawned at from_a entry (got %s, expected ~%s)" % [spawn_pos, entry_pos])
 	quit(t.summary("test_rooms_integration"))

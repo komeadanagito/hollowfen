@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/world/breakable_obstacle.gd" id="1_d4yob"]
 [ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="2_hhcxm"]
+[ext_resource type="Script" path="res://scripts/world/breakable_hit_area.gd" id="3_hitarea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mijl"]
 size = Vector2(140, 440)
@@ -22,3 +23,12 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 70, 220)
 offset = Vector2(-70, -220)
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hitarea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("RectangleShape2D_8mijl")

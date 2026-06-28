@@ -88,8 +88,16 @@ func activate_bonfire(position: Vector2) -> void:
 	_respawn_position = position
 	if not _unlocked_bonfires.has(position):
 		_unlocked_bonfires.append(position)
+	revive_dead()
 	heal_all()
 	refill_vials()
+
+# 篝火休息：复活所有阵亡角色（清死亡标记 + 回满血），使其可再次切换上场
+func revive_dead() -> void:
+	for i in _characters.size():
+		if _dead[i]:
+			_dead[i] = false
+			_characters[i].revive()
 
 func get_respawn_position() -> Vector2:
 	return _respawn_position

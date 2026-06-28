@@ -42,6 +42,8 @@ func _find_target() -> Node2D:
 	var best: Node2D = null
 	var best_dist := INF
 	for node in get_tree().get_nodes_in_group("enemy"):
+		if node is RevivalTotem:
+			continue   # 复活图腾（绿色）不吸引追踪音符
 		if node is Node2D and is_instance_valid(node) and not _is_hit_target(node):
 			var d := global_position.distance_squared_to((node as Node2D).global_position)
 			if d < best_dist:

@@ -122,6 +122,14 @@ func respawn(pos: Vector2) -> void:
 	if _health:
 		_health.reset()
 
+# 篝火复活：清除死亡状态并回满血，但不移动位置（切换到该角色时再就位）
+func revive() -> void:
+	_dead = false
+	velocity = Vector2.ZERO
+	_set_state(State.IDLE)
+	if _health:
+		_health.reset()
+
 func _physics_process(delta: float) -> void:
 	if _dead:
 		_update_animation()

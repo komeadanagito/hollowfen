@@ -1,20 +1,20 @@
-[gd_scene load_steps=31 format=3]
+[gd_scene format=3 uid="uid://balcnx5uvncjf"]
 
-[ext_resource type="Script" path="res://scripts/world/level_2.gd" id="1_l2"]
-[ext_resource type="Texture2D" path="res://assets/scene/background_far.png" id="2_bg"]
-[ext_resource type="Texture2D" path="res://assets/scene/floor_stone.png" id="3_floor"]
-[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="4_block"]
-[ext_resource type="Script" path="res://scripts/party/party_manager.gd" id="5_party"]
-[ext_resource type="PackedScene" path="res://scenes/characters/knight.tscn" id="6_knight"]
-[ext_resource type="PackedScene" path="res://scenes/characters/archer.tscn" id="7_archer"]
+[ext_resource type="Script" uid="uid://hxh2ilk4rwmp" path="res://scripts/world/level_2.gd" id="1_l2"]
+[ext_resource type="Texture2D" uid="uid://qy5ry8nnbarn" path="res://assets/scene/background_far.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://ddld5vuqr0chu" path="res://assets/scene/floor_stone.png" id="3_floor"]
+[ext_resource type="Texture2D" uid="uid://dki3epdocsweg" path="res://assets/scene/stone_block.png" id="4_block"]
+[ext_resource type="Script" uid="uid://b8vbd1dc5r8km" path="res://scripts/party/party_manager.gd" id="5_party"]
+[ext_resource type="PackedScene" uid="uid://b4xtd3n3bm8fe" path="res://scenes/characters/knight.tscn" id="6_knight"]
+[ext_resource type="PackedScene" uid="uid://bmp1u5kufk1e5" path="res://scenes/characters/archer.tscn" id="7_archer"]
 [ext_resource type="PackedScene" path="res://scenes/characters/ocarina_girl.tscn" id="8_ocarina"]
 [ext_resource type="PackedScene" path="res://scenes/characters/hammer_warrior.tscn" id="9_hammer"]
-[ext_resource type="Script" path="res://scripts/world/character_pickup.gd" id="10_pickup"]
-[ext_resource type="Texture2D" path="res://assets/character/ocarina_girl/ocarina_girl_portrait.png" id="11_ocarina_head"]
-[ext_resource type="Texture2D" path="res://assets/character/hammer_warrior/hammer_warrior_portrait.png" id="12_hammer_portrait"]
+[ext_resource type="Script" uid="uid://bity5w1p1al3t" path="res://scripts/world/character_pickup.gd" id="10_pickup"]
+[ext_resource type="Texture2D" uid="uid://hxgvtb8x5qny" path="res://assets/character/ocarina_girl/ocarina_girl_portrait.png" id="11_ocarina_head"]
+[ext_resource type="Texture2D" uid="uid://ppoo7a6siauu" path="res://assets/character/hammer_warrior/hammer_warrior_portrait.png" id="12_hammer_portrait"]
 [ext_resource type="PackedScene" path="res://scenes/world/bonfire.tscn" id="13_bonfire"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/bat.tscn" id="14_bat"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/patrol_enemy.tscn" id="15_patrol"]
+[ext_resource type="PackedScene" uid="uid://dmd07q0gsh5la" path="res://scenes/enemies/patrol_enemy.tscn" id="15_patrol"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/melee_goblin.tscn" id="16_melee"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/ranged_goblin.tscn" id="17_ranged"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/revival_totem.tscn" id="18_totem"]
@@ -23,9 +23,12 @@
 [ext_resource type="PackedScene" path="res://scenes/puzzle/switch.tscn" id="21_switch"]
 [ext_resource type="PackedScene" path="res://scenes/puzzle/door.tscn" id="22_door"]
 [ext_resource type="PackedScene" path="res://scenes/world/level_exit.tscn" id="23_exit"]
-[ext_resource type="Script" path="res://scripts/systems/camera_follow.gd" id="24_camera"]
+[ext_resource type="Script" uid="uid://bqpxyu72yi26f" path="res://scripts/systems/camera_follow.gd" id="24_camera"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="25_hud"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="26_slime"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_death"]
+size = Vector2(3600, 260)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(820, 260)
@@ -34,16 +37,13 @@ size = Vector2(820, 260)
 size = Vector2(260, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pickup"]
-size = Vector2(120, 160)
+size = Vector2(106, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_death"]
-size = Vector2(3600, 260)
-
-[node name="Level2" type="Node2D" node_paths=PackedStringArray("party_manager")]
+[node name="Level2" type="Node2D" unique_id=2113997295 node_paths=PackedStringArray("party_manager")]
 script = ExtResource("1_l2")
 party_manager = NodePath("PartyManager")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1243065141]
 z_index = -100
 texture_filter = 1
 texture_repeat = 2
@@ -53,43 +53,39 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 9600, 1120)
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1002335678]
 position = Vector2(160, 720)
 
-[node name="DeathZone" type="Area2D" parent="."]
+[node name="DeathZone" type="Area2D" parent="." unique_id=1187225665]
 position = Vector2(2200, 1130)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=296766365]
 shape = SubResource("RectangleShape2D_death")
 
-[node name="PartyManager" type="Node2D" parent="."]
+[node name="PartyManager" type="Node2D" parent="." unique_id=247419315]
 script = ExtResource("5_party")
 
-[node name="Knight" parent="PartyManager" instance=ExtResource("6_knight")]
+[node name="Knight" parent="PartyManager" unique_id=2003750484 instance=ExtResource("6_knight")]
 position = Vector2(160, 720)
-collision_layer = 2
 
-[node name="Archer" parent="PartyManager" instance=ExtResource("7_archer")]
+[node name="Archer" parent="PartyManager" unique_id=1563510593 instance=ExtResource("7_archer")]
 position = Vector2(160, 720)
-collision_layer = 2
 
-[node name="OcarinaGirl" parent="PartyManager" instance=ExtResource("8_ocarina")]
+[node name="OcarinaGirl" parent="PartyManager" unique_id=1467462193 instance=ExtResource("8_ocarina")]
 position = Vector2(160, 720)
-collision_layer = 2
 
-[node name="HammerWarrior" parent="PartyManager" instance=ExtResource("9_hammer")]
+[node name="HammerWarrior" parent="PartyManager" unique_id=2040650512 instance=ExtResource("9_hammer")]
 position = Vector2(160, 720)
-collision_layer = 2
 
-[node name="Ground_Start" type="StaticBody2D" parent="."]
+[node name="Ground_Start" type="StaticBody2D" parent="." unique_id=1322988601]
 position = Vector2(260, 940)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Start"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Start" unique_id=454629301]
 shape = SubResource("RectangleShape2D_ground")
 
-[node name="Sprite" type="Sprite2D" parent="Ground_Start"]
+[node name="Sprite" type="Sprite2D" parent="Ground_Start" unique_id=558009976]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-410, -130)
@@ -99,13 +95,13 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 410, 130)
 
-[node name="Platform_1" type="StaticBody2D" parent="."]
+[node name="Platform_1" type="StaticBody2D" parent="." unique_id=1399979653]
 position = Vector2(860, 760)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_1" unique_id=135045069]
 shape = SubResource("RectangleShape2D_platform")
 
-[node name="Sprite" type="Sprite2D" parent="Platform_1"]
+[node name="Sprite" type="Sprite2D" parent="Platform_1" unique_id=2052786371]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-130, -24)
@@ -114,13 +110,13 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 260, 48)
 
-[node name="Platform_2" type="StaticBody2D" parent="."]
+[node name="Platform_2" type="StaticBody2D" parent="." unique_id=209889027]
 position = Vector2(1240, 630)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_2" unique_id=1925752951]
 shape = SubResource("RectangleShape2D_platform")
 
-[node name="Sprite" type="Sprite2D" parent="Platform_2"]
+[node name="Sprite" type="Sprite2D" parent="Platform_2" unique_id=691574327]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-130, -24)
@@ -129,13 +125,13 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 260, 48)
 
-[node name="Platform_3" type="StaticBody2D" parent="."]
+[node name="Platform_3" type="StaticBody2D" parent="." unique_id=1762664706]
 position = Vector2(1640, 760)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_3" unique_id=1507960774]
 shape = SubResource("RectangleShape2D_platform")
 
-[node name="Sprite" type="Sprite2D" parent="Platform_3"]
+[node name="Sprite" type="Sprite2D" parent="Platform_3" unique_id=1030576644]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-130, -24)
@@ -144,13 +140,13 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 260, 48)
 
-[node name="Ground_Mid" type="StaticBody2D" parent="."]
+[node name="Ground_Mid" type="StaticBody2D" parent="." unique_id=654956206]
 position = Vector2(2320, 940)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Mid"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Mid" unique_id=138366585]
 shape = SubResource("RectangleShape2D_ground")
 
-[node name="Sprite" type="Sprite2D" parent="Ground_Mid"]
+[node name="Sprite" type="Sprite2D" parent="Ground_Mid" unique_id=1640837478]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-410, -130)
@@ -160,13 +156,13 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 410, 130)
 
-[node name="Ground_Combat" type="StaticBody2D" parent="."]
+[node name="Ground_Combat" type="StaticBody2D" parent="." unique_id=822540425]
 position = Vector2(3600, 940)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Combat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Combat" unique_id=1097007935]
 shape = SubResource("RectangleShape2D_ground")
 
-[node name="Sprite" type="Sprite2D" parent="Ground_Combat"]
+[node name="Sprite" type="Sprite2D" parent="Ground_Combat" unique_id=1296883145]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-410, -130)
@@ -176,13 +172,13 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 410, 130)
 
-[node name="Ground_Final" type="StaticBody2D" parent="."]
+[node name="Ground_Final" type="StaticBody2D" parent="." unique_id=291117942]
 position = Vector2(5000, 940)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Final"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_Final" unique_id=889426258]
 shape = SubResource("RectangleShape2D_ground")
 
-[node name="Sprite" type="Sprite2D" parent="Ground_Final"]
+[node name="Sprite" type="Sprite2D" parent="Ground_Final" unique_id=237128635]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-410, -130)
@@ -192,26 +188,26 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 410, 130)
 
-[node name="Bonfire_Start" parent="." node_paths=PackedStringArray("party_manager") instance=ExtResource("13_bonfire")]
+[node name="Bonfire_Start" parent="." unique_id=444303800 node_paths=PackedStringArray("party_manager") instance=ExtResource("13_bonfire")]
 position = Vector2(320, 760)
 party_manager = NodePath("../PartyManager")
 
-[node name="Bat_1" parent="." instance=ExtResource("14_bat")]
+[node name="Bat_1" parent="." unique_id=1775996843 instance=ExtResource("14_bat")]
 position = Vector2(1020, 540)
 
-[node name="Bat_2" parent="." instance=ExtResource("14_bat")]
+[node name="Bat_2" parent="." unique_id=482079320 instance=ExtResource("14_bat")]
 position = Vector2(1500, 520)
 speed = 150.0
 
-[node name="Switch_A" parent="." instance=ExtResource("21_switch")]
-position = Vector2(1240, 580)
+[node name="Switch_A" parent="." unique_id=360615266 instance=ExtResource("21_switch")]
+position = Vector2(1939, 323)
 scale = Vector2(2, 2)
 
-[node name="Door_A" parent="." instance=ExtResource("22_door")]
-position = Vector2(2000, 720)
+[node name="Door_A" parent="." unique_id=1581856044 instance=ExtResource("22_door")]
+position = Vector2(2050.0002, 603)
 scale = Vector2(2.5, 5)
 
-[node name="OcarinaPickup" type="Area2D" parent="." node_paths=PackedStringArray("party_manager", "target_character")]
+[node name="OcarinaPickup" type="Area2D" parent="." unique_id=2070391295 node_paths=PackedStringArray("party_manager", "target_character")]
 position = Vector2(2480, 760)
 collision_layer = 0
 collision_mask = 2
@@ -219,43 +215,39 @@ script = ExtResource("10_pickup")
 party_manager = NodePath("../PartyManager")
 target_character = NodePath("../PartyManager/OcarinaGirl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OcarinaPickup"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OcarinaPickup" unique_id=1425390651]
 shape = SubResource("RectangleShape2D_pickup")
 
-[node name="Sprite" type="Sprite2D" parent="OcarinaPickup"]
+[node name="Sprite" type="Sprite2D" parent="OcarinaPickup" unique_id=1054579291]
 texture_filter = 1
-scale = Vector2(0.7, 0.7)
+position = Vector2(-0.32496336, -30.500023)
+scale = Vector2(0.55, 0.55)
 texture = ExtResource("11_ocarina_head")
 
-[node name="Enemy_Patrol_1" parent="." instance=ExtResource("15_patrol")]
-position = Vector2(3180, 700)
-collision_layer = 4
+[node name="Enemy_Patrol_1" parent="." unique_id=581246323 instance=ExtResource("15_patrol")]
+position = Vector2(3247, 713)
 
-[node name="Slime_1" parent="." instance=ExtResource("26_slime")]
+[node name="Slime_1" parent="." unique_id=91861990 instance=ExtResource("26_slime")]
 position = Vector2(3340, 840)
-collision_layer = 4
 
-[node name="Enemy_Melee_1" parent="." instance=ExtResource("16_melee")]
+[node name="Enemy_Melee_1" parent="." unique_id=1451874627 instance=ExtResource("16_melee")]
 position = Vector2(3520, 700)
-collision_layer = 4
 
-[node name="Enemy_Ranged_1" parent="." instance=ExtResource("17_ranged")]
+[node name="Enemy_Ranged_1" parent="." unique_id=548689322 instance=ExtResource("17_ranged")]
 position = Vector2(3880, 700)
-collision_layer = 4
 
-[node name="RevivalTotem_1" parent="." instance=ExtResource("18_totem")]
+[node name="RevivalTotem_1" parent="." unique_id=118559261 instance=ExtResource("18_totem")]
 position = Vector2(3720, 785)
-collision_layer = 4
 
-[node name="Switch_B" parent="." instance=ExtResource("21_switch")]
-position = Vector2(4120, 760)
+[node name="Switch_B" parent="." unique_id=1406812548 instance=ExtResource("21_switch")]
+position = Vector2(4118, 515)
 scale = Vector2(2, 2)
 
-[node name="Door_B" parent="." instance=ExtResource("22_door")]
+[node name="Door_B" parent="." unique_id=1596665875 instance=ExtResource("22_door")]
 position = Vector2(4280, 720)
 scale = Vector2(2.5, 5)
 
-[node name="HammerPickup" type="Area2D" parent="." node_paths=PackedStringArray("party_manager", "target_character")]
+[node name="HammerPickup" type="Area2D" parent="." unique_id=1523511501 node_paths=PackedStringArray("party_manager", "target_character")]
 position = Vector2(4560, 735)
 collision_layer = 0
 collision_mask = 2
@@ -263,31 +255,30 @@ script = ExtResource("10_pickup")
 party_manager = NodePath("../PartyManager")
 target_character = NodePath("../PartyManager/HammerWarrior")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerPickup"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerPickup" unique_id=880623021]
+position = Vector2(88, -2)
 shape = SubResource("RectangleShape2D_pickup")
 
-[node name="Sprite" type="Sprite2D" parent="HammerPickup"]
+[node name="Sprite" type="Sprite2D" parent="HammerPickup" unique_id=1813503407]
 texture_filter = 1
-position = Vector2(0, 20)
-scale = Vector2(0.16, 0.16)
+position = Vector2(88.49984, 2)
+scale = Vector2(0.1642738, 0.16)
 texture = ExtResource("12_hammer_portrait")
 
-[node name="PushBox" parent="." instance=ExtResource("20_box")]
-position = Vector2(4880, 820)
+[node name="PushBox" parent="." unique_id=109237221 instance=ExtResource("20_box")]
+position = Vector2(4859, 695)
 
-[node name="BreakableObstacle" parent="." instance=ExtResource("19_breakable")]
-position = Vector2(5200, 590)
+[node name="BreakableObstacle" parent="." unique_id=487022141 instance=ExtResource("19_breakable")]
+position = Vector2(5143, 590)
 
-[node name="Bonfire_Final" parent="." node_paths=PackedStringArray("party_manager") instance=ExtResource("13_bonfire")]
+[node name="Bonfire_Final" parent="." unique_id=301766472 node_paths=PackedStringArray("party_manager") instance=ExtResource("13_bonfire")]
 position = Vector2(5420, 760)
 party_manager = NodePath("../PartyManager")
 
-[node name="LevelExit" parent="." instance=ExtResource("23_exit")]
+[node name="LevelExit" parent="." unique_id=768592117 instance=ExtResource("23_exit")]
 position = Vector2(5700, 720)
-collision_layer = 0
-collision_mask = 2
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("party_manager")]
+[node name="Camera" type="Camera2D" parent="." unique_id=730282081 node_paths=PackedStringArray("party_manager")]
 position = Vector2(160, 720)
 zoom = Vector2(1.5, 1.5)
 limit_left = -500
@@ -297,5 +288,5 @@ limit_bottom = 1000
 script = ExtResource("24_camera")
 party_manager = NodePath("../PartyManager")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("party_manager") instance=ExtResource("25_hud")]
+[node name="HUD" parent="." unique_id=412769419 node_paths=PackedStringArray("party_manager") instance=ExtResource("25_hud")]
 party_manager = NodePath("../PartyManager")

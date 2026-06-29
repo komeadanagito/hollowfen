@@ -27,13 +27,13 @@ func _run() -> void:
 
 	var avatar := hud.get_node("Root/Panel/HBox/Avatar") as TextureRect
 	var bar := hud.get_node("Root/Panel/HBox/Info/HealthBar") as ProgressBar
-	var vials_label := hud.get_node("Root/Panel/HBox/Info/VialsLabel") as Label
+	var vials_label := hud.get_node("Root/Panel/HBox/Info/VialRow/VialsLabel") as Label
 
 	# 初始：Knight 头像 + 满血
 	t.check(avatar.texture.resource_path.contains("knight"), "初始显示 Knight 头像")
 	t.eq(int(bar.max_value), 40, "血条 max = Knight max_health")
 	t.eq(int(bar.value), 40, "血条满")
-	t.eq(vials_label.text, "血瓶 x2", "HUD shows initial blood vials")
+	t.eq(vials_label.text, "x2", "HUD shows initial blood vials")
 
 	# 切换到 Archer → 头像变 Archer，血条变 Archer 数值
 	pm.switch_to_next()
@@ -47,6 +47,6 @@ func _run() -> void:
 	t.eq(int(bar.value), 15, "Archer 扣血后血条下降")
 	pm.use_vial()
 	await process_frame
-	t.eq(vials_label.text, "血瓶 x1", "HUD updates after using a vial")
+	t.eq(vials_label.text, "x1", "HUD updates after using a vial")
 
 	quit(t.summary("test_hud"))

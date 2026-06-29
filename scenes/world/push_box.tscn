@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/prop/push_box_broken.png" id="2_w7rtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiwvc"]
-size = Vector2(130, 120)
+size = Vector2(120, 120)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_box"]
 friction = 0.0
@@ -22,5 +22,5 @@ shape = SubResource("RectangleShape2D_qiwvc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.508, 0.469)
+scale = Vector2(0.469, 0.469)
 texture = ExtResource("2_w7rtm")

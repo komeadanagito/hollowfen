@@ -20,7 +20,12 @@ func _run() -> void:
 	t.eq(obstacle.is_broken, false, "knight-strength hit does not break obstacle")
 	obstacle.receive_hit(40)
 	t.eq(obstacle.is_broken, true, "hammer-strength hit breaks obstacle")
-	await process_frame   # disabled 用 set_deferred，下一帧才生效
+	var spr := obstacle.get_node("Sprite") as AnimatedSprite2D
+	t.eq(spr.animation, &"collapse", "broken obstacle plays collapse animation")
 	var shape := obstacle.get_node("CollisionShape2D") as CollisionShape2D
-	t.eq(shape.disabled, true, "broken obstacle disables collision")
+	t.check(not shape.disabled, "still blocks before the 5th collapse frame")
+	# 推进到第5帧（索引4）—— 设置 frame 会触发 frame_changed
+	spr.frame = 4
+	await process_frame   # disabled 用 set_deferred，下一帧才生效
+	t.eq(shape.disabled, true, "passable after the 5th collapse frame")
 	quit(t.summary("test_breakable_obstacle"))

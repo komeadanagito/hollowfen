@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/world/breakable_obstacle.gd" id="1_d4yob"]
-[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="2_hhcxm"]
+[ext_resource type="Texture2D" path="res://assets/prop/breakable_obstacle_stage3.png" id="2_hhcxm"]
 [ext_resource type="Script" path="res://scripts/world/breakable_hit_area.gd" id="3_hitarea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mijl"]

@@ -13,7 +13,7 @@ const AVATARS := {
 @onready var _avatar: TextureRect = $Root/Panel/HBox/Avatar
 @onready var _name_label: Label = $Root/Panel/HBox/Info/NameLabel
 @onready var _health_bar: ProgressBar = $Root/Panel/HBox/Info/HealthBar
-@onready var _vials_label: Label = $Root/Panel/HBox/Info/VialsLabel
+@onready var _vials_label: Label = $Root/Panel/HBox/Info/VialRow/VialsLabel
 
 func _ready() -> void:
 	if party_manager:
@@ -53,4 +53,4 @@ func _refresh_bar() -> void:
 func _refresh_vials() -> void:
 	if party_manager == null or _vials_label == null:
 		return
-	_vials_label.text = "血瓶 x%d" % party_manager.vials
+	_vials_label.text = "x%d" % party_manager.vials

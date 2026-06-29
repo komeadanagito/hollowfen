@@ -207,6 +207,8 @@ collision_layer = 2
 script = ExtResource("1_cisam")
 move_speed = 300.0
 jump_velocity = -520.0
+glide_enabled = true
+glide_fall_speed = 140.0
 attack_duration = 0.45
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=211658799]

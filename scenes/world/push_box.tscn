@@ -1,15 +1,20 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/world/push_box.gd" id="1_dk4bn"]
-[ext_resource type="Texture2D" path="res://assets/scene/stone_block.png" id="2_w7rtm"]
+[ext_resource type="Texture2D" path="res://assets/prop/push_box_broken.png" id="2_w7rtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiwvc"]
-size = Vector2(120, 120)
+size = Vector2(148, 120)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_box"]
+friction = 0.0
 
 [node name="PushBox" type="RigidBody2D"]
 collision_layer = 1
 collision_mask = 3
-mass = 8.0
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_box")
+linear_damp = 4.0
 script = ExtResource("1_dk4bn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,5 +22,5 @@ shape = SubResource("RectangleShape2D_qiwvc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.578, 0.469)
 texture = ExtResource("2_w7rtm")

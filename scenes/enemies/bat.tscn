@@ -4,6 +4,218 @@
 [ext_resource type="Script" path="res://scripts/combat/health.gd" id="2_1u5pa"]
 [ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3_vri07"]
 [ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="4_g77nr"]
+[ext_resource type="Texture2D" path="res://assets/enemy/bat/bat_spritesheet_clean.png" id="5_texture"]
+
+[sub_resource type="AtlasTexture" id="At_idle_0"]
+atlas = ExtResource("5_texture")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_idle_1"]
+atlas = ExtResource("5_texture")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_idle_2"]
+atlas = ExtResource("5_texture")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_idle_3"]
+atlas = ExtResource("5_texture")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_idle_4"]
+atlas = ExtResource("5_texture")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_idle_5"]
+atlas = ExtResource("5_texture")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_walk_0"]
+atlas = ExtResource("5_texture")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_walk_1"]
+atlas = ExtResource("5_texture")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_walk_2"]
+atlas = ExtResource("5_texture")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_walk_3"]
+atlas = ExtResource("5_texture")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_walk_4"]
+atlas = ExtResource("5_texture")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_walk_5"]
+atlas = ExtResource("5_texture")
+region = Rect2(1280, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_attack_0"]
+atlas = ExtResource("5_texture")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_attack_1"]
+atlas = ExtResource("5_texture")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_attack_2"]
+atlas = ExtResource("5_texture")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_attack_3"]
+atlas = ExtResource("5_texture")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_attack_4"]
+atlas = ExtResource("5_texture")
+region = Rect2(1024, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_attack_5"]
+atlas = ExtResource("5_texture")
+region = Rect2(1280, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_death_0"]
+atlas = ExtResource("5_texture")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_death_1"]
+atlas = ExtResource("5_texture")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_death_2"]
+atlas = ExtResource("5_texture")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_death_3"]
+atlas = ExtResource("5_texture")
+region = Rect2(768, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_death_4"]
+atlas = ExtResource("5_texture")
+region = Rect2(1024, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="At_death_5"]
+atlas = ExtResource("5_texture")
+region = Rect2(1280, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_attack_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_attack_1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_attack_2")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_attack_3")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_attack_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_attack_5")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_death_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_death_1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_death_2")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_death_3")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_death_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_death_5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_idle_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_idle_1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_idle_2")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_idle_3")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_idle_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_idle_5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_walk_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_walk_1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_walk_2")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_walk_3")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_walk_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("At_walk_5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 26.0
@@ -12,12 +224,12 @@ radius = 26.0
 collision_layer = 4
 script = ExtResource("1_r6ofs")
 
-[node name="Sprite" type="ColorRect" parent="."]
-offset_left = -30.0
-offset_top = -16.0
-offset_right = 30.0
-offset_bottom = 16.0
-color = Color(0.2, 0.08, 0.28, 1)
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_bat")
+animation = &"walk"
+autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_body")

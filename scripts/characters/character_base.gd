@@ -10,6 +10,8 @@ enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT, DASH }
 @export var jump_velocity: float = -1075.0
 @export var gravity: float = 3000.0
 @export var air_jumps: int = 0          # 额外空中跳跃次数（0=单跳，1=二段跳）
+@export var glide_enabled: bool = false # 滑翔：空中按住跳跃可缓降（女主专属）
+@export var glide_fall_speed: float = 150.0  # 滑翔时的最大下落速度
 @export_group("Feel")
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
@@ -22,6 +24,9 @@ enum State { IDLE, RUN, JUMP, FALL, ATTACK, HURT, DASH }
 @export var attack_duration: float = 0.25
 @export var hurt_duration: float = 0.25
 @export var knockback_force: float = 625.0
+@export_group("Push")
+@export var can_push: bool = false       # 仅大锤战士能推动箱子
+@export var push_force: float = 60.0     # 推动 RigidBody2D（推箱）的力度
 
 var state: int = State.IDLE
 var _active: bool = false
@@ -41,6 +46,9 @@ var _last_safe: Vector2 = Vector2.ZERO   # 最近一次站在地面的位置（�
 
 func _ready() -> void:
 	add_to_group("player")
+	# 让角色贴地：跨过推箱桥接处的小缝隙时不会卡住/踏空
+	up_direction = Vector2.UP
+	floor_snap_length = 16.0
 	_last_safe = global_position
 	if _hurtbox:
 		_hurtbox.hit_taken.connect(_on_hit_taken)
@@ -50,7 +58,8 @@ func _ready() -> void:
 
 func set_active(active: bool) -> void:
 	_active = active
-	visible = active
+	# 阵亡角色即使被切走也保持可见，让死亡动画能播出来（队伍切换会立刻 set_active(false)）
+	visible = active or _dead
 	set_physics_process(active)
 	_set_collision_active(active)
 
@@ -126,6 +135,7 @@ func respawn(pos: Vector2) -> void:
 func revive() -> void:
 	_dead = false
 	velocity = Vector2.ZERO
+	visible = _active   # 复活后若不是当前出战角色则回到隐藏（后备）状态
 	_set_state(State.IDLE)
 	if _health:
 		_health.reset()
@@ -158,7 +168,24 @@ func _physics_process(delta: float) -> void:
 			_process_dash(delta)
 
 	_update_animation()
+	var intended := velocity   # move_and_slide 会把撞墙后的速度削到≈0，先记下推箱的意图速度
 	move_and_slide()
+	_push_rigid_bodies(intended)
+
+# CharacterBody2D 默认不会推动 RigidBody2D（箱子），需要手动施加冲量；仅大锤战士可推
+func _push_rigid_bodies(intended: Vector2) -> void:
+	if not can_push:
+		return
+	for i in get_slide_collision_count():
+		var c := get_slide_collision(i)
+		var collider := c.get_collider()
+		if collider is RigidBody2D and not (collider as RigidBody2D).freeze:
+			var rb := collider as RigidBody2D
+			var push_dir := -c.get_normal()
+			# 用碰撞前的意图速度判断是否朝箱子移动（撞墙后 velocity 已被削掉）
+			if push_dir.dot(intended) > 0.0:
+				rb.sleeping = false   # 唤醒，否则睡眠的刚体会忽略冲量
+				rb.apply_central_impulse(push_dir * push_force)
 
 func _process_locomotion(delta: float) -> void:
 	var dir := 0.0
@@ -187,6 +214,11 @@ func _process_locomotion(delta: float) -> void:
 			velocity.y = jump_velocity
 			_jump_buffer = 0.0
 			_jumps_left -= 1
+
+	# 滑翔：空中正在下落且按住跳跃时，限制下落速度（缓降）
+	if glide_enabled and _active and not is_on_floor() and velocity.y > 0.0 \
+			and Input.is_action_pressed("jump"):
+		velocity.y = minf(velocity.y, glide_fall_speed)
 
 	# 状态判定
 	if not is_on_floor():
@@ -248,7 +280,15 @@ func _on_hit_taken(_damage: int) -> void:
 func _on_died() -> void:
 	_dead = true
 	velocity = Vector2.ZERO
+	visible = true
 	_play_animation(&"death")
+	# 播完死亡动画再隐藏尸体（控制权此时已切给存活角色）
+	if _sprite is AnimatedSprite2D:
+		var anim := _sprite as AnimatedSprite2D
+		if anim.sprite_frames and anim.sprite_frames.has_animation(&"death"):
+			await anim.animation_finished
+	if _dead:   # 期间若已在篝火复活则不再隐藏
+		visible = false
 
 func _set_state(new_state: int) -> void:
 	if _dead:

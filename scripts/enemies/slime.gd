@@ -41,4 +41,12 @@ func _on_died() -> void:
 	var hcs := get_node_or_null("Hurtbox/CollisionShape2D") as CollisionShape2D
 	if hcs:
 		hcs.set_deferred("disabled", true)
+	# 史莱姆是静态贴图，用挤压+淡出做死亡动画
+	var spr := get_node_or_null("Sprite") as Node2D
+	if spr:
+		var tw := create_tween()
+		tw.set_parallel(true)
+		tw.tween_property(spr, "scale", spr.scale * Vector2(1.4, 0.15), 0.35)
+		tw.tween_property(spr, "modulate:a", 0.0, 0.35)
+		await tw.finished
 	queue_free()

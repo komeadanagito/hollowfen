@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var gravity: float = 3000.0
 
 @onready var _health: Health = $Health
+@onready var _sprite: AnimatedSprite2D = get_node_or_null("Sprite")
 
 var _start_x: float = 0.0
 var _dir: int = 1
@@ -28,6 +29,10 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall() or absf(global_position.x - _start_x) > patrol_distance:
 		_dir = -_dir
 	velocity.x = _dir * speed
+	if _sprite:
+		_sprite.flip_h = _dir < 0
+		if _sprite.animation != &"walk":
+			_sprite.play(&"walk")
 	move_and_slide()
 
 func _on_died() -> void:
@@ -41,12 +46,8 @@ func _on_died() -> void:
 	var hcs := get_node_or_null("Hurtbox/CollisionShape2D") as CollisionShape2D
 	if hcs:
 		hcs.set_deferred("disabled", true)
-	# 史莱姆是静态贴图，用挤压+淡出做死亡动画
-	var spr := get_node_or_null("Sprite") as Node2D
-	if spr:
-		var tw := create_tween()
-		tw.set_parallel(true)
-		tw.tween_property(spr, "scale", spr.scale * Vector2(1.4, 0.15), 0.35)
-		tw.tween_property(spr, "modulate:a", 0.0, 0.35)
-		await tw.finished
+	# 播放死亡动画后再移除
+	if _sprite and _sprite.sprite_frames and _sprite.sprite_frames.has_animation(&"death"):
+		_sprite.play(&"death")
+		await _sprite.animation_finished
 	queue_free()
